@@ -96,7 +96,7 @@ export default function HomePage() {
           </nav>
 
           <a href="tel:8082008307" className="hidden md:block text-xs tracking-widest border border-[#D4AF37] px-6 py-2.5 hover:bg-[#D4AF37] hover:text-black transition-all">
-            +91 80820 08307
+            +1 808-200-8307
           </a>
         </div>
       </header>
