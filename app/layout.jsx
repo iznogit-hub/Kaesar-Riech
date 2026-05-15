@@ -1,48 +1,54 @@
-// app/layout.jsx
 import '@/global.css'
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const spaceGrotesk = Space_Grotesk({
+// Keep Inter for clean, readable body paragraphs
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-bleach',
-  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
-// Viewport export (required to silence the warnings)
+// Add Playfair Display for those beautiful, luxury serif headings
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
+
+// Viewport export (required to silence Next.js warnings)
 export const viewport = {
-  themeColor: '#D4AF37',
+  themeColor: '#D4AF37', // Kept your signature gold
   colorScheme: 'dark',
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
 }
 
-// Metadata without viewport-related fields
+// Complete metadata overhaul for the new brand
 export const metadata = {
-  title: 'Kaesar Reich | Sovereign Trinity',
-  description: 'The Silenced have found a Voice. Forge your path to digital sovereignty through elite education in the Reich.',
-  keywords: 'kaesar reich, digital education, marketing courses, AI mastery, web development, trading, business strategy, data analytics',
-  authors: [{ name: 'Kaesar Collective' }],
-  creator: 'Kaesar Reich',
-  publisher: 'Kaesar Collective',
+  title: 'SovereignSkies | Where The Sky Bows',
+  description: 'Elite aerial cinematography for luxury real estate, world-class hospitality, and high-end motion picture productions. Directed by Hugh Franco.',
+  keywords: 'aerial cinematography, drone videography, luxury real estate drones, heavy-lift drones, FPV tracking, resort video, SovereignSkies, Hugh Franco',
+  authors: [{ name: 'Hugh Franco' }],
+  creator: 'SovereignSkies',
+  publisher: 'SovereignSkies',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: 'Kaesar Reich | Sovereign Trinity',
-    description: 'The Silenced have found a Voice.',
-    url: 'https://kaesarreich.com',
-    siteName: 'Kaesar Reich',
+    title: 'SovereignSkies | Aerial Cinematography',
+    description: 'Precision aerial solutions. Elevating the destination and the narrative.',
+    url: 'https://sovereignskies.com',
+    siteName: 'SovereignSkies',
     images: [
       {
-        url: 'https://kaesarreich.com/og-image.jpg',
+        url: 'https://sovereignskies.com/og-image.jpg', // Make sure to upload an actual image here later
         width: 1200,
         height: 630,
-        alt: 'Kaesar Reich - Forge Your Empire',
+        alt: 'SovereignSkies - Where The Sky Bows',
       },
     ],
     locale: 'en_US',
@@ -50,10 +56,10 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kaesar Reich | Sovereign Trinity',
-    description: 'The Silenced have found a Voice.',
-    images: ['https://kaesarreich.com/twitter-image.jpg'],
-    creator: '@kaesarreich',
+    title: 'SovereignSkies | Aerial Cinematography',
+    description: 'Precision aerial solutions. Elevating the destination and the narrative.',
+    images: ['https://sovereignskies.com/twitter-image.jpg'],
+    creator: '@SovereignSkyz_',
   },
   robots: {
     index: true,
@@ -65,10 +71,6 @@ export const metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  verification: {
-    google: 'your-google-verification-token',
-    yandex: 'your-yandex-verification-token',
   },
   icons: {
     icon: '/icons/favicon.ico',
@@ -83,15 +85,11 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/icons/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
-        {/* Font preconnects */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} bg-black text-white font-inter antialiased`}>
-        {/* Global Scanline Overlay */}
-        <div className="fixed inset-0 z-50 pointer-events-none overflow-hidden">
-          <div className="scanline absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent animate-scan" />
-        </div>
+      {/* Applied the new fonts to the body */}
+      <body className={`${inter.variable} ${playfair.variable} bg-black text-white font-inter antialiased`}>
         {children}
       </body>
     </html>
