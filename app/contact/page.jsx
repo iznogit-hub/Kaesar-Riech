@@ -105,7 +105,7 @@ export default function ContactPage() {
                     <div className="container px-6 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         <a href="tel:8082008307" className="group flex flex-col items-center hover:text-[#D4AF37] transition">
                             <Phone className="w-6 h-6 mb-3" />
-                            <p className="text-sm font-medium">+91 80820 08307</p>
+                            <p className="text-sm font-medium">+1 808-200-8307</p>
                             <p className="text-xs text-white/50">Immediate Response</p>
                         </a>
                         <a href="mailto:hugh@sovereignskies.com" className="group flex flex-col items-center hover:text-[#D4AF37] transition">
@@ -260,7 +260,7 @@ export default function ContactPage() {
                         <p className="text-white/60 mb-6">WORLDWIDE • FULLY INSURED • FAA / EASA CERTIFIED</p>
                         <h2 className="text-4xl font-serif mb-8">The sky is ready when you are.</h2>
                         <a href="tel:8082008307" className="inline-flex items-center gap-4 text-xl hover:text-[#D4AF37] transition">
-                            <Phone className="w-6 h-6" /> +91 80820 08307
+                            <Phone className="w-6 h-6" /> +1 808-200-8307
                         </a>
                     </div>
                 </section>

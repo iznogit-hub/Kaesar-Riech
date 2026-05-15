@@ -91,7 +91,6 @@ export default function HomePage() {
             <Link href="/hotels" className="hover:text-[#D4AF37] transition-colors">Hotels &amp; Resorts</Link>
             <Link href="/realestate" className="hover:text-[#D4AF37] transition-colors">Real Estate</Link>
             <Link href="/film" className="hover:text-[#D4AF37] transition-colors">Film &amp; TV</Link>
-            <Link href="/journal" className="hover:text-[#D4AF37] transition-colors">Journal</Link>
             <Link href="/contact" className="hover:text-[#D4AF37] transition-colors">Contact</Link>
           </nav>
 
@@ -402,7 +401,6 @@ export default function HomePage() {
                 <div className="uppercase text-xs mb-6 text-white/50">Company</div>
                 <div className="space-y-3 text-sm">
                   <Link href="/about" className="block hover:text-white">About Hugh Franco</Link>
-                  <Link href="/journal" className="block hover:text-white">Journal</Link>
                   <Link href="/contact" className="block hover:text-white">Contact</Link>
                 </div>
               </div>
