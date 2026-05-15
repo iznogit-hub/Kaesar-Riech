@@ -5,6 +5,12 @@ import { Preload } from '@react-three/drei'
 import { r3f } from '@/helpers/global'
 import * as THREE from 'three'
 
+// 👉 Add your missing Director component here and export it
+export function Director() {
+  // Your custom Three.js logic goes here
+  return null;
+}
+
 export default function Scene({ ...props }) {
   // Everything defined in here will persist between route changes, only children are swapped
   return (

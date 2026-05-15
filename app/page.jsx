@@ -1,464 +1,336 @@
 'use client'
-import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
 
-export default function KaesarReichPage() {
-  const router = useRouter()
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const [isAuthenticating, setIsAuthenticating] = useState(false)
-  const [formData, setFormData] = useState({ alias: '', email: '' })
-  const { scrollYProgress } = useScroll()
+import { Suspense, useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Loader } from '@react-three/drei'
+import Link from 'next/link'
+import Scene from '@/components/canvas/Scene'
+import CountUp from 'react-countup'
+import { Play, Award, Users, MapPin, Clock } from 'lucide-react'
 
-  // Parallax transforms - expanded for more depth
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -200])
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -400])
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -600])
-  const y4 = useTransform(scrollYProgress, [0, 1], [0, -300]) // New layer
-  const glitchOpacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0, 1, 0])
-  const progressWidth = useTransform(scrollYProgress, [0, 1], [0, 100])
+// Expanded curated videos for homepage showcase
+const homeVideos = [
+  { id: 'V5I4JJg_3-0', title: 'Heavy-Lift Cinema', category: 'Commercial', location: 'Dubai' },
+  { id: '84NEEaYf_p4', title: 'Dynamic Pursuit', category: 'Automotive', location: 'Monaco' },
+  { id: 'OESeRIrOoYA', title: 'Landscape & Mapping', category: 'Environment', location: 'Iceland' },
+  { id: 'CbhcB0wlAfo', title: 'Signature Reel', category: 'Showcase', location: 'Global' },
+  { id: 'pSlntz0srXw', title: 'Luxury Resort Tours', category: 'Hospitality', location: 'Maldives' },
+  { id: 'KHdyXbE_kik', title: 'Clifftop Estate', category: 'Real Estate', location: 'California' },
+]
 
+const stats = [
+  { number: 250, suffix: '+', label: 'Projects Delivered', icon: Award },
+  { number: 45, suffix: '', label: 'Countries Flown', icon: MapPin },
+  { number: 98, suffix: '%', label: 'Client Retention', icon: Users },
+  { number: 12, suffix: '', label: 'Years Mastering Skies', icon: Clock },
+]
+
+const testimonials = [
+  {
+    quote: "SovereignSkies transformed our resort marketing. The footage doesn't just show the property — it sells the experience.",
+    name: "Elena Voss",
+    role: "Director of Marketing, Four Seasons Private Islands",
+    location: "French Polynesia"
+  },
+  {
+    quote: "Their cinematic eye elevated our listing from premium to iconic. Sold in under 3 weeks.",
+    name: "Marcus Chen",
+    role: "Principal Broker, Horizon Luxury Estates",
+    location: "Beverly Hills"
+  },
+  {
+    quote: "Working with them on our feature film was seamless. World-class aerials that actually advanced the story.",
+    name: "Aisha Rahman",
+    role: "Producer, Nomad Pictures",
+    location: "Los Angeles"
+  },
+]
+
+export default function HomePage() {
+  const [activeVideo, setActiveVideo] = useState(null)
+  const [scrolled, setScrolled] = useState(false)
+  const [activeFilter, setActiveFilter] = useState('All')
+
+  // Dynamic Navbar
   useEffect(() => {
-    const handleScroll = () => {
-      const total = document.documentElement.scrollHeight - window.innerHeight
-      setScrollProgress(window.scrollY / total)
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const rank = scrollProgress < 0.2 ? 'SOLDAT' : scrollProgress < 0.6 ? 'HIRÐ-MEMBER' : scrollProgress < 0.9 ? 'WITAN-THEGN' : 'KAESAR'
+  const getThumbnail = (id) => `https://img.youtube.com/vi/${id}/maxresdefault.jpg`
 
-  const handleFormChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Simulate submission - in real app, post to API
-    console.log('Form submitted:', formData)
-    setIsAuthenticating(false)
-    // Could redirect or show success
-  }
-
-  // Expanded to 6 Paths with Courses
-  const reichPaths = [
-    {
-      n: 'THE SIREN',
-      k: 'VORTEX',
-      c: '#D4AF37',
-      img: '/vortex-siren.png',
-      desc: 'Master the art of influence to command markets.',
-      courses: ['Digital Marketing Mastery', 'SEO Domination', 'SMM Strategies', 'Content Warfare', 'Brand Sovereignty']
-    },
-    {
-      n: 'THE ORACLE',
-      k: 'VISION',
-      c: '#00FF41',
-      img: '/oracle-eye.png',
-      desc: 'Harness predictive intelligence to foresee and shape futures.',
-      courses: ['Prompt Engineering Essentials', 'AI Agent Automation', 'Machine Learning Foundations', 'Neural Network Tactics', 'Ethical AI Governance']
-    },
-    {
-      n: 'THE ARCHITECT',
-      k: 'NEURAL',
-      c: '#1fb2f5',
-      img: '/neural-circuit.png',
-      desc: 'Build unbreakable digital fortresses for eternal rule.',
-      courses: ['Frontend Empire Building', 'Backend Fortress Design', 'Fullstack Command', 'DevOps Mastery', 'Scalable Architecture']
-    },
-    {
-      n: 'THE TRADER',
-      k: 'AURUM',
-      c: '#FFD700',
-      img: '/trading-chart.png',
-      desc: 'Conquer financial realms through strategic foresight and execution.',
-      courses: ['Crypto Market Conquest', 'Stock Analysis Arsenal', 'Algorithmic Trading Systems', 'Risk Management Protocols', 'Portfolio Sovereignty']
-    },
-    {
-      n: 'THE STRATEGIST',
-      k: 'IMPERIUM',
-      c: '#8B0000',
-      img: '/strategy-map.png',
-      desc: 'Forge empires with visionary leadership and operational dominance.',
-      courses: ['Business Strategy Supremacy', 'Leadership in the Digital Age', 'Entrepreneurial Warfare', 'Innovation Command', 'Global Expansion Tactics']
-    },
-    {
-      n: 'THE ANALYST',
-      k: 'DATUM',
-      c: '#FF69B4',
-      img: '/data-vortex.png',
-      desc: 'Unleash data as your ultimate weapon for informed rule.',
-      courses: ['Data Analytics Dominion', 'Visualization Vanguard', 'Big Data Battlefields', 'Predictive Modeling', 'Insight Intelligence']
-    }
-  ]
+  const filteredVideos = activeFilter === 'All'
+    ? homeVideos
+    : homeVideos.filter(v => v.category === activeFilter)
 
   return (
-    <div className='relative w-full bg-black text-white selection:bg-[#D4AF37] selection:text-black font-mono overflow-x-hidden'>
-      {/* Enhanced HUD with Progress Bar */}
-      <div className='fixed inset-0 z-50 pointer-events-none border-[0.5px] border-white/5'>
-        <motion.div className='scanline opacity-10' style={{ y: y1 }} />
-        {/* Progress Bar */}
-        <motion.div
-          className='fixed top-0 left-0 w-full h-1 bg-zinc-800 z-60'
-          style={{ scaleX: progressWidth }}
-        >
-          <div className='absolute inset-0 bg-gradient-to-r from-[#D4AF37] to-transparent' />
-        </motion.div>
-        {/* Parallax Floating Assets - Optimized for mobile */}
-        <motion.div className='absolute top-20 left-10 w-12 h-12 opacity-10 md:opacity-20 hidden md:block' style={{ y: y2 }}>
-          <Image src='/reich-cross-gold.png' alt='Reich Cross' width={64} height={64} className='filter invert' />
-        </motion.div>
-        <motion.div className='absolute bottom-40 right-10 w-10 h-10 opacity-10 md:opacity-30 rotate-45 hidden md:block' style={{ y: y3 }}>
-          <Image src='/thegn-badge.png' alt='Thegn Badge' width={48} height={48} />
-        </motion.div>
-        {/* New Parallax Element: Floating Token */}
-        <motion.div className='absolute top-1/2 left-5 w-8 h-8 opacity-15 hidden lg:block' style={{ y: y4 }}>
-          <Image src='/kt-token.png' alt='KT Token' width={32} height={32} className='animate-pulse' />
-        </motion.div>
-        {/* Top Branding HUD - Improved Layout */}
-        <div className='absolute top-4 left-4 right-4 md:top-6 md:left-6 flex justify-between items-start pointer-events-auto'>
-          <div className='flex flex-col gap-1'>
-            <span className='text-[#D4AF37] text-[8px] md:text-[10px] tracking-[0.2em] md:tracking-[0.3em] font-bleach'>KAESAR-REICH // SCRIPT_PROTOCOL</span>
-            <span className='text-zinc-600 text-[7px] md:text-[8px]'>SEKTOR: THE_VAULT_SOVEREIGN</span>
-          </div>
-          <div className='text-right'>
-            <div className='text-zinc-500 text-[7px] md:text-[8px] uppercase'>Reich_Rank</div>
-            <motion.div className='text-[#D4AF37] font-bleach text-lg md:text-2xl' style={{ opacity: glitchOpacity }}>
-              {rank}
-            </motion.div>
-          </div>
-        </div>
+    <main className="relative w-full bg-black text-white overflow-hidden selection:bg-[#D4AF37] selection:text-black">
+
+      {/* --- SUBTLE 3D BACKGROUND --- */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-20">
+        <Suspense fallback={null}>
+          <Scene className="w-full h-full" />
+        </Suspense>
       </div>
 
-      {/* Enhanced Background Layers */}
-      <motion.div className='fixed inset-0 z-0 bg-gradient-to-b from-zinc-900/10 via-black/50 to-zinc-900/20' style={{ y: y1 }} />
-      <motion.div className='fixed inset-0 z-5 pointer-events-none' style={{ y: y2 }}>
-        <Image src='/digital-reich-bg.png' alt='Reich Horizon' fill className='object-cover opacity-5 mix-blend-overlay' />
-      </motion.div>
-      {/* New Subtle Particle Layer */}
-      <motion.div className='fixed inset-0 z-3 pointer-events-none' style={{ y: y3 }}>
-        <div className='w-full h-full bg-[url("/particles-reich.png")] bg-repeat opacity-3' />
-      </motion.div>
+      {/* --- TOP NAVIGATION --- */}
+      <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-lg py-4 border-b border-white/10' : 'bg-transparent py-6'}`}>
+        <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
+          <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
+            <span className="text-3xl">✦</span> SOVEREIGNSKIES
+          </Link>
 
-      <main className='relative z-10'>
-        {/* --- PROLOGUE: HERO - Expanded with Subtext */}
-        <section className='min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden'>
-          <motion.div className='absolute inset-0 z-0' initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
-            <Image src='/reich-tome-open.png' alt='Forbidden Script' fill className='object-cover opacity-30' priority />
-          </motion.div>
-          <div className='relative z-10 w-full max-w-sm md:max-w-4xl pt-20'>
-            <h2 className='text-[#D4AF37] text-[8px] md:text-[12px] tracking-[0.6em] md:tracking-[1.2em] mb-4 animate-pulse uppercase'>The Script Awakens in Digital Code</h2>
-            <motion.h1
-              className='font-bleach text-[16vw] md:text-[10vw] leading-none text-white glitch-text mb-6'
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1.5, ease: 'easeOut' }}
-            >
-              KAESAR-REICH
-            </motion.h1>
-            <motion.p
-              className='mt-4 md:mt-8 text-zinc-400 text-[10px] md:text-sm leading-relaxed uppercase tracking-[0.2em] italic max-w-2xl mx-auto'
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5, duration: 1 }}
-            >
-              "Education is the forge of rule. In the heart of the Digital Reich, master scripts of code and strategy to claim sovereignty over empires unseen."
-              <br /><span className='text-[#D4AF37] mt-2 block'>— The Vault Codex, Verse I</span>
-            </motion.p>
-            {/* Teaser Button */}
-            <motion.button
-              className='mt-8 px-6 py-3 border border-[#D4AF37]/50 text-[#D4AF37] text-sm uppercase tracking-wide font-bleach hover:bg-[#D4AF37]/10 transition-all'
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 1, duration: 0.5 }}
-              onClick={() => document.getElementById('reich-tree').scrollIntoView({ behavior: 'smooth' })}
-            >
-              Begin Your Rule
-            </motion.button>
-          </div>
-        </section>
+          <nav className="hidden gap-8 text-xs tracking-[0.125em] uppercase md:flex text-white/80">
+            <Link href="/work" className="hover:text-[#D4AF37] transition-colors">Portfolio</Link>
+            <Link href="/hotels" className="hover:text-[#D4AF37] transition-colors">Hotels &amp; Resorts</Link>
+            <Link href="/realestate" className="hover:text-[#D4AF37] transition-colors">Real Estate</Link>
+            <Link href="/film" className="hover:text-[#D4AF37] transition-colors">Film &amp; TV</Link>
+            <Link href="/journal" className="hover:text-[#D4AF37] transition-colors">Journal</Link>
+            <Link href="/contact" className="hover:text-[#D4AF37] transition-colors">Contact</Link>
+          </nav>
 
-        {/* --- ACT I: THE ASCENSION VOW - Added Visual Enhancements */}
-        <section className='py-20 px-6 md:px-20 relative min-h-[80vh] flex items-center'>
+          <a href="tel:8082008307" className="hidden md:block text-xs tracking-widest border border-[#D4AF37] px-6 py-2.5 hover:bg-[#D4AF37] hover:text-black transition-all">
+            +91 80820 08307
+          </a>
+        </div>
+      </header>
+
+      {/* VIDEO MODAL */}
+      <AnimatePresence>
+        {activeVideo && (
           <motion.div
-            className='absolute inset-0 bg-gradient-to-b from-black/60 to-zinc-900/40'
-            style={{ y: y4 }}
-          />
-          <div className='max-w-4xl mx-auto text-center relative z-10'>
-            <span className='text-[#D4AF37] font-bold text-[10px] tracking-[0.4em] mb-8'>[ STATUS: SOVEREIGN AWAKENING ]</span>
-            <motion.h2
-              className='font-bleach text-4xl md:text-8xl my-6 leading-tight'
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-            >
-              THE SOVEREIGN<br /><span className='text-zinc-700'>EDUCATION</span>
-            </motion.h2>
-            <motion.p
-              className='text-zinc-400 text-sm md:text-xl font-light leading-relaxed mb-12 max-w-2xl mx-auto'
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 1 }}
-            >
-              Arm yourself with knowledge as the ultimate weapon. Through rigorous courses in the Reich's vault, transform from novice to ruler—commanding code, markets, and minds with unyielding precision.
-            </motion.p>
-            <motion.div
-              className='relative w-48 h-48 md:w-64 md:h-64 mx-auto'
-              initial={{ rotate: 0 }}
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-            >
-              <Image src='/script-vow-seal.png' alt='Script Seal' fill className='object-contain opacity-80' />
-            </motion.div>
-          </div>
-        </section>
-
-        {/* --- ACT II: THE DESPAIR - Added List and Better Grid */}
-        <section className='py-20 px-6 bg-zinc-950/50 border-y border-red-900/20 min-h-[70vh] flex items-center'>
-          <div className='max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10'>
-            <motion.div
-              initial={{ x: -50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-            >
-              <span className='text-red-900 font-bold text-[10px] tracking-widest mb-4 block'>[ SYSTEM INFESTATION ]</span>
-              <h2 className='font-bleach text-4xl md:text-6xl mt-2 mb-6'>THE WAGE CAGE</h2>
-              <p className='text-zinc-500 text-sm md:text-base leading-relaxed mb-6'>Without education, you're trapped in cycles of mediocrity. The untaught remain cogs—devoured by algorithms, blind to opportunities. Education is your key to breaking free and ruling.</p>
-              <ul className='text-xs md:text-sm text-zinc-600 space-y-2 pl-4 list-disc max-w-md'>
-                <li>Skill Gaps in Automation</li>
-                <li>Knowledge Voids in Strategy</li>
-                <li>The Chains of Ignorance</li>
-              </ul>
-            </motion.div>
-            <motion.div
-              className='relative h-48 md:h-64 opacity-50'
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 0.5 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.1, opacity: 0.7 }}
-            >
-              <Image src='/hollow-cage-png.png' alt='Wage Cage' fill className='object-contain' />
-            </motion.div>
-          </div>
-        </section>
-
-        {/* --- ACT III: THE REICH-TREE & REGISTRATION - Enhanced with Timeline */}
-        <section id="reich-tree" className='py-24 px-4 bg-black border-y border-[#D4AF37]/10 min-h-screen'>
-          <div className='max-w-6xl mx-auto'>
-            <div className='text-center mb-16'>
-              <motion.h2
-                className='font-bleach text-4xl md:text-7xl text-[#D4AF37]'
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-              >
-                THE REICH-TREE
-              </motion.h2>
-              <motion.p
-                className='text-zinc-600 text-[10px] md:text-xs tracking-[0.4em] uppercase mt-2'
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                12-Step Path to Educational Sovereignty
-              </motion.p>
-            </div>
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-start'>
-              {/* Step Items - Now with Progress Dots */}
-              <div className='space-y-8 relative'>
-                <div className='absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#D4AF37]/20 to-transparent hidden lg:block' />
-                {[
-                  { s: "01-03", t: "CORE FOUNDATIONS", d: "Build essential knowledge in digital literacy and strategy.", icon: '/neural-blut.png' },
-                  { s: "04-06", t: "WEAPONIZED SKILLS", d: "Master specialized tools for market and code dominance.", icon: '/reich-weapon.png' },
-                  { s: "07-09", t: "THE WITAN TRIALS", d: "Apply learning in simulated real-world challenges.", icon: '/witan-gate.png' },
-                  { s: "10-12", t: "KAESAR COMMAND", d: "Lead with integrated expertise across all paths.", icon: '/kaesar-form.png' }
-                ].map((step, i) => (
-                  <motion.div
-                    key={i}
-                    className='group flex gap-4 md:gap-6 items-center p-5 bg-zinc-900/30 border border-zinc-800 rounded-lg hover:border-[#D4AF37]/50 transition-all cursor-pointer relative'
-                    initial={{ x: -50, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => setIsAuthenticating(true)}
-                  >
-                    <div className='w-12 h-12 relative flex-shrink-0 bg-[#D4AF37]/5 rounded-full border-2 border-[#D4AF37]/20'>
-                      <Image src={step.icon} alt='icon' fill className='object-contain group-hover:scale-110 transition-transform' />
-                    </div>
-                    <div className='flex-1'>
-                      <span className='font-bleach text-[#D4AF37] text-xl'>{step.s}</span>
-                      <h4 className='font-bleach text-white text-base md:text-lg ml-2'>{step.t}</h4>
-                      <p className='text-zinc-500 text-[10px] md:text-xs mt-1 ml-2'>{step.d}</p>
-                    </div>
-                    {/* Progress Dot */}
-                    <div className='w-4 h-4 bg-[#D4AF37]/20 rounded-full absolute left-0 hidden lg:block' style={{ top: '50%' }} />
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* INTERACTIVE AUTH CARD - Enhanced Form with Validation */}
-              <div className='relative p-8 md:p-12 bg-zinc-900 border border-[#D4AF37]/20 rounded-xl overflow-hidden shadow-2xl'>
-                <AnimatePresence mode='wait'>
-                  {!isAuthenticating ? (
-                    <motion.div key="unauth" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className='text-center py-10'>
-                      <h3 className='font-bleach text-2xl text-white mb-4 uppercase tracking-widest'>Identity Unverified</h3>
-                      <p className='text-zinc-500 text-xs mb-8'>ENROLLMENT REQUIRED TO ACCESS COURSES AND TRACK YOUR PATH TO RULE.</p>
-                      <button
-                        onClick={() => setIsAuthenticating(true)}
-                        className='w-full py-5 bg-[#D4AF37] text-black font-bleach text-xl hover:bg-white transition-all'
-                      >
-                        INITIATE ENROLLMENT
-                      </button>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="auth"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className='space-y-6'
-                    >
-                      <h3 className='font-bleach text-2xl text-[#D4AF37] text-center uppercase'>Enroll in the Reich</h3>
-                      <form onSubmit={handleSubmit} className='space-y-4'>
-                        <div className='space-y-1'>
-                          <label className='text-[10px] text-zinc-600 ml-1 uppercase'>Core Alias</label>
-                          <input
-                            type="text"
-                            name="alias"
-                            value={formData.alias}
-                            onChange={handleFormChange}
-                            placeholder="e.g. KAESAR_X"
-                            required
-                            className='w-full bg-black border border-zinc-800 p-4 text-[#D4AF37] outline-none font-mono text-sm focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/30'
-                          />
-                        </div>
-                        <div className='space-y-1'>
-                          <label className='text-[10px] text-zinc-600 ml-1 uppercase'>Neural Link</label>
-                          <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleFormChange}
-                            placeholder="EMAIL@EMPIRE.NET"
-                            required
-                            className='w-full bg-black border border-zinc-800 p-4 text-[#D4AF37] outline-none font-mono text-sm focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/30'
-                          />
-                        </div>
-                        <button
-                          type="submit"
-                          className='w-full py-5 border-2 border-[#D4AF37] font-bleach text-xl hover:bg-[#D4AF37] hover:text-black transition-all disabled:opacity-50'
-                          disabled={!formData.alias || !formData.email}
-                        >
-                          AWAKEN MY SCRIPT
-                        </button>
-                      </form>
-                      <button
-                        onClick={() => { setIsAuthenticating(false); setFormData({ alias: '', email: '' }) }}
-                        className='w-full text-zinc-600 text-[10px] uppercase tracking-[0.3em] mt-4 hover:text-zinc-400 transition-colors'
-                      >
-                        Cancel Enrollment
-                      </button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-                {/* Decorative UI element */}
-                <div className='absolute bottom-0 right-0 w-24 h-24 opacity-5 pointer-events-none'>
-                  <Image src='/reich-star.png' alt='star' fill className='animate-spin-slow' />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* --- ACT IV: THE WITAN COUNCIL - Expanded to 6 Paths with Course Lists */}
-        <section className='py-24 px-6 md:px-12 min-h-[100vh] flex flex-col justify-center'>
-          <motion.h2
-            className='font-bleach text-4xl md:text-6xl text-center mb-16'
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
           >
-            THE WITAN COUNCIL: PATHS TO RULE
-          </motion.h2>
-          <p className='text-center text-zinc-500 text-sm md:text-base max-w-2xl mx-auto mb-12 leading-relaxed'>
-            Choose your path of education. Each commander offers elite courses to forge rulers in their domain—unlock them through the Reich-Tree.
-          </p>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-0 bg-zinc-900 border border-zinc-900 relative z-10'>
-            {reichPaths.map((path, i) => (
-              <motion.div
-                key={i}
-                className='bg-black p-6 md:p-10 space-y-4 md:space-y-6 hover:bg-zinc-950 transition-all group relative overflow-hidden'
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ scale: 1.02 }}
+            <button
+              onClick={() => setActiveVideo(null)}
+              className="absolute top-8 right-8 text-white/60 hover:text-white z-50 text-sm tracking-widest uppercase flex items-center gap-2"
+            >
+              ✕ CLOSE
+            </button>
+            <div className="w-full max-w-6xl aspect-video bg-black border border-white/10 shadow-2xl overflow-hidden relative">
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1`}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0"
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="relative z-10">
+
+        {/* 1. HERO SECTION - Enhanced */}
+        <section className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-center">
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <iframe
+              className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105"
+              src="https://www.youtube.com/embed/CbhcB0wlAfo?autoplay=1&mute=1&controls=0&loop=1&playlist=CbhcB0wlAfo&playsinline=1&showinfo=0&rel=0"
+              frameBorder="0"
+              allow="autoplay; encrypted-media"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
+            <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_0.5px,transparent_1px)] bg-[length:4px_4px] opacity-10" />
+          </div>
+
+          <div className="relative z-10 flex flex-col items-center px-6 max-w-5xl mx-auto mt-12">
+            <div className="mb-8 flex flex-col items-center">
+              <div className="w-40 h-40 bg-center bg-no-repeat bg-contain opacity-95 mb-8"
+                style={{ backgroundImage: "url('/shield-logo.png')" }} />
+              <h1 className="text-6xl md:text-[5.5rem] font-serif tracking-[-0.02em] text-[#D4AF37] leading-none mb-4">
+                SOVEREIGN<br />SKIES
+              </h1>
+              <h2 className="text-2xl md:text-3xl tracking-[0.4em] uppercase font-light text-white/90">Where The Sky Bows</h2>
+            </div>
+
+            <p className="max-w-md text-lg text-white/70 mb-12 font-light leading-relaxed">
+              Cinematic aerial storytelling for the world's most extraordinary properties, experiences, and narratives.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={() => setActiveVideo('CbhcB0wlAfo')}
+                className="group px-10 py-4 border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all duration-300 flex items-center gap-3 text-sm tracking-[0.125em] uppercase font-medium"
               >
-                <div className='absolute inset-0 bg-gradient-to-br from-transparent to-white/5 group-hover:opacity-100 transition-opacity' />
-                <div className='relative z-10 flex justify-between items-start'>
-                  <h3 className='font-bleach text-xl md:text-2xl' style={{ color: path.c }}>{path.n}</h3>
-                  <span className='text-[7px] md:text-[8px] bg-zinc-800 px-2 py-1 rounded'>KAESAR: {path.k}</span>
+                <Play className="w-4 h-4 group-hover:scale-110 transition" /> WATCH SIGNATURE REEL
+              </button>
+              <Link href="/contact" className="px-10 py-4 border border-white/60 hover:border-white text-white transition-all text-sm tracking-[0.125em] uppercase">
+                START A PROJECT
+              </Link>
+            </div>
+
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2.5, repeat: Infinity }}
+              className="absolute bottom-12 text-[10px] tracking-[0.2em] flex flex-col items-center text-white/50"
+            >
+              SCROLL TO EXPLORE <span className="text-xl mt-1">↓</span>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 2. TRUST BAR / STATS */}
+        <section className="py-8 border-b border-white/10 bg-black/70 backdrop-blur">
+          <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {stats.map((stat, i) => (
+              <motion.div key={i} initial="hidden" whileInView="visible" variants={fadeUp} className="flex flex-col items-center">
+                <div className="text-[#D4AF37] mb-2"><stat.icon className="w-8 h-8 mx-auto" /></div>
+                <div className="text-4xl font-serif text-white">
+                  <CountUp end={stat.number} duration={2.5} />{stat.suffix}
                 </div>
-                <div className='relative h-20 md:h-32 opacity-20 group-hover:opacity-40 transition-opacity'>
-                  <Image src={path.img} alt='path' fill className='object-contain' />
-                </div>
-                <motion.p
-                  className='text-zinc-600 text-[9px] md:text-[10px] uppercase tracking-tighter opacity-0 group-hover:opacity-100 transition-opacity absolute inset-0 flex items-center px-2 py-4 md:py-6'
-                  initial={{ y: 10 }}
-                  whileHover={{ y: 0 }}
-                >
-                  {path.desc}
-                </motion.p>
-                {/* Course List - Reveal on Hover */}
-                <motion.div
-                  className='relative z-10 space-y-1 opacity-0 group-hover:opacity-100 transition-opacity mt-2'
-                  initial={{ height: 0 }}
-                  whileHover={{ height: 'auto' }}
-                >
-                  <p className='text-zinc-500 text-[8px] md:text-[9px] uppercase tracking-wider'>Elite Courses:</p>
-                  <ul className='text-[7px] md:text-[8px] text-zinc-400 space-y-0.5 list-disc pl-3 max-h-20 overflow-y-auto'>
-                    {path.courses.map((course, j) => (
-                      <li key={j}>{course}</li>
-                    ))}
-                  </ul>
-                </motion.div>
-                <p className='relative z-10 text-zinc-600 text-[9px] md:text-[10px] uppercase tracking-tighter'>ENROLL TO UNLOCK</p>
+                <div className="text-xs tracking-widest uppercase text-white/60 mt-1">{stat.label}</div>
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* --- NEW SECTION: MEMBER HIGHLIGHTS - Fake Testimonials */}
-        <section className='py-20 px-6 bg-zinc-950/30 min-h-[60vh]'>
-          <div className='max-w-4xl mx-auto'>
-            <h2 className='font-bleach text-3xl md:text-5xl text-center mb-12 text-[#D4AF37]'>Rulers Forged</h2>
-            <div className='grid md:grid-cols-3 gap-6'>
+        {/* 3. SERVICES - Expanded */}
+        <section className="relative w-full py-28 bg-black">
+          <div className="container px-6 mx-auto md:px-12">
+            <motion.div initial="hidden" whileInView="visible" variants={fadeUp} className="text-center mb-16">
+              <div className="text-xs tracking-[0.3em] text-[#D4AF37] mb-3">EXCELLENCE IN MOTION</div>
+              <h2 className="text-5xl md:text-6xl font-serif text-white">We capture what others can only describe.</h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { name: 'Vortex Sovereign', rank: 'KAESAR', quote: 'Marketing mastery turned my vision into a digital empire.', kt: '15,000', path: 'Siren' },
-                { name: 'Neural Overlord', rank: 'WITAN-THEGN', quote: 'AI courses unlocked autonomous wealth streams.', kt: '8,500', path: 'Oracle' },
-                { name: 'Aurum Trader', rank: 'HIRÐ-MEMBER', quote: 'Trading education conquered volatile markets.', kt: '3,200', path: 'Trader' }
-              ].map((member, i) => (
+                {
+                  icon: "🏛️",
+                  title: "Hospitality & Resorts",
+                  desc: "Breathtaking aerial campaigns that transform luxury properties into irresistible destinations. Signature drone choreography and cinematic storytelling.",
+                  link: "/hotels"
+                },
+                {
+                  icon: "🏠",
+                  title: "Ultra Luxury Real Estate",
+                  desc: "Reveal the full grandeur of architectural masterpieces. Cinematic property films that accelerate sales and elevate brand perception.",
+                  link: "/realestate"
+                },
+                {
+                  icon: "🎬",
+                  title: "Film, TV & Commercial",
+                  desc: "High-end aerial production services for feature films, commercials, and documentaries. Precision, creativity, and reliability at altitude.",
+                  link: "/film"
+                }
+              ].map((service, i) => (
                 <motion.div
                   key={i}
-                  className='bg-zinc-900 p-6 rounded-lg border border-zinc-800'
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.2 }}
+                  initial="hidden"
+                  whileInView="visible"
+                  variants={fadeUp}
+                  transition={{ delay: i * 0.1 }}
+                  className="group p-10 border border-white/10 hover:border-[#D4AF37] bg-zinc-950/50 backdrop-blur transition-all duration-500 flex flex-col h-full"
                 >
-                  <div className='flex justify-between mb-2'>
-                    <span className='text-[#D4AF37] text-sm font-bleach'>{member.rank}</span>
-                    <span className='text-zinc-500 text-xs'>KT: {member.kt}</span>
+                  <div className="text-6xl mb-8 opacity-75 group-hover:scale-110 transition-transform">{service.icon}</div>
+                  <h3 className="text-3xl font-serif mb-6 text-white tracking-tight">{service.title}</h3>
+                  <p className="text-white/70 flex-1 leading-relaxed">{service.desc}</p>
+                  <Link href={service.link} className="mt-10 inline-flex items-center text-xs uppercase tracking-widest text-[#D4AF37] group-hover:gap-3 transition-all">
+                    Explore this discipline →
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 4. EXPANDED SHOWCASE WITH FILTERS */}
+        <section className="relative w-full py-24 border-t border-white/10 bg-black">
+          <div className="container px-6 mx-auto md:px-12">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+              <div>
+                <div className="uppercase text-xs tracking-[0.2em] text-[#D4AF37]">Signature Work</div>
+                <h2 className="text-4xl font-serif">Featured Operations</h2>
+              </div>
+
+              <div className="flex gap-2 text-sm">
+                {['All', 'Commercial', 'Automotive', 'Environment', 'Hospitality', 'Real Estate'].map(cat => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveFilter(cat)}
+                    className={`px-5 py-2 transition-all ${activeFilter === cat
+                      ? 'bg-[#D4AF37] text-black'
+                      : 'border border-white/30 hover:border-white/60'}`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredVideos.map((video, i) => (
+                <motion.div
+                  key={video.id}
+                  initial="hidden"
+                  whileInView="visible"
+                  variants={fadeUp}
+                  transition={{ delay: Math.min(i * 0.08, 0.4) }}
+                  className="group relative aspect-[16/10] overflow-hidden cursor-pointer border border-white/10 hover:border-[#D4AF37] transition-all"
+                  onClick={() => setActiveVideo(video.id)}
+                >
+                  <img
+                    src={getThumbnail(video.id)}
+                    alt={video.title}
+                    className="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
+                    <div className="w-20 h-20 rounded-full border-2 border-white/80 flex items-center justify-center backdrop-blur-md">
+                      <Play className="w-8 h-8 ml-1 text-white" />
+                    </div>
                   </div>
-                  <p className='text-zinc-400 text-xs italic'>"{member.quote}"</p>
-                  <div className='mt-4 text-right'>
-                    <span className='text-white text-sm'>— {member.name} ({member.path})</span>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
+                    <div className="flex justify-between items-end">
+                      <div>
+                        <div className="text-[10px] text-[#D4AF37] tracking-widest mb-1.5">{video.category} • {video.location}</div>
+                        <h4 className="text-2xl font-serif leading-none">{video.title}</h4>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <Link href="/work" className="inline-block border border-[#D4AF37] px-12 py-4 text-sm tracking-widest hover:bg-[#D4AF37] hover:text-black transition-all">
+                VIEW COMPLETE PORTFOLIO
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* 5. TESTIMONIALS */}
+        <section className="py-28 bg-zinc-950 border-t border-b border-white/10">
+          <div className="container px-6 mx-auto max-w-4xl">
+            <div className="text-center mb-16">
+              <div className="text-[#D4AF37] text-xs tracking-widest mb-4">VOICES FROM THE FIELD</div>
+              <h2 className="text-5xl font-serif">They trusted the sky.</h2>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {testimonials.map((t, i) => (
+                <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" className="p-8 border border-white/10 bg-black/40">
+                  <div className="text-6xl text-[#D4AF37]/20 mb-6">“</div>
+                  <p className="italic text-lg leading-relaxed mb-8">{t.quote}</p>
+                  <div>
+                    <div className="font-medium">{t.name}</div>
+                    <div className="text-xs text-white/60">{t.role}<br />{t.location}</div>
                   </div>
                 </motion.div>
               ))}
@@ -466,85 +338,101 @@ export default function KaesarReichPage() {
           </div>
         </section>
 
-        {/* --- FINAL CALL TO ACTION - Enhanced with Glow */}
-        <section className='py-40 px-6 text-center relative overflow-hidden min-h-screen flex items-center justify-center'>
-          <motion.div
-            className='absolute inset-0 opacity-10 z-0'
-            style={{ y: y2 }}
-          >
-            <Image src='/reich-throne.png' alt='throne' fill className='object-cover' />
-          </motion.div>
-          <motion.div
-            whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
-            className='relative z-10 space-y-8'
-          >
-            <motion.h2
-              className='font-bleach text-4xl md:text-6xl text-white'
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Educate to Rule
-            </motion.h2>
-            <p className='text-zinc-400 text-lg max-w-md mx-auto leading-relaxed'>
-              Enroll now. Harvest KT through courses and quests. Rise to command the digital Reich.
-            </p>
-            <button
-              onClick={() => router.push('/witan')}
-              className='w-full md:w-auto px-12 py-8 border-2 border-[#D4AF37] font-bleach text-2xl md:text-4xl text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all shadow-[0_0_30px_rgba(212,175,55,0.2)] hover:shadow-[0_0_50px_rgba(212,175,55,0.4)]'
-            >
-              ENROLL & AWAKEN — ENTER THE VAULT
-            </button>
-            <div className='text-zinc-500 font-mono text-[10px] tracking-[0.5em]'>[ KNOWLEDGE IS POWER ]</div>
-          </motion.div>
+        {/* 6. OUR PROCESS */}
+        <section className="py-28 bg-black">
+          <div className="container px-6 mx-auto md:px-12">
+            <div className="max-w-2xl mb-16">
+              <div className="uppercase text-xs tracking-widest text-[#D4AF37]">METHODOLOGY</div>
+              <h2 className="text-5xl font-serif leading-tight">Precision from concept to final cut.</h2>
+            </div>
+
+            <div className="grid md:grid-cols-4 gap-8">
+              {[
+                { step: "01", title: "Discovery & Vision", desc: "Deep dive into your story, brand, and objectives." },
+                { step: "02", title: "Scouting & Planning", desc: "Location reconnaissance, permits, and shot-listing." },
+                { step: "03", title: "Cinematic Capture", desc: "Flawless execution with premium equipment." },
+                { step: "04", title: "Post-Production Magic", desc: "Color grading, editing, and sound design." }
+              ].map((item) => (
+                <div key={item.step} className="border-l-2 border-[#D4AF37] pl-8 group">
+                  <div className="text-5xl font-serif text-white/30 group-hover:text-[#D4AF37] transition-colors">{item.step}</div>
+                  <h3 className="text-2xl mt-4 mb-3">{item.title}</h3>
+                  <p className="text-white/70">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
-      </main>
 
-      {/* ENHANCED FOOTER - Added Links */}
-      <footer className='py-16 px-8 bg-black border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-8 relative z-10'>
-        <div className='text-center md:text-left space-y-2'>
-          <div className='font-bleach text-3xl text-[#D4AF37]'>KAESAR-REICH</div>
-          <p className='text-[9px] text-zinc-600 uppercase tracking-[0.2em]'>"Educate. Command. Rule."</p>
-        </div>
-        <div className='flex flex-col md:flex-row gap-8 font-mono text-[9px] text-zinc-500 uppercase items-center md:items-end'>
-          <div className='flex flex-col text-center md:text-right'><span>KT_EMPIRE</span><span className='text-[#D4AF37]'>1.000</span></div>
-          <div className='flex flex-col text-center md:text-right'><span>SCRIPT_COUNT</span><span className='text-zinc-300'>36</span></div>
-          <div className='flex flex-col text-center md:text-right'><span>CORE_STAT</span><span className='text-white'>ONLINE</span></div>
-        </div>
-        {/* Footer Links */}
-        <div className='hidden md:flex gap-4 text-[10px] text-zinc-600'>
-          <a href='/terms' className='hover:text-[#D4AF37] transition-colors'>Terms</a>
-          <a href='/privacy' className='hover:text-[#D4AF37] transition-colors'>Privacy</a>
-          <span className='text-zinc-800'>•</span>
-          <span>© 2025 Kaesar-Reich</span>
-        </div>
-      </footer>
+        {/* 7. FINAL CTA */}
+        <section className="relative py-32 bg-gradient-to-b from-black to-zinc-950 text-center border-t border-white/10">
+          <div className="container px-6 mx-auto max-w-2xl">
+            <h2 className="text-6xl font-serif text-[#D4AF37] leading-none mb-6">Your vision deserves the sky.</h2>
+            <p className="text-xl text-white/70 mb-12">Let’s create something unforgettable together.</p>
 
-      <style jsx>{`
-        .scanline {
-          position: absolute;
-          width: 100%;
-          height: 2px;
-          background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2), transparent);
-          animation: scan 4s linear infinite;
-        }
-        @keyframes scan { 0% { top: -10%; } 100% { top: 110%; } }
-        .glitch-text { 
-          text-shadow: 2px 0 #D4AF37, -2px 0 #ff0000; 
-          animation: glitch 2s infinite alternate-reverse;
-        }
-        @keyframes glitch {
-          0% { transform: translate(0); }
-          20% { transform: translate(-2px, 2px); }
-          40% { transform: translate(-2px, -2px); }
-          60% { transform: translate(2px, 2px); }
-          80% { transform: translate(2px, -2px); }
-          100% { transform: translate(0); }
-        }
-        .animate-spin-slow { animation: spin 10s linear infinite; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        input::placeholder { color: #27272a; }
-      `}</style>
-    </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact" className="px-12 py-5 bg-white text-black hover:bg-[#D4AF37] transition font-medium tracking-widest text-sm">
+                REQUEST A PROPOSAL
+              </Link>
+              <a href="tel:8082008307" className="px-12 py-5 border border-white hover:bg-white/10 transition text-sm tracking-widest flex items-center justify-center gap-3">
+                <span>SPEAK WITH HUGH</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* 8. MEGA FOOTER */}
+        <footer className="bg-black pt-20 pb-12 border-t border-[#D4AF37]/20">
+          <div className="container px-6 mx-auto md:px-12">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-y-12">
+              <div className="col-span-2 md:col-span-1">
+                <div className="text-3xl font-serif text-[#D4AF37] mb-2">SovereignSkies</div>
+                <p className="text-xs tracking-widest text-white/50">AERIAL CINEMATOGRAPHY</p>
+              </div>
+
+              <div>
+                <div className="uppercase text-xs mb-6 text-white/50">Work</div>
+                <div className="space-y-3 text-sm">
+                  <Link href="/work" className="block hover:text-white">Portfolio</Link>
+                  <Link href="/hotels" className="block hover:text-white">Hospitality</Link>
+                  <Link href="/realestate" className="block hover:text-white">Real Estate</Link>
+                </div>
+              </div>
+
+              <div>
+                <div className="uppercase text-xs mb-6 text-white/50">Company</div>
+                <div className="space-y-3 text-sm">
+                  <Link href="/about" className="block hover:text-white">About Hugh Franco</Link>
+                  <Link href="/journal" className="block hover:text-white">Journal</Link>
+                  <Link href="/contact" className="block hover:text-white">Contact</Link>
+                </div>
+              </div>
+
+              <div className="col-span-2 md:col-span-1">
+                <div className="uppercase text-xs mb-6 text-white/50">Connect</div>
+                <div className="space-y-4">
+                  <a href="https://instagram.com/sovereignskies" target="_blank" className="block hover:text-[#D4AF37]">Instagram</a>
+                  <a href="https://twitter.com/SovereignSkyz_" target="_blank" className="block hover:text-[#D4AF37]">X / Twitter</a>
+                  <a href="https://youtube.com/@SovereignSkyz" target="_blank" className="block hover:text-[#D4AF37]">YouTube</a>
+                </div>
+                <div className="mt-10">
+                  <p className="text-sm">Hugh Franco</p>
+                  <p className="text-xs text-white/50">Founder &amp; Director</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-12 mt-20 border-t border-white/10 text-[10px] text-white/40 flex flex-col md:flex-row justify-between items-center gap-4">
+              <p>© {new Date().getFullYear()} SOVEREIGNSKIES • ALL RIGHTS RESERVED</p>
+              <p className="flex gap-6">
+                <Link href="#" className="hover:text-white">Privacy</Link>
+                <Link href="#" className="hover:text-white">Legal</Link>
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <Loader />
+    </main>
   )
 }
