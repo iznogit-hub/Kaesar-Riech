@@ -390,6 +390,7 @@ export default function HomePage() {
                   <Link href="/work" className="block hover:text-white">Portfolio</Link>
                   <Link href="/hotels" className="block hover:text-white">Hospitality</Link>
                   <Link href="/realestate" className="block hover:text-white">Real Estate</Link>
+                  <Link href="/work" className="block hover:text-white">Automotive</Link>
                 </div>
               </div>
 
