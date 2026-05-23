@@ -6,7 +6,7 @@ import { Loader } from '@react-three/drei'
 import Link from 'next/link'
 import Scene from '@/components/canvas/Scene'
 import CountUp from 'react-countup'
-import { Play, Award, Users, MapPin, Clock } from 'lucide-react'
+import { Play } from 'lucide-react'
 
 // Expanded curated videos for homepage showcase
 const homeVideos = [
@@ -19,15 +19,15 @@ const homeVideos = [
 ]
 
 const stats = [
-  { number: 250, suffix: '+', label: 'Projects Delivered', icon: Award },
-  { number: 45, suffix: '', label: 'Countries Flown', icon: MapPin },
-  { number: 98, suffix: '%', label: 'Client Retention', icon: Users },
-  { number: 12, suffix: '', label: 'Years Mastering Skies', icon: Clock },
+  { number: 250, suffix: '+', label: 'Projects Delivered' },
+  { number: 45, suffix: '', label: 'Countries Flown' },
+  { number: 98, suffix: '%', label: 'Client Retention' },
+  { number: 12, suffix: '', label: 'Years Mastering Skies' },
 ]
 
 const testimonials = [
   {
-    quote: "SovereignSkies transformed our resort marketing. The footage doesn't just show the property — it sells the experience.",
+    quote: "Sovereign Skyz transformed our resort marketing. The footage doesn't just show the property — it sells the experience.",
     name: "Elena Voss",
     role: "Director of Marketing, Four Seasons Private Islands",
     location: "French Polynesia"
@@ -83,7 +83,7 @@ export default function HomePage() {
       <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-lg py-4 border-b border-white/10' : 'bg-transparent py-6'}`}>
         <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
           <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
-            <span className="text-3xl">✦</span> SOVEREIGNSKIES
+            <span className="text-3xl">✦</span> SOVEREIGNSKYZ
           </Link>
 
           <nav className="hidden gap-8 text-xs tracking-[0.125em] uppercase md:flex text-white/80">
@@ -119,7 +119,7 @@ export default function HomePage() {
               <iframe
                 width="100%"
                 height="100%"
-                src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1`}
+                src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&playsinline=1`}
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -137,10 +137,11 @@ export default function HomePage() {
         <section className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-center">
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <iframe
-              className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105"
-              src="https://www.youtube.com/embed/CbhcB0wlAfo?autoplay=1&mute=1&controls=0&loop=1&playlist=CbhcB0wlAfo&playsinline=1&showinfo=0&rel=0"
+              className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105 pointer-events-none"
+              src="https://www.youtube.com/embed/CbhcB0wlAfo?autoplay=1&mute=1&controls=0&loop=1&playlist=CbhcB0wlAfo&playsinline=1&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
               frameBorder="0"
               allow="autoplay; encrypted-media"
+              tabIndex={-1}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
             <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_0.5px,transparent_1px)] bg-[length:4px_4px] opacity-10" />
@@ -151,7 +152,7 @@ export default function HomePage() {
               <div className="w-40 h-40 bg-center bg-no-repeat bg-contain opacity-95 mb-8"
                 style={{ backgroundImage: "url('/shield-logo.png')" }} />
               <h1 className="text-6xl md:text-[5.5rem] font-serif tracking-[-0.02em] text-[#D4AF37] leading-none mb-4">
-                SOVEREIGN<br />SKIES
+                SOVEREIGN<br />SKYZ
               </h1>
               <h2 className="text-2xl md:text-3xl tracking-[0.4em] uppercase font-light text-white/90">Where The Sky Bows</h2>
             </div>
@@ -175,7 +176,7 @@ export default function HomePage() {
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2.5, repeat: Infinity }}
-              className="absolute bottom-12 text-[10px] tracking-[0.2em] flex flex-col items-center text-white/50"
+              className="mt-24 text-[10px] tracking-[0.2em] flex flex-col items-center text-white/50"
             >
               SCROLL TO EXPLORE <span className="text-xl mt-1">↓</span>
             </motion.div>
@@ -187,7 +188,6 @@ export default function HomePage() {
           <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" variants={fadeUp} className="flex flex-col items-center">
-                <div className="text-[#D4AF37] mb-2"><stat.icon className="w-8 h-8 mx-auto" /></div>
                 <div className="text-4xl font-serif text-white">
                   <CountUp end={stat.number} duration={2.5} />{stat.suffix}
                 </div>
@@ -208,19 +208,16 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  icon: "🏛️",
                   title: "Hospitality & Resorts",
                   desc: "Breathtaking aerial campaigns that transform luxury properties into irresistible destinations. Signature drone choreography and cinematic storytelling.",
                   link: "/hotels"
                 },
                 {
-                  icon: "🏠",
                   title: "Ultra Luxury Real Estate",
                   desc: "Reveal the full grandeur of architectural masterpieces. Cinematic property films that accelerate sales and elevate brand perception.",
                   link: "/realestate"
                 },
                 {
-                  icon: "🎬",
                   title: "Film, TV & Commercial",
                   desc: "High-end aerial production services for feature films, commercials, and documentaries. Precision, creativity, and reliability at altitude.",
                   link: "/film"
@@ -234,7 +231,6 @@ export default function HomePage() {
                   transition={{ delay: i * 0.1 }}
                   className="group p-10 border border-white/10 hover:border-[#D4AF37] bg-zinc-950/50 backdrop-blur transition-all duration-500 flex flex-col h-full"
                 >
-                  <div className="text-6xl mb-8 opacity-75 group-hover:scale-110 transition-transform">{service.icon}</div>
                   <h3 className="text-3xl font-serif mb-6 text-white tracking-tight">{service.title}</h3>
                   <p className="text-white/70 flex-1 leading-relaxed">{service.desc}</p>
                   <Link href={service.link} className="mt-10 inline-flex items-center text-xs uppercase tracking-widest text-[#D4AF37] group-hover:gap-3 transition-all">
@@ -373,7 +369,7 @@ export default function HomePage() {
                 REQUEST A PROPOSAL
               </Link>
               <a href="tel:8082008307" className="px-12 py-5 border border-white hover:bg-white/10 transition text-sm tracking-widest flex items-center justify-center gap-3">
-                <span>SPEAK WITH HUGH</span>
+                <span>SPEAK WITH SOVEREIGNSKYZ</span>
               </a>
             </div>
           </div>
@@ -384,7 +380,7 @@ export default function HomePage() {
           <div className="container px-6 mx-auto md:px-12">
             <div className="grid grid-cols-2 md:grid-cols-5 gap-y-12">
               <div className="col-span-2 md:col-span-1">
-                <div className="text-3xl font-serif text-[#D4AF37] mb-2">SovereignSkies</div>
+                <div className="text-3xl font-serif text-[#D4AF37] mb-2">Sovereign Skyz</div>
                 <p className="text-xs tracking-widest text-white/50">AERIAL CINEMATOGRAPHY</p>
               </div>
 
@@ -420,7 +416,7 @@ export default function HomePage() {
             </div>
 
             <div className="pt-12 mt-20 border-t border-white/10 text-[10px] text-white/40 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p>© {new Date().getFullYear()} SOVEREIGNSKIES • ALL RIGHTS RESERVED</p>
+              <p>© {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED</p>
               <p className="flex gap-6">
                 <Link href="#" className="hover:text-white">Privacy</Link>
                 <Link href="#" className="hover:text-white">Legal</Link>

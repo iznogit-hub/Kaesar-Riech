@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Loader } from '@react-three/drei'
 import Link from 'next/link'
 import Scene from '@/components/canvas/Scene'
-import { Play, Award, Users, MapPin, Clock, Sun } from 'lucide-react'
+import { Play } from 'lucide-react'
 import CountUp from 'react-countup'
 
 const hotelVideos = [
@@ -17,15 +17,15 @@ const hotelVideos = [
 ]
 
 const stats = [
-    { number: 120, suffix: '+', label: 'Luxury Properties', icon: Award },
-    { number: 35, suffix: '', label: 'Countries', icon: MapPin },
-    { number: 96, suffix: '%', label: 'Repeat Clients', icon: Users },
-    { number: 8, suffix: '', label: 'Avg. Booking Uplift', icon: Clock },
+    { number: 120, suffix: '+', label: 'Luxury Properties' },
+    { number: 35, suffix: '', label: 'Countries' },
+    { number: 96, suffix: '%', label: 'Repeat Clients' },
+    { number: 8, suffix: '', label: 'Avg. Booking Uplift' },
 ]
 
 const testimonials = [
     {
-        quote: "SovereignSkies completely transformed how we market our resorts. Our direct bookings increased by 68% after launching their cinematic campaigns.",
+        quote: "Sovereign Skyz completely transformed how we market our resorts. Our direct bookings increased by 68% after launching their cinematic campaigns.",
         name: "Isabella Rossi",
         role: "Brand Director, Aman Resorts",
         location: "Italy"
@@ -73,7 +73,7 @@ export default function HotelsPage() {
             {/* Navigation */}
             <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-lg py-4 border-b border-white/10' : 'bg-transparent py-6'}`}>
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
-                    <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif">SOVEREIGNSKIES</Link>
+                    <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif">SOVEREIGNSKYZ</Link>
                     <nav className="hidden gap-8 text-xs tracking-widest uppercase md:flex text-white/80">
                         <Link href="/" className="hover:text-[#D4AF37]">Home</Link>
                         <Link href="/work" className="hover:text-[#D4AF37]">Work</Link>
@@ -90,9 +90,15 @@ export default function HotelsPage() {
                 {activeVideo && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                         className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4">
-                        <button onClick={() => setActiveVideo(null)} className="absolute top-8 right-8 text-white/60 hover:text-white uppercase tracking-widest text-sm z-50">✕ CLOSE</button>
+                        <button onClick={() => setActiveVideo(null)} className="absolute top-8 right-8 text-white/60 hover:text-white uppercase tracking-widest text-sm z-50 flex items-center gap-2">✕ CLOSE</button>
                         <div className="w-full max-w-6xl aspect-video bg-black border border-white/10 shadow-2xl relative">
-                            <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1`} allowFullScreen className="absolute inset-0" />
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&playsinline=1`}
+                                allowFullScreen
+                                className="absolute inset-0"
+                            />
                         </div>
                     </motion.div>
                 )}
@@ -102,16 +108,16 @@ export default function HotelsPage() {
 
                 {/* HERO SECTION */}
                 <section className="relative min-h-screen flex items-center justify-center overflow-hidden text-center">
-                    <div className="absolute inset-0 z-0">
+                    <div className="absolute inset-0 z-0 pointer-events-none">
                         <iframe
-                            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105"
-                            src="https://www.youtube.com/embed/OESeRIrOoYA?autoplay=1&mute=1&controls=0&loop=1&playlist=OESeRIrOoYA"
-                            frameBorder="0" allow="autoplay"
+                            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105 pointer-events-none"
+                            src="https://www.youtube.com/embed/OESeRIrOoYA?autoplay=1&mute=1&controls=0&loop=1&playlist=OESeRIrOoYA&playsinline=1&modestbranding=1&iv_load_policy=3&disablekb=1"
+                            frameBorder="0" allow="autoplay; encrypted-media" tabIndex={-1}
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
                     </div>
 
-                    <div className="relative z-10 px-6 max-w-5xl mx-auto">
+                    <div className="relative z-10 px-6 max-w-5xl mx-auto pt-20">
                         <div className="mb-6 inline-flex items-center gap-2 text-xs tracking-[0.3em] text-[#D4AF37] border border-[#D4AF37]/30 px-6 py-2 rounded-full">
                             HOSPITALITY & RESORTS
                         </div>
@@ -136,7 +142,6 @@ export default function HotelsPage() {
                     <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                         {stats.map((stat, i) => (
                             <motion.div key={i} initial="hidden" whileInView="visible" variants={fadeUp} className="flex flex-col items-center">
-                                <stat.icon className="w-8 h-8 text-[#D4AF37] mb-3" />
                                 <div className="text-5xl font-serif"><CountUp end={stat.number} duration={2} />{stat.suffix}</div>
                                 <div className="text-xs tracking-widest uppercase text-white/60 mt-1">{stat.label}</div>
                             </motion.div>
@@ -176,12 +181,11 @@ export default function HotelsPage() {
                         <h2 className="text-center text-4xl font-serif mb-16">Services for Hospitality Leaders</h2>
                         <div className="grid md:grid-cols-3 gap-10">
                             {[
-                                { icon: "🌅", title: "Cinematic Brand Films", desc: "High-production aerial storytelling that captures the essence and luxury of your brand." },
-                                { icon: "🏊", title: "Amenity Immersion Tours", desc: "Seamless FPV journeys through pools, spas, restaurants, and private villas." },
-                                { icon: "🌙", title: "Golden Hour & Twilight", desc: "Expertly timed shoots that showcase your property at its most magical." }
+                                { title: "Cinematic Brand Films", desc: "High-production aerial storytelling that captures the essence and luxury of your brand." },
+                                { title: "Amenity Immersion Tours", desc: "Seamless FPV journeys through pools, spas, restaurants, and private villas." },
+                                { title: "Golden Hour & Twilight", desc: "Expertly timed shoots that showcase your property at its most magical." }
                             ].map((service, i) => (
                                 <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" transition={{ delay: i * 0.1 }} className="p-10 border border-white/10 hover:border-[#D4AF37] group">
-                                    <div className="text-6xl mb-8 opacity-80 group-hover:scale-110 transition">{service.icon}</div>
                                     <h3 className="text-2xl font-serif mb-5">{service.title}</h3>
                                     <p className="text-white/70">{service.desc}</p>
                                 </motion.div>
@@ -275,12 +279,12 @@ export default function HotelsPage() {
                 <footer className="bg-black pt-20 pb-12 border-t border-[#D4AF37]/20">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col items-center mb-20 text-center">
-                            <h2 className="text-3xl font-serif text-[#D4AF37]">SovereignSkies</h2>
+                            <h2 className="text-3xl font-serif text-[#D4AF37]">Sovereign Skyz</h2>
                             <p className="text-xs tracking-widest text-white/50 mt-2">WHERE THE SKY BOWS</p>
                         </div>
 
                         <div className="text-center text-xs text-white/40 mt-20">
-                            © {new Date().getFullYear()} SOVEREIGNSKIES • ALL RIGHTS RESERVED
+                            © {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED
                         </div>
                     </div>
                 </footer>

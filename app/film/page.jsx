@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Loader } from '@react-three/drei'
 import Link from 'next/link'
 import Scene from '@/components/canvas/Scene'
-import { Play, Zap, Camera, Award, Users, Clock } from 'lucide-react'
+import { Play } from 'lucide-react'
 import CountUp from 'react-countup'
 
 const filmVideos = [
@@ -17,15 +17,15 @@ const filmVideos = [
 ]
 
 const stats = [
-    { number: 85, suffix: '', label: 'Feature & Commercial Projects', icon: Award },
-    { number: 120, suffix: '+', label: 'mph Pursuit Speed', icon: Zap },
-    { number: 25, suffix: '', label: 'lbs Max Payload', icon: Camera },
-    { number: 98, suffix: '%', label: 'On-Time Delivery', icon: Clock },
+    { number: 85, suffix: '', label: 'Feature & Commercial Projects' },
+    { number: 120, suffix: '+', label: 'mph Pursuit Speed' },
+    { number: 25, suffix: '', label: 'lbs Max Payload' },
+    { number: 98, suffix: '%', label: 'On-Time Delivery' },
 ]
 
 const testimonials = [
     {
-        quote: "SovereignSkies delivered some of the most dynamic aerial shots we've ever had in a commercial. Their dual-operator system gave us true cinematic control at altitude.",
+        quote: "Sovereign Skyz delivered some of the most dynamic aerial shots we've ever had in a commercial. Their dual-operator system gave us true cinematic control at altitude.",
         name: "Marcus Hale",
         role: "Director, Nike Global Campaigns",
         location: "Los Angeles"
@@ -73,7 +73,7 @@ export default function FilmPage() {
             {/* Enhanced Navigation */}
             <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-lg py-4 border-b border-white/10' : 'bg-transparent py-6'}`}>
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
-                    <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif">SOVEREIGNSKIES</Link>
+                    <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif">SOVEREIGNSKYZ</Link>
                     <nav className="hidden gap-8 text-xs tracking-widest uppercase md:flex text-white/80">
                         <Link href="/" className="hover:text-[#D4AF37]">Home</Link>
                         <Link href="/work" className="hover:text-[#D4AF37]">Work</Link>
@@ -90,9 +90,15 @@ export default function FilmPage() {
                 {activeVideo && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                         className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4">
-                        <button onClick={() => setActiveVideo(null)} className="absolute top-8 right-8 text-white/60 hover:text-white uppercase tracking-widest text-sm z-50">✕ CLOSE</button>
+                        <button onClick={() => setActiveVideo(null)} className="absolute top-8 right-8 text-white/60 hover:text-white uppercase tracking-widest text-sm z-50 flex items-center gap-2">✕ CLOSE</button>
                         <div className="w-full max-w-6xl aspect-video bg-black border border-white/10 shadow-2xl relative">
-                            <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1`} allowFullScreen className="absolute inset-0" />
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&playsinline=1`}
+                                allowFullScreen
+                                className="absolute inset-0"
+                            />
                         </div>
                     </motion.div>
                 )}
@@ -102,11 +108,11 @@ export default function FilmPage() {
 
                 {/* HERO SECTION */}
                 <section className="relative min-h-screen flex items-center justify-center overflow-hidden text-center">
-                    <div className="absolute inset-0 z-0">
+                    <div className="absolute inset-0 z-0 pointer-events-none">
                         <iframe
-                            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105"
-                            src="https://www.youtube.com/embed/aRFkEvb9yr4?autoplay=1&mute=1&controls=0&loop=1&playlist=aRFkEvb9yr4"
-                            frameBorder="0" allow="autoplay"
+                            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105 pointer-events-none"
+                            src="https://www.youtube.com/embed/aRFkEvb9yr4?autoplay=1&mute=1&controls=0&loop=1&playlist=aRFkEvb9yr4&playsinline=1&modestbranding=1&iv_load_policy=3&disablekb=1"
+                            frameBorder="0" allow="autoplay; encrypted-media" tabIndex={-1}
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
                     </div>
@@ -136,7 +142,6 @@ export default function FilmPage() {
                     <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                         {stats.map((stat, i) => (
                             <motion.div key={i} initial="hidden" whileInView="visible" variants={fadeUp} className="flex flex-col items-center">
-                                <stat.icon className="w-8 h-8 text-[#D4AF37] mb-3" />
                                 <div className="text-5xl font-serif"><CountUp end={stat.number} duration={2} />{stat.suffix}</div>
                                 <div className="text-xs tracking-widest uppercase text-white/60 mt-1">{stat.label}</div>
                             </motion.div>
@@ -181,12 +186,11 @@ export default function FilmPage() {
                         <h2 className="text-center text-4xl font-serif mb-16">Production Services</h2>
                         <div className="grid md:grid-cols-3 gap-10">
                             {[
-                                { icon: "🏎️", title: "High-Speed Action", desc: "Immersive FPV tracking for automotive, chase sequences, and extreme sports at previously impossible angles." },
-                                { icon: "🎥", title: "Heavy-Lift Cinematography", desc: "Stunning aerial sequences with full cinema cameras and dual-operator precision control." },
-                                { icon: "🌌", title: "VFX & Plates", desc: "Clean, repeatable aerial plates, HDR environments, photogrammetry, and LiDAR data for seamless CGI integration." }
+                                { title: "High-Speed Action", desc: "Immersive FPV tracking for automotive, chase sequences, and extreme sports at previously impossible angles." },
+                                { title: "Heavy-Lift Cinematography", desc: "Stunning aerial sequences with full cinema cameras and dual-operator precision control." },
+                                { title: "VFX & Plates", desc: "Clean, repeatable aerial plates, HDR environments, photogrammetry, and LiDAR data for seamless CGI integration." }
                             ].map((service, i) => (
                                 <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" transition={{ delay: i * 0.1 }} className="p-10 border border-white/10 hover:border-[#D4AF37] group">
-                                    <div className="text-6xl mb-8 opacity-80 group-hover:scale-110 transition">{service.icon}</div>
                                     <h3 className="text-2xl font-serif mb-5">{service.title}</h3>
                                     <p className="text-white/70">{service.desc}</p>
                                 </motion.div>
@@ -280,12 +284,12 @@ export default function FilmPage() {
                 <footer className="bg-black pt-20 pb-12 border-t border-[#D4AF37]/20">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col items-center mb-20 text-center">
-                            <h2 className="text-3xl font-serif text-[#D4AF37]">SovereignSkies</h2>
+                            <h2 className="text-3xl font-serif text-[#D4AF37]">Sovereign Skyz</h2>
                             <p className="text-xs tracking-widest text-white/50 mt-2">WHERE THE SKY BOWS</p>
                         </div>
 
                         <div className="text-center text-xs text-white/40 mt-20">
-                            © {new Date().getFullYear()} SOVEREIGNSKIES • ALL RIGHTS RESERVED
+                            © {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED
                         </div>
                     </div>
                 </footer>

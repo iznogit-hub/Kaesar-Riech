@@ -73,7 +73,7 @@ const allWork = [
     },
 ]
 
-const categories = ['All', 'Showcase', 'Action', 'Commercial', 'Indoor', 'Environment']
+const categories = ['All', 'Showcase', 'Action', 'Automotive', 'Commercial', 'Indoor', 'Environment']
 
 export default function WorkPage() {
     const [activeVideo, setActiveVideo] = useState(null)
@@ -111,7 +111,7 @@ export default function WorkPage() {
             <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-lg py-4 border-b border-white/10' : 'bg-transparent py-8'}`}>
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
                     <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
-                        ✦ SOVEREIGNSKIES
+                        ✦ SOVEREIGNSKYZ
                     </Link>
 
                     <nav className="hidden gap-8 text-xs tracking-widest uppercase md:flex text-white/80">
@@ -144,7 +144,7 @@ export default function WorkPage() {
                             <iframe
                                 width="100%"
                                 height="100%"
-                                src={`https://www.youtube.com/embed/${activeVideo.id}?autoplay=1&rel=0&modestbranding=1`}
+                                src={`https://www.youtube.com/embed/${activeVideo.id}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&playsinline=1`}
                                 allowFullScreen
                                 className="absolute inset-0"
                             />
@@ -289,7 +289,7 @@ export default function WorkPage() {
                 <div className="container px-6 mx-auto md:px-12 lg:px-24">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-8">
                         <div>
-                            <div className="text-2xl font-serif text-[#D4AF37]">SovereignSkies</div>
+                            <div className="text-2xl font-serif text-[#D4AF37]">Sovereign Skyz</div>
                             <p className="text-xs text-white/40 mt-1">Mastery Above • Precision Below</p>
                         </div>
 
@@ -301,7 +301,7 @@ export default function WorkPage() {
                     </div>
 
                     <div className="text-center text-[10px] text-white/30 mt-16">
-                        © {new Date().getFullYear()} SOVEREIGNSKIES • ALL RIGHTS RESERVED
+                        © {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED
                     </div>
                 </div>
             </footer>

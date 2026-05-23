@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Loader } from '@react-three/drei'
 import Link from 'next/link'
 import Scene from '@/components/canvas/Scene'
-import { Play, Phone, Mail, Clock, MapPin, Award } from 'lucide-react'
+import { Phone, Mail, Clock, MapPin, Award } from 'lucide-react'
 
 export default function ContactPage() {
     const [scrolled, setScrolled] = useState(false)
@@ -59,7 +59,7 @@ export default function ContactPage() {
             {/* Navigation */}
             <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-lg py-4 border-b border-white/10' : 'bg-transparent py-6'}`}>
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
-                    <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif">SOVEREIGNSKIES</Link>
+                    <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif">SOVEREIGNSKYZ</Link>
                     <nav className="hidden gap-8 text-xs tracking-widest uppercase md:flex text-white/80">
                         <Link href="/" className="hover:text-[#D4AF37]">Home</Link>
                         <Link href="/work" className="hover:text-[#D4AF37]">Work</Link>
@@ -108,9 +108,9 @@ export default function ContactPage() {
                             <p className="text-sm font-medium">+1 808-200-8307</p>
                             <p className="text-xs text-white/50">Immediate Response</p>
                         </a>
-                        <a href="mailto:hugh@sovereignskies.com" className="group flex flex-col items-center hover:text-[#D4AF37] transition">
+                        <a href="mailto:contact@sovereignskyz.com" className="group flex flex-col items-center hover:text-[#D4AF37] transition">
                             <Mail className="w-6 h-6 mb-3" />
-                            <p className="text-sm font-medium">hugh@sovereignskies.com</p>
+                            <p className="text-sm font-medium">contact@sovereignskyz.com</p>
                             <p className="text-xs text-white/50">Project Inquiries</p>
                         </a>
                         <div className="flex flex-col items-center">
@@ -186,12 +186,12 @@ export default function ContactPage() {
                                                     onChange={handleChange}
                                                     className="w-full bg-transparent border-b border-white/20 pb-3 focus:border-[#D4AF37] outline-none text-lg text-white/70"
                                                 >
-                                                    <option value="">Select Type</option>
-                                                    <option value="Hospitality">Hospitality & Resorts</option>
-                                                    <option value="RealEstate">Luxury Real Estate</option>
-                                                    <option value="Film">Film / TV / Commercial</option>
-                                                    <option value="Automotive">Automotive / Action</option>
-                                                    <option value="Other">Other</option>
+                                                    <option value="" className="bg-neutral-900 text-white">Select Type</option>
+                                                    <option value="Hospitality" className="bg-neutral-900 text-white">Hospitality & Resorts</option>
+                                                    <option value="RealEstate" className="bg-neutral-900 text-white">Luxury Real Estate</option>
+                                                    <option value="Film" className="bg-neutral-900 text-white">Film / TV / Commercial</option>
+                                                    <option value="Automotive" className="bg-neutral-900 text-white">Automotive / Action</option>
+                                                    <option value="Other" className="bg-neutral-900 text-white">Other</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -239,7 +239,7 @@ export default function ContactPage() {
                                         <Award className="w-20 h-20 text-[#D4AF37] mx-auto mb-8" />
                                         <h3 className="text-4xl font-serif text-[#D4AF37] mb-4">Thank You.</h3>
                                         <p className="text-xl text-white/70 max-w-md mx-auto">
-                                            Your inquiry has been received. Hugh or a senior producer will contact you within 24 hours.
+                                            Your inquiry has been received. The Sovereign Skyz team or a senior producer will contact you within 24 hours.
                                         </p>
                                         <button
                                             onClick={() => setSubmitted(false)}
@@ -269,12 +269,12 @@ export default function ContactPage() {
                 <footer className="bg-black pt-20 pb-12 border-t border-[#D4AF37]/20">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col items-center text-center mb-20">
-                            <h2 className="text-3xl font-serif text-[#D4AF37]">SovereignSkies</h2>
+                            <h2 className="text-3xl font-serif text-[#D4AF37]">Sovereign Skyz</h2>
                             <p className="text-xs tracking-widest text-white/50 mt-2">WHERE THE SKY BOWS</p>
                         </div>
 
                         <div className="text-center text-xs text-white/40">
-                            © {new Date().getFullYear()} SOVEREIGNSKIES • ALL RIGHTS RESERVED
+                            © {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED
                         </div>
                     </div>
                 </footer>

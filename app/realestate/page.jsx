@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Loader } from '@react-three/drei'
 import Link from 'next/link'
 import Scene from '@/components/canvas/Scene'
-import { Play, Home, Eye, Award, Clock, MapPin } from 'lucide-react'
+import { Play } from 'lucide-react'
 import CountUp from 'react-countup'
 
 const realEstateVideos = [
@@ -17,15 +17,15 @@ const realEstateVideos = [
 ]
 
 const stats = [
-    { number: 87, suffix: '', label: 'Properties Sold Faster', icon: Award },
-    { number: 42, suffix: '', label: 'Countries Represented', icon: MapPin },
-    { number: 100, suffix: '%', label: 'Client Satisfaction', icon: Eye },
-    { number: 18, suffix: '', label: 'Average Days on Market Reduced', icon: Clock },
+    { number: 87, suffix: '', label: 'Properties Sold Faster' },
+    { number: 42, suffix: '', label: 'Countries Represented' },
+    { number: 100, suffix: '%', label: 'Client Satisfaction' },
+    { number: 18, suffix: '', label: 'Average Days on Market Reduced' },
 ]
 
 const testimonials = [
     {
-        quote: "The seamless fly-through sold the penthouse before the listing even went live. SovereignSkies is now our mandatory partner for every trophy listing.",
+        quote: "The seamless fly-through sold the penthouse before the listing even went live. Sovereign Skyz is now our mandatory partner for every trophy listing.",
         name: "Elena Moreau",
         role: "Senior Broker, Christie’s International Real Estate",
         location: "Monaco"
@@ -73,7 +73,7 @@ export default function RealEstatePage() {
             {/* Enhanced Navigation */}
             <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-lg py-4 border-b border-white/10' : 'bg-transparent py-6'}`}>
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
-                    <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif">SOVEREIGNSKIES</Link>
+                    <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif">SOVEREIGNSKYZ</Link>
                     <nav className="hidden gap-8 text-xs tracking-widest uppercase md:flex text-white/80">
                         <Link href="/" className="hover:text-[#D4AF37]">Home</Link>
                         <Link href="/work" className="hover:text-[#D4AF37]">Work</Link>
@@ -90,9 +90,15 @@ export default function RealEstatePage() {
                 {activeVideo && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                         className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4">
-                        <button onClick={() => setActiveVideo(null)} className="absolute top-8 right-8 text-white/60 hover:text-white uppercase tracking-widest text-sm z-50">✕ CLOSE</button>
+                        <button onClick={() => setActiveVideo(null)} className="absolute top-8 right-8 text-white/60 hover:text-white uppercase tracking-widest text-sm z-50 flex items-center gap-2">✕ CLOSE</button>
                         <div className="w-full max-w-6xl aspect-video bg-black border border-white/10 shadow-2xl relative">
-                            <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1`} allowFullScreen className="absolute inset-0" />
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&playsinline=1`}
+                                allowFullScreen
+                                className="absolute inset-0"
+                            />
                         </div>
                     </motion.div>
                 )}
@@ -101,17 +107,17 @@ export default function RealEstatePage() {
             <div className="relative z-10">
 
                 {/* HERO SECTION - Much Stronger */}
-                <section className="relative min-h-screen flex items-center justify-center overflow-hidden text-center">
-                    <div className="absolute inset-0 z-0">
+                <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-center">
+                    <div className="absolute inset-0 z-0 pointer-events-none">
                         <iframe
-                            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105"
-                            src="https://www.youtube.com/embed/XbbsoKny4OA?autoplay=1&mute=1&controls=0&loop=1&playlist=XbbsoKny4OA&playsinline=1"
-                            frameBorder="0" allow="autoplay"
+                            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105 pointer-events-none"
+                            src="https://www.youtube.com/embed/XbbsoKny4OA?autoplay=1&mute=1&controls=0&loop=1&playlist=XbbsoKny4OA&playsinline=1&modestbranding=1&iv_load_policy=3&disablekb=1"
+                            frameBorder="0" allow="autoplay; encrypted-media" tabIndex={-1}
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
                     </div>
 
-                    <div className="relative z-10 px-6 max-w-5xl mx-auto pt-20">
+                    <div className="relative z-10 flex flex-col items-center px-6 max-w-5xl mx-auto pt-20">
                         <div className="mb-6 inline-flex items-center gap-2 text-xs tracking-[0.3em] text-[#D4AF37] border border-[#D4AF37]/30 px-6 py-2 rounded-full">
                             LUXURY REAL ESTATE
                         </div>
@@ -128,11 +134,11 @@ export default function RealEstatePage() {
                         >
                             <Play className="w-5 h-5 group-hover:scale-110 transition" /> EXPERIENCE THE SEAMLESS TOUR
                         </button>
-                    </div>
 
-                    <motion.div animate={{ y: [0, 12, 0] }} transition={{ repeat: Infinity, duration: 3 }} className="absolute bottom-12 text-xs tracking-widest text-white/50 flex flex-col items-center">
-                        SCROLL TO EXPLORE <span className="text-xl">↓</span>
-                    </motion.div>
+                        <motion.div animate={{ y: [0, 12, 0] }} transition={{ repeat: Infinity, duration: 3 }} className="mt-24 text-xs tracking-widest text-white/50 flex flex-col items-center">
+                            SCROLL TO EXPLORE <span className="text-xl mt-1">↓</span>
+                        </motion.div>
+                    </div>
                 </section>
 
                 {/* TRUST STATS BAR */}
@@ -140,7 +146,6 @@ export default function RealEstatePage() {
                     <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                         {stats.map((stat, i) => (
                             <motion.div key={i} initial="hidden" whileInView="visible" variants={fadeUp} className="flex flex-col items-center">
-                                <stat.icon className="w-8 h-8 text-[#D4AF37] mb-3" />
                                 <div className="text-5xl font-serif"><CountUp end={stat.number} duration={2} />{stat.suffix}</div>
                                 <div className="text-xs tracking-widest uppercase text-white/60 mt-1">{stat.label}</div>
                             </motion.div>
@@ -185,12 +190,11 @@ export default function RealEstatePage() {
                         <h2 className="text-center text-4xl font-serif mb-16">Tailored for Luxury Real Estate</h2>
                         <div className="grid md:grid-cols-3 gap-10">
                             {[
-                                { icon: "🏠", title: "Signature Seamless Tours", desc: "One-take journeys through entire estates — the most powerful marketing asset in luxury real estate today." },
-                                { icon: "🌊", title: "Context & Lifestyle", desc: "Showcase not just the home, but the lifestyle: ocean views, private helipads, vineyard vistas, and city skylines." },
-                                { icon: "📈", title: "Development & Construction", desc: "Repeatable waypoint missions for progress documentation, investor updates, and pre-sale cinematic campaigns." }
+                                { title: "Signature Seamless Tours", desc: "One-take journeys through entire estates — the most powerful marketing asset in luxury real estate today." },
+                                { title: "Context & Lifestyle", desc: "Showcase not just the home, but the lifestyle: ocean views, private helipads, vineyard vistas, and city skylines." },
+                                { title: "Development & Construction", desc: "Repeatable waypoint missions for progress documentation, investor updates, and pre-sale cinematic campaigns." }
                             ].map((service, i) => (
                                 <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" transition={{ delay: i * 0.1 }} className="p-10 border border-white/10 hover:border-[#D4AF37] group">
-                                    <div className="text-6xl mb-8 opacity-75 group-hover:scale-110 transition">{service.icon}</div>
                                     <h3 className="text-2xl font-serif mb-5">{service.title}</h3>
                                     <p className="text-white/70">{service.desc}</p>
                                 </motion.div>
@@ -283,16 +287,13 @@ export default function RealEstatePage() {
                 {/* Consistent Footer */}
                 <footer className="bg-black pt-20 pb-12 border-t border-[#D4AF37]/20">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
-                        {/* Same rich footer structure as previous pages — kept consistent */}
                         <div className="flex flex-col items-center mb-20 text-center">
-                            <h2 className="text-3xl font-serif text-[#D4AF37]">SovereignSkies</h2>
+                            <h2 className="text-3xl font-serif text-[#D4AF37]">Sovereign Skyz</h2>
                             <p className="text-xs tracking-widest text-white/50 mt-2">WHERE THE SKY BOWS</p>
                         </div>
 
-                        {/* ... (full footer grid same as homepage) ... */}
-
                         <div className="text-center text-xs text-white/40 mt-20">
-                            © {new Date().getFullYear()} SOVEREIGNSKIES • ALL RIGHTS RESERVED
+                            © {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED
                         </div>
                     </div>
                 </footer>
