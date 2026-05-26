@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useState, useEffect } from 'react'
+import { Suspense, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Loader } from '@react-three/drei'
 import Link from 'next/link'
@@ -78,13 +78,6 @@ const categories = ['All', 'Showcase', 'Action', 'Automotive', 'Commercial', 'In
 export default function WorkPage() {
     const [activeVideo, setActiveVideo] = useState(null)
     const [filter, setFilter] = useState('All')
-    const [scrolled, setScrolled] = useState(false)
-
-    useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 80)
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
 
     const filteredWork = filter === 'All'
         ? allWork
@@ -107,8 +100,8 @@ export default function WorkPage() {
                 </Suspense>
             </div>
 
-            {/* Enhanced Navigation */}
-            <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-lg py-4 border-b border-white/10' : 'bg-transparent py-8'}`}>
+            {/* PERMANENTLY DARK TOP NAVIGATION */}
+            <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
                     <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
                         ✦ SOVEREIGNSKYZ

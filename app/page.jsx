@@ -48,10 +48,11 @@ const testimonials = [
 
 export default function HomePage() {
   const [activeVideo, setActiveVideo] = useState(null)
-  const [scrolled, setScrolled] = useState(false)
   const [activeFilter, setActiveFilter] = useState('All')
 
-  // Dynamic Navbar
+  // We no longer need the 'scrolled' state since the navbar is always dark, 
+  // but I've left it here in case you want to use it for other scroll animations later.
+  const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
@@ -79,8 +80,8 @@ export default function HomePage() {
         </Suspense>
       </div>
 
-      {/* --- TOP NAVIGATION --- */}
-      <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-lg py-4 border-b border-white/10' : 'bg-transparent py-6'}`}>
+      {/* --- PERMANENTLY DARK TOP NAVIGATION --- */}
+      <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
         <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
           <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
             <span className="text-3xl">✦</span> SOVEREIGNSKYZ

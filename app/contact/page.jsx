@@ -1,14 +1,13 @@
 'use client'
 
-import { Suspense, useState, useEffect } from 'react'
+import { Suspense, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Loader } from '@react-three/drei'
 import Link from 'next/link'
 import Scene from '@/components/canvas/Scene'
-import { Phone, Mail, Clock, MapPin, Award } from 'lucide-react'
+import { Phone, Mail, Clock, Award } from 'lucide-react'
 
 export default function ContactPage() {
-    const [scrolled, setScrolled] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitted, setSubmitted] = useState(false)
     const [formData, setFormData] = useState({
@@ -19,12 +18,6 @@ export default function ContactPage() {
         timeline: '',
         message: ''
     })
-
-    useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 50)
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -56,8 +49,8 @@ export default function ContactPage() {
                 </Suspense>
             </div>
 
-            {/* Navigation */}
-            <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-lg py-4 border-b border-white/10' : 'bg-transparent py-6'}`}>
+            {/* PERMANENTLY DARK TOP NAVIGATION */}
+            <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
                     <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif">SOVEREIGNSKYZ</Link>
                     <nav className="hidden gap-8 text-xs tracking-widest uppercase md:flex text-white/80">

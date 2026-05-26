@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useState, useEffect } from 'react'
+import { Suspense, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Loader } from '@react-three/drei'
 import Link from 'next/link'
@@ -40,14 +40,7 @@ const testimonials = [
 
 export default function RealEstatePage() {
     const [activeVideo, setActiveVideo] = useState(null)
-    const [scrolled, setScrolled] = useState(false)
     const [activeFilter, setActiveFilter] = useState('All')
-
-    useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 50)
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
 
     const getThumbnail = (id) => `https://img.youtube.com/vi/${id}/maxresdefault.jpg`
 
@@ -70,8 +63,8 @@ export default function RealEstatePage() {
                 </Suspense>
             </div>
 
-            {/* Enhanced Navigation */}
-            <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-lg py-4 border-b border-white/10' : 'bg-transparent py-6'}`}>
+            {/* PERMANENTLY DARK TOP NAVIGATION */}
+            <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
                     <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif">SOVEREIGNSKYZ</Link>
                     <nav className="hidden gap-8 text-xs tracking-widest uppercase md:flex text-white/80">

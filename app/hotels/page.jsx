@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useState, useEffect } from 'react'
+import { Suspense, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Loader } from '@react-three/drei'
 import Link from 'next/link'
@@ -40,14 +40,7 @@ const testimonials = [
 
 export default function HotelsPage() {
     const [activeVideo, setActiveVideo] = useState(null)
-    const [scrolled, setScrolled] = useState(false)
     const [activeFilter, setActiveFilter] = useState('All')
-
-    useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 50)
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
 
     const getThumbnail = (id) => `https://img.youtube.com/vi/${id}/maxresdefault.jpg`
 
@@ -70,8 +63,8 @@ export default function HotelsPage() {
                 </Suspense>
             </div>
 
-            {/* Navigation */}
-            <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/95 backdrop-blur-lg py-4 border-b border-white/10' : 'bg-transparent py-6'}`}>
+            {/* PERMANENTLY DARK TOP NAVIGATION */}
+            <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
                     <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif">SOVEREIGNSKYZ</Link>
                     <nav className="hidden gap-8 text-xs tracking-widest uppercase md:flex text-white/80">
@@ -107,7 +100,7 @@ export default function HotelsPage() {
             <div className="relative z-10">
 
                 {/* HERO SECTION */}
-                <section className="relative min-h-screen flex items-center justify-center overflow-hidden text-center">
+                <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-center">
                     <div className="absolute inset-0 z-0 pointer-events-none">
                         <iframe
                             className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105 pointer-events-none"
@@ -117,7 +110,7 @@ export default function HotelsPage() {
                         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
                     </div>
 
-                    <div className="relative z-10 px-6 max-w-5xl mx-auto pt-20">
+                    <div className="relative z-10 flex flex-col items-center px-6 max-w-5xl mx-auto pt-20">
                         <div className="mb-6 inline-flex items-center gap-2 text-xs tracking-[0.3em] text-[#D4AF37] border border-[#D4AF37]/30 px-6 py-2 rounded-full">
                             HOSPITALITY & RESORTS
                         </div>
@@ -134,6 +127,10 @@ export default function HotelsPage() {
                         >
                             <Play className="w-5 h-5 group-hover:scale-110 transition" /> WATCH HOSPITALITY REEL
                         </button>
+
+                        <motion.div animate={{ y: [0, 12, 0] }} transition={{ repeat: Infinity, duration: 3 }} className="mt-24 text-xs tracking-widest text-white/50 flex flex-col items-center">
+                            SCROLL TO EXPLORE <span className="text-xl mt-1">↓</span>
+                        </motion.div>
                     </div>
                 </section>
 
@@ -176,7 +173,7 @@ export default function HotelsPage() {
                 </section>
 
                 {/* CAPABILITIES */}
-                <section className="py-28 bg-neutral-950">
+                <section className="py-28 bg-neutral-950 border-t border-white/10">
                     <div className="container px-6 mx-auto md:px-12">
                         <h2 className="text-center text-4xl font-serif mb-16">Services for Hospitality Leaders</h2>
                         <div className="grid md:grid-cols-3 gap-10">
@@ -275,7 +272,7 @@ export default function HotelsPage() {
                     </div>
                 </section>
 
-                {/* Footer */}
+                {/* Consistent Footer */}
                 <footer className="bg-black pt-20 pb-12 border-t border-[#D4AF37]/20">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col items-center mb-20 text-center">
