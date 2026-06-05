@@ -4,19 +4,13 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Play } from 'lucide-react'
 
+// Updated categories: Removed location and changed 'LiDAR & Mapping' to 'Data Mapping'
 const inspectionVideos = [
-    { id: 'itYSxSAtq2k', title: 'Urban Infrastructure', category: 'Structural Survey', location: 'New York', duration: '2:38' },
-    { id: 'HnutE8DjBI4', title: 'Topographical Mapping', category: 'Photogrammetry', location: 'Iceland', duration: '5:10' },
-    { id: '0k0F53nixQI', title: 'Site Progression', category: 'Construction', location: 'Chicago', duration: '3:15' },
-    { id: 'mdUDkQO7_z4', title: 'Environmental Survey', category: 'LiDAR & Mapping', location: 'Costa Rica', duration: '4:02' },
-    { id: 'OESeRIrOoYA', title: 'Vast Acreage Analysis', category: 'Photogrammetry', location: 'Midwest USA', duration: '5:40' },
-]
-
-const stats = [
-    { number: '100', suffix: '%', label: 'Safety Record Maintained' },
-    { number: '2', suffix: 'cm', label: 'Survey Grade Accuracy' },
-    { number: '500', suffix: '+', label: 'Industrial Assets Inspected' },
-    { number: '48', suffix: 'hr', label: 'Average Data Turnaround' },
+    { id: 'itYSxSAtq2k', title: 'Urban Infrastructure', category: 'Structural Survey', duration: '2:38' },
+    { id: 'HnutE8DjBI4', title: 'Topographical Mapping', category: 'Photogrammetry', duration: '5:10' },
+    { id: '0k0F53nixQI', title: 'Site Progression', category: 'Construction', duration: '3:15' },
+    { id: 'mdUDkQO7_z4', title: 'Environmental Survey', category: 'Data Mapping', duration: '4:02' },
+    { id: 'OESeRIrOoYA', title: 'Vast Acreage Analysis', category: 'Photogrammetry', duration: '5:40' },
 ]
 
 const testimonials = [
@@ -55,7 +49,7 @@ export default function InspectionsPage() {
             {/* Subtle Gradient Background Fallback */}
             <div className="fixed inset-0 z-0 pointer-events-none opacity-20 bg-gradient-to-br from-zinc-900 to-black"></div>
 
-            {/* PERMANENTLY DARK TOP NAVIGATION */}
+            { }
             <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
                     <a href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
@@ -72,7 +66,7 @@ export default function InspectionsPage() {
                 </div>
             </header>
 
-            {/* Video Modal */}
+            { }
             <AnimatePresence>
                 {activeVideo && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -93,7 +87,7 @@ export default function InspectionsPage() {
 
             <div className="relative z-10">
 
-                {/* HERO SECTION */}
+                { }
                 <section className="relative min-h-screen flex items-center justify-center overflow-hidden text-center">
                     <div className="absolute inset-0 z-0 pointer-events-none">
                         <iframe
@@ -128,9 +122,9 @@ export default function InspectionsPage() {
                     </div>
                 </section>
 
+                {/* Note: The Stats Bar has been completely removed from this section */}
 
-
-                {/* THE ARSENAL / APPROACH */}
+                { }
                 <section className="py-28 bg-black">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -140,7 +134,7 @@ export default function InspectionsPage() {
                                 </h2>
                                 <div className="space-y-8 text-lg text-white/70 font-light">
                                     <p>Traditional inspection methods involve heavy machinery, scaffolding, rope access, and significant downtime. We eliminate the risk and drastically reduce the timeline.</p>
-                                    <p>Utilizing enterprise-grade UAS platforms equipped with high-megapixel visual sensors, thermal imaging, and LiDAR, we safely collect millimeter-accurate data of your most critical assets.</p>
+                                    <p>Utilizing enterprise-grade UAS platforms equipped with high-resolution visual sensors and advanced photogrammetry software, we safely collect highly accurate data of your most critical assets.</p>
                                 </div>
                             </motion.div>
 
@@ -161,14 +155,14 @@ export default function InspectionsPage() {
                     </div>
                 </section>
 
-                {/* CAPABILITIES */}
+                { }
                 <section className="py-28 bg-neutral-950 border-t border-white/10">
                     <div className="container px-6 mx-auto md:px-12">
                         <h2 className="text-center text-4xl font-serif mb-16">Data Capture & Analysis Services</h2>
                         <div className="grid md:grid-cols-3 gap-10">
                             {[
-                                { title: "Structural Inspections", desc: "Close-proximity visual and thermal analysis for bridges, facades, wind turbines, and telecom towers. Identify micro-fractures, moisture, and wear." },
-                                { title: "Topographical Mapping", desc: "High-accuracy 3D photogrammetry and LiDAR scanning. Generate precise orthomosaics, elevation models (DEM/DTM), and volumetric calculations." },
+                                { title: "Structural Inspections", desc: "Close-proximity visual analysis for bridges, facades, wind turbines, and telecom towers. Identify micro-fractures, structural anomalies, and wear." },
+                                { title: "Topographical Mapping", desc: "High-accuracy 3D photogrammetry. Generate precise orthomosaics, elevation models (DEM/DTM), and volumetric calculations." },
                                 { title: "Construction Progression", desc: "Automated, perfectly repeatable GPS waypoint flights to track site progress over time, keeping stakeholders informed and holding contractors accountable." }
                             ].map((service, i) => (
                                 <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" transition={{ delay: i * 0.1 }} className="p-10 border border-white/10 hover:border-[#D4AF37] group bg-black/30">
@@ -180,7 +174,7 @@ export default function InspectionsPage() {
                     </div>
                 </section>
 
-                {/* EXPANDED VIDEO SHOWCASE */}
+                { }
                 <section className="py-28 bg-black">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
@@ -189,7 +183,7 @@ export default function InspectionsPage() {
                                 <p className="text-white/60 mt-2">Visualizing infrastructure and environmental data</p>
                             </div>
                             <div className="flex flex-wrap gap-3 mt-6 md:mt-0">
-                                {['All', 'Structural Survey', 'Photogrammetry', 'Construction', 'LiDAR & Mapping'].map(cat => (
+                                {['All', 'Structural Survey', 'Photogrammetry', 'Construction', 'Data Mapping'].map(cat => (
                                     <button
                                         key={cat}
                                         onClick={() => setActiveFilter(cat)}
@@ -222,7 +216,7 @@ export default function InspectionsPage() {
                                     </div>
 
                                     <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
-                                        <p className="text-[10px] text-[#D4AF37] tracking-widest mb-1.5 uppercase">{video.category} • {video.location}</p>
+                                        <p className="text-[10px] text-[#D4AF37] tracking-widest mb-1.5 uppercase">{video.category}</p>
                                         <h4 className="text-2xl font-serif text-white">{video.title}</h4>
                                         <p className="text-xs text-white/50 mt-1">{video.duration}</p>
                                     </div>
@@ -232,7 +226,7 @@ export default function InspectionsPage() {
                     </div>
                 </section>
 
-                {/* TESTIMONIALS */}
+                { }
                 <section className="py-28 bg-zinc-950">
                     <div className="container px-6 mx-auto max-w-4xl">
                         <h2 className="text-center text-4xl font-serif mb-16">Trusted by Engineering & Construction Leaders</h2>
@@ -251,7 +245,7 @@ export default function InspectionsPage() {
                     </div>
                 </section>
 
-                {/* FINAL CTA */}
+                { }
                 <section className="py-32 text-center bg-gradient-to-b from-black to-neutral-950 border-t border-white/10">
                     <div className="container px-6 mx-auto max-w-2xl">
                         <h2 className="text-5xl md:text-6xl font-serif text-[#D4AF37] mb-6">Ready to digitize your assets?</h2>
@@ -262,7 +256,6 @@ export default function InspectionsPage() {
                     </div>
                 </section>
 
-                {/* Consistent Footer */}
                 <footer className="bg-black pt-20 pb-12 border-t border-white/10">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col md:flex-row justify-between items-center gap-8">

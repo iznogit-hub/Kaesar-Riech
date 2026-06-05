@@ -229,7 +229,7 @@ export default function RealEstatePage() {
                                     </div>
 
                                     <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
-                                        <p className="text-[10px] text-[#D4AF37] tracking-widest mb-1.5 uppercase">{video.category} • {video.location}</p>
+                                        <p className="text-[10px] text-[#D4AF37] tracking-widest mb-1.5 uppercase">{video.category}</p>
                                         <h4 className="text-2xl font-serif">{video.title}</h4>
                                     </div>
                                 </motion.div>

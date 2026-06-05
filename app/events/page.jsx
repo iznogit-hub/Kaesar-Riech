@@ -128,6 +128,8 @@ export default function EventsPage() {
                     </div>
                 </section>
 
+                {/* STATS BAR */}
+
 
                 {/* SOVEREIGN APPROACH */}
                 <section className="py-28 bg-black">
@@ -216,7 +218,7 @@ export default function EventsPage() {
                                     </div>
 
                                     <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
-                                        <p className="text-[10px] text-[#D4AF37] tracking-widest mb-1.5 uppercase">{video.category} • {video.location}</p>
+                                        <p className="text-[10px] text-[#D4AF37] tracking-widest mb-1.5 uppercase">{video.category}</p>
                                         <h4 className="text-2xl font-serif text-white">{video.title}</h4>
                                         <p className="text-xs text-white/50 mt-1">{video.duration}</p>
                                     </div>

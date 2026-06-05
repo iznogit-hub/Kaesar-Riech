@@ -221,7 +221,7 @@ export default function WorkPage() {
                                 <div className="lg:col-span-5 flex flex-col justify-center">
                                     <div className="mb-6">
                                         <span className="text-[#D4AF37] text-xs tracking-[0.2em] uppercase font-mono">
-                                            {item.category} • {item.location}
+                                            {item.category}
                                         </span>
                                         <h2 className="text-4xl md:text-5xl font-serif mt-3 leading-none">{item.title}</h2>
                                     </div>
