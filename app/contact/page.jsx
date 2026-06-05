@@ -1,10 +1,7 @@
 'use client'
 
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Loader } from '@react-three/drei'
-import Link from 'next/link'
-import Scene from '@/components/canvas/Scene'
 import { Phone, Mail, Clock, Award } from 'lucide-react'
 
 export default function ContactPage() {
@@ -42,31 +39,29 @@ export default function ContactPage() {
     return (
         <main className="relative w-full bg-black text-white selection:bg-[#D4AF37] selection:text-black overflow-hidden">
 
-            {/* Subtle 3D Background */}
-            <div className="fixed inset-0 z-0 pointer-events-none opacity-20">
-                <Suspense fallback={null}>
-                    <Scene className="w-full h-full" />
-                </Suspense>
-            </div>
+            {/* Subtle Gradient Background */}
+            <div className="fixed inset-0 z-0 pointer-events-none opacity-20 bg-gradient-to-br from-zinc-900 to-black"></div>
 
             {/* PERMANENTLY DARK TOP NAVIGATION */}
             <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
-                    <Link href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif">SOVEREIGNSKYZ</Link>
+                    <a href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
+                        <span className="text-3xl">✦</span> SOVEREIGNSKYZ
+                    </a>
                     <nav className="hidden gap-8 text-xs tracking-widest uppercase md:flex text-white/80">
-                        <Link href="/" className="hover:text-[#D4AF37]">Home</Link>
-                        <Link href="/work" className="hover:text-[#D4AF37]">Work</Link>
-                        <Link href="/hotels" className="hover:text-[#D4AF37]">Hotels</Link>
-                        <Link href="/realestate" className="hover:text-[#D4AF37]">Real Estate</Link>
-                        <Link href="/film" className="hover:text-[#D4AF37]">Film</Link>
-                        <Link href="/contact" className="text-[#D4AF37]">Contact</Link>
+                        <a href="/" className="hover:text-[#D4AF37] transition-colors">Home</a>
+                        <a href="/work" className="hover:text-[#D4AF37] transition-colors">Portfolio</a>
+                        <a href="/realestate" className="hover:text-[#D4AF37] transition-colors">Real Estate</a>
+                        <a href="/inspections" className="hover:text-[#D4AF37] transition-colors">Inspections</a>
+                        <a href="/events" className="hover:text-[#D4AF37] transition-colors">Events</a>
+                        <a href="/contact" className="text-[#D4AF37] transition-colors">Contact</a>
                     </nav>
                 </div>
             </header>
 
             <div className="relative z-10 pt-32">
 
-                {/* HERO SECTION */}
+                { }
                 <section className="min-h-[85vh] flex items-center justify-center text-center relative">
                     <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_0.6px,transparent_1px)] bg-[length:5px_5px] opacity-10" />
 
@@ -93,12 +88,12 @@ export default function ContactPage() {
                     </motion.div>
                 </section>
 
-                {/* QUICK CONTACT BAR */}
+                { }
                 <section className="py-8 border-b border-white/10 bg-black/70 backdrop-blur">
                     <div className="container px-6 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                        <a href="tel:8082008307" className="group flex flex-col items-center hover:text-[#D4AF37] transition">
+                        <a href="tel:3075224412" className="group flex flex-col items-center hover:text-[#D4AF37] transition">
                             <Phone className="w-6 h-6 mb-3" />
-                            <p className="text-sm font-medium">+1 808-200-8307</p>
+                            <p className="text-sm font-medium">(307) 522-4412</p>
                             <p className="text-xs text-white/50">Immediate Response</p>
                         </a>
                         <a href="mailto:contact@sovereignskyz.com" className="group flex flex-col items-center hover:text-[#D4AF37] transition">
@@ -114,7 +109,7 @@ export default function ContactPage() {
                     </div>
                 </section>
 
-                {/* MAIN INQUIRY FORM */}
+                { }
                 <section className="py-28 bg-neutral-950">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="max-w-3xl mx-auto">
@@ -141,7 +136,7 @@ export default function ContactPage() {
                                                     value={formData.name}
                                                     onChange={handleChange}
                                                     required
-                                                    className="w-full bg-transparent border-b border-white/20 pb-3 focus:border-[#D4AF37] outline-none text-lg placeholder:text-white/30"
+                                                    className="w-full bg-transparent border-b border-white/20 pb-3 focus:border-[#D4AF37] outline-none text-lg placeholder:text-white/30 transition-colors"
                                                     placeholder="Your Name"
                                                 />
                                             </div>
@@ -153,7 +148,7 @@ export default function ContactPage() {
                                                     value={formData.email}
                                                     onChange={handleChange}
                                                     required
-                                                    className="w-full bg-transparent border-b border-white/20 pb-3 focus:border-[#D4AF37] outline-none text-lg placeholder:text-white/30"
+                                                    className="w-full bg-transparent border-b border-white/20 pb-3 focus:border-[#D4AF37] outline-none text-lg placeholder:text-white/30 transition-colors"
                                                     placeholder="you@company.com"
                                                 />
                                             </div>
@@ -167,7 +162,7 @@ export default function ContactPage() {
                                                     name="company"
                                                     value={formData.company}
                                                     onChange={handleChange}
-                                                    className="w-full bg-transparent border-b border-white/20 pb-3 focus:border-[#D4AF37] outline-none text-lg placeholder:text-white/30"
+                                                    className="w-full bg-transparent border-b border-white/20 pb-3 focus:border-[#D4AF37] outline-none text-lg placeholder:text-white/30 transition-colors"
                                                     placeholder="Brand or Studio"
                                                 />
                                             </div>
@@ -177,13 +172,12 @@ export default function ContactPage() {
                                                     name="projectType"
                                                     value={formData.projectType}
                                                     onChange={handleChange}
-                                                    className="w-full bg-transparent border-b border-white/20 pb-3 focus:border-[#D4AF37] outline-none text-lg text-white/70"
+                                                    className="w-full bg-transparent border-b border-white/20 pb-3 focus:border-[#D4AF37] outline-none text-lg text-white/70 transition-colors cursor-pointer"
                                                 >
                                                     <option value="" className="bg-neutral-900 text-white">Select Type</option>
-                                                    <option value="Hospitality" className="bg-neutral-900 text-white">Hospitality & Resorts</option>
-                                                    <option value="RealEstate" className="bg-neutral-900 text-white">Luxury Real Estate</option>
-                                                    <option value="Film" className="bg-neutral-900 text-white">Film / TV / Commercial</option>
-                                                    <option value="Automotive" className="bg-neutral-900 text-white">Automotive / Action</option>
+                                                    <option value="RealEstate" className="bg-neutral-900 text-white">Real Estate</option>
+                                                    <option value="Inspections" className="bg-neutral-900 text-white">Inspections</option>
+                                                    <option value="Events" className="bg-neutral-900 text-white">Events</option>
                                                     <option value="Other" className="bg-neutral-900 text-white">Other</option>
                                                 </select>
                                             </div>
@@ -196,8 +190,8 @@ export default function ContactPage() {
                                                 name="timeline"
                                                 value={formData.timeline}
                                                 onChange={handleChange}
-                                                className="w-full bg-transparent border-b border-white/20 pb-3 focus:border-[#D4AF37] outline-none text-lg placeholder:text-white/30"
-                                                placeholder="e.g. Q3 2026 or ASAP"
+                                                className="w-full bg-transparent border-b border-white/20 pb-3 focus:border-[#D4AF37] outline-none text-lg placeholder:text-white/30 transition-colors"
+                                                placeholder="e.g. Next Month or ASAP"
                                             />
                                         </div>
 
@@ -209,7 +203,7 @@ export default function ContactPage() {
                                                 onChange={handleChange}
                                                 rows={7}
                                                 required
-                                                className="w-full bg-transparent border border-white/10 p-6 focus:border-[#D4AF37] outline-none text-lg resize-none placeholder:text-white/30"
+                                                className="w-full bg-transparent border border-white/10 p-6 focus:border-[#D4AF37] outline-none text-lg resize-none placeholder:text-white/30 transition-colors"
                                                 placeholder="Describe the location, vision, deliverables, and any specific challenges..."
                                             />
                                         </div>
@@ -236,7 +230,7 @@ export default function ContactPage() {
                                         </p>
                                         <button
                                             onClick={() => setSubmitted(false)}
-                                            className="mt-12 text-sm tracking-widest underline hover:text-[#D4AF37]"
+                                            className="mt-12 text-sm tracking-widest uppercase underline hover:text-[#D4AF37] transition-colors"
                                         >
                                             Submit Another Inquiry
                                         </button>
@@ -247,18 +241,17 @@ export default function ContactPage() {
                     </div>
                 </section>
 
-                {/* FINAL CTA / TRUST BAR */}
+                { }
                 <section className="py-32 bg-black border-t border-white/10 text-center">
                     <div className="container px-6 mx-auto max-w-2xl">
-                        <p className="text-white/60 mb-6">WORLDWIDE • FULLY INSURED • FAA / EASA CERTIFIED</p>
+                        <p className="text-white/60 mb-6 text-sm tracking-widest">WORLDWIDE • FULLY INSURED • FAA / EASA CERTIFIED</p>
                         <h2 className="text-4xl font-serif mb-8">The sky is ready when you are.</h2>
-                        <a href="tel:8082008307" className="inline-flex items-center gap-4 text-xl hover:text-[#D4AF37] transition">
-                            <Phone className="w-6 h-6" /> +1 808-200-8307
+                        <a href="tel:3075224412" className="inline-flex items-center gap-4 text-xl hover:text-[#D4AF37] transition">
+                            <Phone className="w-6 h-6" /> (307) 522-4412
                         </a>
                     </div>
                 </section>
 
-                {/* FOOTER */}
                 <footer className="bg-black pt-20 pb-12 border-t border-[#D4AF37]/20">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col items-center text-center mb-20">
@@ -266,14 +259,12 @@ export default function ContactPage() {
                             <p className="text-xs tracking-widest text-white/50 mt-2">WHERE THE SKY BOWS</p>
                         </div>
 
-                        <div className="text-center text-xs text-white/40">
+                        <div className="text-center text-[10px] text-white/40 tracking-widest uppercase">
                             © {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED
                         </div>
                     </div>
                 </footer>
             </div>
-
-            <Loader />
         </main>
     )
 }
