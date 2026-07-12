@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Play } from 'lucide-react'
 
-// Updated categories: Removed location and changed 'LiDAR & Mapping' to 'Data Mapping'
 const inspectionVideos = [
     { id: 'itYSxSAtq2k', title: 'Urban Infrastructure', category: 'Structural Survey', duration: '2:38' },
     { id: 'HnutE8DjBI4', title: 'Topographical Mapping', category: 'Photogrammetry', duration: '5:10' },
@@ -46,10 +45,10 @@ export default function InspectionsPage() {
     return (
         <main className="relative w-full bg-black text-white selection:bg-[#D4AF37] selection:text-black overflow-hidden">
 
-            {/* Subtle Gradient Background Fallback */}
+            {/* Subtle Gradient Background */}
             <div className="fixed inset-0 z-0 pointer-events-none opacity-20 bg-gradient-to-br from-zinc-900 to-black"></div>
 
-            { }
+            {/* Navigation Header */}
             <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
                     <a href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
@@ -67,6 +66,7 @@ export default function InspectionsPage() {
             </header>
 
             { }
+            {/* Video Modal with pointer-events-none to disable controls */}
             <AnimatePresence>
                 {activeVideo && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -78,7 +78,7 @@ export default function InspectionsPage() {
                                 height="100%"
                                 src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&playsinline=1`}
                                 allowFullScreen
-                                className="absolute inset-0"
+                                className="absolute inset-0 pointer-events-none"
                             />
                         </div>
                     </motion.div>
@@ -88,6 +88,7 @@ export default function InspectionsPage() {
             <div className="relative z-10">
 
                 { }
+                {/* Hero Section */}
                 <section className="relative min-h-screen flex items-center justify-center overflow-hidden text-center">
                     <div className="absolute inset-0 z-0 pointer-events-none">
                         <iframe
@@ -122,9 +123,8 @@ export default function InspectionsPage() {
                     </div>
                 </section>
 
-                {/* Note: The Stats Bar has been completely removed from this section */}
-
                 { }
+                {/* Info Section */}
                 <section className="py-28 bg-black">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -156,25 +156,38 @@ export default function InspectionsPage() {
                 </section>
 
                 { }
+                {/* Services Section (Updated to 2 boxes) */}
                 <section className="py-28 bg-neutral-950 border-t border-white/10">
                     <div className="container px-6 mx-auto md:px-12">
                         <h2 className="text-center text-4xl font-serif mb-16">Data Capture & Analysis Services</h2>
-                        <div className="grid md:grid-cols-3 gap-10">
-                            {[
-                                { title: "Structural Inspections", desc: "Close-proximity visual analysis for bridges, facades, wind turbines, and telecom towers. Identify micro-fractures, structural anomalies, and wear." },
-                                { title: "Topographical Mapping", desc: "High-accuracy 3D photogrammetry. Generate precise orthomosaics, elevation models (DEM/DTM), and volumetric calculations." },
-                                { title: "Construction Progression", desc: "Automated, perfectly repeatable GPS waypoint flights to track site progress over time, keeping stakeholders informed and holding contractors accountable." }
-                            ].map((service, i) => (
-                                <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" transition={{ delay: i * 0.1 }} className="p-10 border border-white/10 hover:border-[#D4AF37] group bg-black/30">
-                                    <h3 className="text-2xl font-serif mb-5">{service.title}</h3>
-                                    <p className="text-white/70 leading-relaxed">{service.desc}</p>
-                                </motion.div>
-                            ))}
+                        <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+
+                            {/* Box 1 */}
+                            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" transition={{ delay: 0 }} className="p-10 border border-white/10 hover:border-[#D4AF37] group bg-black/30">
+                                <h3 className="text-2xl font-serif mb-5">Structural Inspections</h3>
+                                <p className="text-white/70 leading-relaxed">Close-proximity visual analysis for bridges, facades, wind turbines, and telecom towers. Identify micro-fractures, structural anomalies, and wear.</p>
+                            </motion.div>
+
+                            {/* Box 2 (New Aerial Site Mapping) */}
+                            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" transition={{ delay: 0.1 }} className="p-10 border border-white/10 hover:border-[#D4AF37] group bg-black/30">
+                                <h3 className="text-2xl font-serif mb-6">Aerial Site Mapping</h3>
+                                <div className="space-y-4">
+                                    <div>
+                                        <div className="text-[10px] text-[#D4AF37] tracking-widest uppercase mb-1">Waypoint Autonomous</div>
+                                        <div className="text-[10px] text-[#D4AF37] tracking-widest uppercase mb-3">The Process</div>
+                                    </div>
+                                    <p className="text-white/70 leading-relaxed">
+                                        Utilizing GPS-guided waypoint missions to fly precise, repeatable grid patterns over a site. The SkyRover X1 captures systematic high-resolution overhead photography, delivering clean aerial site documentation, property overviews, and visual mapping data ready for planning, review, or client presentation.
+                                    </p>
+                                </div>
+                            </motion.div>
+
                         </div>
                     </div>
                 </section>
 
                 { }
+                {/* Archive Section */}
                 <section className="py-28 bg-black">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
@@ -227,6 +240,7 @@ export default function InspectionsPage() {
                 </section>
 
                 { }
+                {/* Testimonials */}
                 <section className="py-28 bg-zinc-950">
                     <div className="container px-6 mx-auto max-w-4xl">
                         <h2 className="text-center text-4xl font-serif mb-16">Trusted by Engineering & Construction Leaders</h2>
@@ -245,7 +259,7 @@ export default function InspectionsPage() {
                     </div>
                 </section>
 
-                { }
+                {/* Call to Action */}
                 <section className="py-32 text-center bg-gradient-to-b from-black to-neutral-950 border-t border-white/10">
                     <div className="container px-6 mx-auto max-w-2xl">
                         <h2 className="text-5xl md:text-6xl font-serif text-[#D4AF37] mb-6">Ready to digitize your assets?</h2>
@@ -256,6 +270,7 @@ export default function InspectionsPage() {
                     </div>
                 </section>
 
+                {/* Footer */}
                 <footer className="bg-black pt-20 pb-12 border-t border-white/10">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
@@ -264,7 +279,7 @@ export default function InspectionsPage() {
                                 <p className="text-xs text-white/40 mt-1 uppercase tracking-widest">Where The Sky Bows</p>
                             </div>
 
-                            <div className="flex gap-8 text-sm text-white/60 tracking-widest uppercase text-xs">
+                            <div className="flex gap-8 text-sm textQ-white/60 tracking-widest uppercase text-xs">
                                 <a href="/contact" className="hover:text-[#D4AF37] transition-colors">Get in Touch</a>
                                 <a href="https://instagram.com/sovereignskies" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">Instagram</a>
                                 <a href="https://youtube.com/@SovereignSkyz" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">YouTube</a>

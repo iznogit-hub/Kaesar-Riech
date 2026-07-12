@@ -72,19 +72,20 @@ export default function EventsPage() {
                 </div>
             </header>
 
-            {/* Video Modal */}
+            { }
             <AnimatePresence>
                 {activeVideo && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                         className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 md:p-8">
                         <button onClick={() => setActiveVideo(null)} className="absolute top-8 right-8 text-white/60 hover:text-white uppercase tracking-widest text-sm z-50 flex items-center gap-2">✕ CLOSE</button>
                         <div className="w-full max-w-6xl aspect-video bg-black border border-white/10 shadow-2xl relative">
+                            {/* Added pointer-events-none to fully prevent clicking to pause/skip */}
                             <iframe
                                 width="100%"
                                 height="100%"
                                 src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&playsinline=1`}
                                 allowFullScreen
-                                className="absolute inset-0"
+                                className="absolute inset-0 pointer-events-none"
                             />
                         </div>
                     </motion.div>
@@ -93,7 +94,7 @@ export default function EventsPage() {
 
             <div className="relative z-10">
 
-                {/* HERO SECTION */}
+                { }
                 <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-center">
                     <div className="absolute inset-0 z-0 pointer-events-none">
                         <iframe
@@ -131,7 +132,7 @@ export default function EventsPage() {
                 {/* STATS BAR */}
 
 
-                {/* SOVEREIGN APPROACH */}
+                { }
                 <section className="py-28 bg-black">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -140,8 +141,8 @@ export default function EventsPage() {
                                     Raw adrenaline meets cinematic precision.
                                 </h2>
                                 <div className="space-y-8 text-lg text-white/70 font-light">
-                                    <p>We don’t just record events. We capture the scale, the energy, and the unforgettable moments that make them legendary.</p>
-                                    <p>Whether it's tracking high-velocity vehicles with custom FPV drones or flying heavy-lift cinema rigs safely over massive crowds, our dual-operator teams ensure flawless execution.</p>
+                                    <p>We don't just record events. We capture the scale, the energy, and the unforgettable moments that make them legendary.</p>
+                                    <p>Whether it's tracking athletes, vehicles, or crowd energy from above, we are agile enough to move fast, quiet enough to stay unobtrusive, and precise enough to nail every shot in a live environment.</p>
                                 </div>
                             </motion.div>
 
@@ -157,7 +158,7 @@ export default function EventsPage() {
                     </div>
                 </section>
 
-                {/* CAPABILITIES */}
+                { }
                 <section className="py-28 bg-zinc-950 border-t border-white/10">
                     <div className="container px-6 mx-auto md:px-12">
                         <h2 className="text-center text-4xl font-serif mb-16">Capabilities for Event Producers</h2>
@@ -176,7 +177,7 @@ export default function EventsPage() {
                     </div>
                 </section>
 
-                {/* VIDEO SHOWCASE */}
+                { }
                 <section className="py-28 bg-black">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
@@ -228,7 +229,7 @@ export default function EventsPage() {
                     </div>
                 </section>
 
-                {/* TESTIMONIALS */}
+                { }
                 <section className="py-28 bg-zinc-950">
                     <div className="container px-6 mx-auto max-w-4xl">
                         <h2 className="text-center text-4xl font-serif mb-16">Trusted by the World’s Finest Producers</h2>

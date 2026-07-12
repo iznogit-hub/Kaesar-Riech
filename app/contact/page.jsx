@@ -61,7 +61,7 @@ export default function ContactPage() {
 
             <div className="relative z-10 pt-32">
 
-                { }
+                {/* HERO SECTION */}
                 <section className="min-h-[85vh] flex items-center justify-center text-center relative">
                     <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_0.6px,transparent_1px)] bg-[length:5px_5px] opacity-10" />
 
@@ -88,7 +88,7 @@ export default function ContactPage() {
                     </motion.div>
                 </section>
 
-                { }
+                {/* CONTACT INFO WIDGETS */}
                 <section className="py-8 border-b border-white/10 bg-black/70 backdrop-blur">
                     <div className="container px-6 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         <a href="tel:3075224412" className="group flex flex-col items-center hover:text-[#D4AF37] transition">
@@ -109,7 +109,7 @@ export default function ContactPage() {
                     </div>
                 </section>
 
-                { }
+                {/* CONTACT FORM */}
                 <section className="py-28 bg-neutral-950">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="max-w-3xl mx-auto">
@@ -241,7 +241,7 @@ export default function ContactPage() {
                     </div>
                 </section>
 
-                { }
+                {/* BOTTOM CTA */}
                 <section className="py-32 bg-black border-t border-white/10 text-center">
                     <div className="container px-6 mx-auto max-w-2xl">
                         <p className="text-white/60 mb-6 text-sm tracking-widest">WORLDWIDE • FULLY INSURED • FAA / EASA CERTIFIED</p>

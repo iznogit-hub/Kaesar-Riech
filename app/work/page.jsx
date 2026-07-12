@@ -112,7 +112,7 @@ export default function WorkPage() {
                 </div>
             </header>
 
-            { }
+            {/* VIDEO MODAL */}
             <AnimatePresence>
                 {activeVideo && (
                     <motion.div
@@ -128,6 +128,7 @@ export default function WorkPage() {
                             ✕ CLOSE
                         </button>
                         <div className="w-full max-w-6xl aspect-video bg-black border border-white/10 shadow-2xl relative overflow-hidden">
+                            {/* Added pointer-events-none to prevent pausing/skipping */}
                             <iframe
                                 width="100%"
                                 height="100%"
@@ -135,14 +136,14 @@ export default function WorkPage() {
                                 title="YouTube video player"
                                 frameBorder="0"
                                 allowFullScreen
-                                className="absolute inset-0"
+                                className="absolute inset-0 pointer-events-none"
                             />
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
 
-            { }
+            {/* HEADER CONTENT */}
             <div className="relative z-10 pt-32 pb-24">
                 <div className="container px-6 mx-auto md:px-12 lg:px-24 mb-20">
                     <motion.div
@@ -163,7 +164,7 @@ export default function WorkPage() {
                     </motion.div>
                 </div>
 
-                { }
+                {/* FILTERS */}
                 <div className="container px-6 mx-auto md:px-12 mb-16">
                     <div className="flex flex-wrap justify-center gap-3 md:gap-4 border-b border-white/10 pb-8">
                         {categories.map((cat) => (
@@ -180,7 +181,7 @@ export default function WorkPage() {
                     </div>
                 </div>
 
-                { }
+                {/* WORK GRID */}
                 <div className="container px-6 mx-auto md:px-12 lg:px-24">
                     <div className="space-y-28">
                         {filteredWork.map((item) => (
@@ -251,7 +252,7 @@ export default function WorkPage() {
                     </div>
                 </div>
 
-                { }
+                {/* BOTTOM CTA */}
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -273,7 +274,7 @@ export default function WorkPage() {
                 </motion.div>
             </div>
 
-            { }
+            {/* FOOTER */}
             <footer className="bg-black border-t border-white/10 pt-20 pb-12">
                 <div className="container px-6 mx-auto md:px-12 lg:px-24">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-8">

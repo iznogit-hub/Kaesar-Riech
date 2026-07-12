@@ -12,13 +12,6 @@ const realEstateVideos = [
     { id: 'zbCBtOs8bVU', title: 'Oceanfront Penthouse', category: 'Modern Luxury', location: 'Miami', duration: '3:45' },
 ]
 
-const stats = [
-    { number: 87, suffix: '', label: 'Properties Sold Faster' },
-    { number: 42, suffix: '', label: 'Countries Represented' },
-    { number: 100, suffix: '%', label: 'Client Satisfaction' },
-    { number: 18, suffix: '', label: 'Avg. Days on Market Reduced' },
-]
-
 const testimonials = [
     {
         quote: "The seamless fly-through sold the penthouse before the listing even went live. Sovereign Skyz is now our mandatory partner for every trophy listing.",
@@ -52,10 +45,10 @@ export default function RealEstatePage() {
     return (
         <main className="relative w-full bg-black text-white selection:bg-[#D4AF37] selection:text-black overflow-hidden">
 
-            {/* --- SUBTLE BACKGROUND FALLBACK --- */}
+            {/* Subtle Background Fallback */}
             <div className="fixed inset-0 z-0 pointer-events-none opacity-20 bg-gradient-to-br from-zinc-900 to-black"></div>
 
-            {/* --- PERMANENTLY DARK TOP NAVIGATION --- */}
+            {/* Navigation */}
             <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
                     <a href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
@@ -82,12 +75,13 @@ export default function RealEstatePage() {
                             ✕ CLOSE
                         </button>
                         <div className="w-full max-w-6xl aspect-video bg-black border border-white/10 shadow-2xl relative">
+                            {/* Adding pointer-events-none to prevent pausing/skipping */}
                             <iframe
                                 width="100%"
                                 height="100%"
                                 src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&playsinline=1`}
                                 allowFullScreen
-                                className="absolute inset-0"
+                                className="absolute inset-0 pointer-events-none"
                             />
                         </div>
                     </motion.div>
@@ -96,7 +90,6 @@ export default function RealEstatePage() {
 
             <div className="relative z-10">
                 { }
-                {/* HERO SECTION - Much Stronger */}
                 <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-center">
                     <div className="absolute inset-0 z-0 pointer-events-none">
                         <iframe
@@ -133,9 +126,6 @@ export default function RealEstatePage() {
                 </section>
 
                 { }
-
-
-                {/* SOVEREIGN ADVANTAGE */}
                 <section className="py-28 bg-black">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -167,7 +157,6 @@ export default function RealEstatePage() {
                 </section>
 
                 { }
-                {/* CAPABILITIES */}
                 <section className="py-28 bg-zinc-950 border-t border-white/10">
                     <div className="container px-6 mx-auto md:px-12">
                         <h2 className="text-center text-4xl font-serif mb-16">Tailored for Luxury Real Estate</h2>
@@ -187,7 +176,6 @@ export default function RealEstatePage() {
                 </section>
 
                 { }
-                {/* EXPANDED VIDEO SHOWCASE WITH FILTER */}
                 <section className="py-28 bg-black">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
@@ -239,7 +227,6 @@ export default function RealEstatePage() {
                 </section>
 
                 { }
-                {/* TESTIMONIALS */}
                 <section className="py-28 bg-zinc-950">
                     <div className="container px-6 mx-auto max-w-4xl">
                         <h2 className="text-center text-4xl font-serif mb-16">What Our Clients Say</h2>
@@ -258,7 +245,7 @@ export default function RealEstatePage() {
                     </div>
                 </section>
 
-                {/* FINAL CTA */}
+                { }
                 <section className="py-32 text-center bg-gradient-to-b from-black to-zinc-950 border-t border-white/10">
                     <div className="container px-6 mx-auto max-w-2xl">
                         <h2 className="text-5xl md:text-6xl font-serif text-[#D4AF37] mb-6">Ready to elevate your next listing?</h2>
@@ -269,7 +256,6 @@ export default function RealEstatePage() {
                     </div>
                 </section>
 
-                {/* Consistent Footer */}
                 <footer className="bg-black pt-20 pb-12 border-t border-white/10">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col md:flex-row justify-between items-center gap-8">

@@ -42,7 +42,7 @@ const testimonials = [
     name: "Aisha Rahman",
     role: "Producer, Velocity Broadcast Network",
     location: "Los Angeles"
-  },
+  }
 ]
 
 export default function HomePage() {
@@ -123,6 +123,7 @@ export default function HomePage() {
         {/* 1. HERO SECTION */}
         <section className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-center">
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            {/* Added pointer-events-none to the iframe to completely block clicking/pausing */}
             <iframe
               className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105 pointer-events-none"
               src="https://www.youtube.com/embed/CbhcB0wlAfo?autoplay=1&mute=1&controls=0&loop=1&playlist=CbhcB0wlAfo&playsinline=1&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
@@ -187,12 +188,12 @@ export default function HomePage() {
                 },
                 {
                   title: "Inspections & Data",
-                  desc: "Mitigate risk and reduce downtime. Precision LiDAR, thermography, and high-resolution structural mapping for complex engineering assets.",
+                  desc: "Reduce risk and eliminate the need for ladders, scaffolding, or costly access equipment. Using a 48MP / 8K camera and 4K/60fps HDR video, we capture sharp, detailed aerial imagery of rooftops, façades, structures, and hard-to-reach surfaces — safely and efficiently. From roof condition assessments and building exterior surveys to documentation of structural features, every inspection is delivered as high-resolution, ready-to-use photography and footage. Clean visuals. Clear records. No downtime.",
                   link: "/inspections"
                 },
                 {
                   title: "Live Events & Action",
-                  desc: "High-speed pursuit and stadium-scale coverage. Integrating safely into live production environments to capture dynamic, visceral action.",
+                  desc: "We don't just record events. We capture the scale, the energy, and the unforgettable moments that make them legendary. Whether it's tracking athletes, vehicles, or crowd energy from above, we are agile enough to move fast, quiet enough to stay unobtrusive, and precise enough to nail every shot in a live environment.",
                   link: "/events"
                 }
               ].map((service, i) => (
@@ -205,7 +206,7 @@ export default function HomePage() {
                   className="group p-10 border border-white/10 hover:border-[#D4AF37] bg-zinc-950/50 backdrop-blur transition-all duration-500 flex flex-col h-full"
                 >
                   <h3 className="text-3xl font-serif mb-6 text-white tracking-tight">{service.title}</h3>
-                  <p className="text-white/70 flex-1 leading-relaxed">{service.desc}</p>
+                  <p className="text-white/70 flex-1 leading-relaxed text-sm">{service.desc}</p>
                   <a href={service.link} className="mt-10 inline-flex items-center text-xs uppercase tracking-widest text-[#D4AF37] group-hover:gap-3 transition-all">
                     Explore this discipline →
                   </a>
@@ -318,7 +319,7 @@ export default function HomePage() {
               {[
                 { step: "01", title: "Discovery", desc: "Understanding operational parameters, project scope, and end goals." },
                 { step: "02", title: "Flight Planning", desc: "Airspace authorization, safety auditing, and complex waypoint programming." },
-                { step: "03", title: "Capture", desc: "Execution utilizing appropriate heavy-lift, FPV, or scanning platforms." },
+                { step: "03", title: "Capture", desc: "Execution using the SkyRover X1 — a sub-249g platform delivering 4K/60fps HDR video, 48MP stills, and 360° obstacle sensing for confident operation in tight or complex environments." },
                 { step: "04", title: "Delivery", desc: "Color grading, editing, or structural data processing for immediate utility." }
               ].map((item) => (
                 <div key={item.step} className="border-l-2 border-[#D4AF37] pl-8 group">
