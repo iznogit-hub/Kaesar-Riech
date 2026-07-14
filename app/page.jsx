@@ -6,7 +6,6 @@ import { Play } from 'lucide-react'
 
 // All 20 custom videos assigned to the new core sectors with updated titles and new YouTube links
 const homeVideos = [
-  { id: 'SkoF0xsy0Ao', title: 'Real Estate Flyover of Harbor Town, Willis TX', category: 'Real Estate' },
   { id: 'pK5_MnscTe8', title: 'The Model Home Aerial Video', category: 'Real Estate' },
   { id: 'hrAdFZ6SDDY', title: 'The Residential Property Aerial', category: 'Real Estate' },
   { id: 'Nu4EVW_8Fx4', title: 'The Ranch Property Aerial Overview', category: 'Real Estate' },
