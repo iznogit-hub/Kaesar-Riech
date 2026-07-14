@@ -6,11 +6,11 @@ import { Play } from 'lucide-react'
 
 // All 20 custom videos assigned to the new core sectors with updated titles and new YouTube links
 const homeVideos = [
-  { id: 'pK5_MnscTe8', title: 'The Model Home Aerial Video', category: 'Real Estate' },
-  { id: 'hrAdFZ6SDDY', title: 'The Residential Property Aerial', category: 'Real Estate' },
-  { id: 'Nu4EVW_8Fx4', title: 'The Ranch Property Aerial Overview', category: 'Real Estate' },
+  { id: 'pK5_MnscTe8', title: 'The Residential Property Aerial', category: 'Real Estate' },
+  { id: 'hrAdFZ6SDDY', title: 'The Model Home Aerial Video', category: 'Real Estate' },
+  { id: 'Nu4EVW_8Fx4', title: 'The Birthday Party Coverage', category: 'Real Estate' },
   { id: 'RU60sNn_FAs', title: 'The Neighborhood House', category: 'Real Estate' },
-  { id: 'MxDihTx34_g', title: 'The Birthday Party Coverage', category: 'Events' },
+  { id: 'MxDihTx34_g', title: 'The Ranch Property Aerial Overview', category: 'Events' },
   { id: 'SkoF0xsy0Ao', title: 'Fire Dance Event Footage', category: 'Events' },
   { id: 'pqbPSlCTkDA', title: 'Rotating Venue Aerial', category: 'Events' },
   { id: 'prmz5KsnfEo', title: 'Venue Flyby Coverage', category: 'Events' }, // Placeholder ID
@@ -21,9 +21,9 @@ const homeVideos = [
   { id: 'on8CRRO4Png', title: 'Wide-Area Zoom-Out Mapping Shot', category: 'Inspections' }, // Placeholder ID
   { id: 'OESeRIrOoYA', title: 'Low Approach Path Shot', category: 'Inspections' }, // Placeholder ID
   { id: 'CbhcB0wlAfo', title: 'Dramatic Lighthouse Reveal', category: 'Portfolio' }, // Placeholder ID
-  { id: 'HnutE8DjBI4', title: 'Harbor Town - Fast Fly Up', category: 'Inspections' }, // Placeholder ID
+  { id: 'HnutE8DjBI4', title: 'Boat Follow', category: 'Inspections' }, // Placeholder ID
   { id: 'mdUDkQO7_z4', title: 'Harbor Town Lighthouse - Down and Out', category: 'Real Estate' }, // Placeholder ID
-  { id: 'XbbsoKny4OA', title: 'Boat Follow', category: 'Real Estate' }, // Placeholder ID
+  { id: 'XbbsoKny4OA', title: 'Harbor Town - Fast Fly Up', category: 'Real Estate' }, // Placeholder ID
   { id: 'qCE-Msr9Ctk', title: 'Fly by Docks', category: 'Portfolio' } // Placeholder ID
 ]
 
