@@ -5,27 +5,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Play } from 'lucide-react'
 
 const realEstateVideos = [
-    { id: 'XbbsoKny4OA', title: 'The Seamless Tour', category: 'Interior FPV', location: 'Beverly Hills Villa', duration: '3:12' },
-    { id: 'V5I4JJg_3-0', title: 'Trophy Estates', category: 'Heavy-Lift Exterior', location: 'Dubai Hills', duration: '4:05' },
-    { id: 'OESeRIrOoYA', title: 'Property Bounds', category: 'Scale & Mapping', location: 'Malibu Ranch', duration: '5:40' },
-    { id: 'KHdyXbE_kik', title: 'Clifftop Majesty', category: 'Architectural Drama', location: 'Big Sur', duration: '2:58' },
-    { id: 'zbCBtOs8bVU', title: 'Oceanfront Penthouse', category: 'Modern Luxury', location: 'Miami', duration: '3:45' },
+    { id: 'SkoF0xsy0Ao', title: 'Harbor Town Willis TX Real Estate', category: 'Exterior Aerial', location: 'Willis, TX', duration: '2:15' },
+    { id: 'pK5_MnscTe8', title: 'Model Home KH', category: 'Interior Walkthrough', location: 'Willis, TX', duration: '1:45' },
+    { id: 'hrAdFZ6SDDY', title: 'Tammy Nell Ct', category: 'Residential Aerial', location: 'Texas', duration: '2:30' },
+    { id: 'Nu4EVW_8Fx4', title: 'Ranch Example', category: 'Property Bounds', location: 'Texas', duration: '3:10' },
+    { id: 'RU60sNn_FAs', title: 'House Fly Through Willis TX', category: 'Neighborhood', location: 'Willis, TX', duration: '2:55' },
+    { id: 'aRFkEvb9yr4', title: 'The Wave Entrance to over Willis TX', category: 'Location Showcase', location: 'Willis, TX', duration: '1:50' },
+    { id: 'mdUDkQO7_z4', title: 'Harbor Town Lighthouse - Down and Out', category: 'Exterior Aerial', location: 'Willis, TX', duration: '1:20' },
+    { id: 'XbbsoKny4OA', title: 'Lake Conroe TX - Fly by Boat', category: 'Dynamic Tracking', location: 'Lake Conroe', duration: '2:10' }
 ]
 
-const testimonials = [
-    {
-        quote: "The seamless fly-through sold the penthouse before the listing even went live. Sovereign Skyz is now our mandatory partner for every trophy listing.",
-        name: "Elena Moreau",
-        role: "Senior Broker, Christie’s International Real Estate",
-        location: "Monaco"
-    },
-    {
-        quote: "Their cinematic approach turned our development into an aspirational lifestyle brand. Pre-sales exceeded targets by 340%.",
-        name: "Rajiv Khanna",
-        role: "Director of Sales, The Brando Residences",
-        location: "French Polynesia"
-    },
-]
+
 
 export default function RealEstatePage() {
     const [activeVideo, setActiveVideo] = useState(null)
@@ -89,14 +79,19 @@ export default function RealEstatePage() {
             </AnimatePresence>
 
             <div className="relative z-10">
-                { }
+
+                {/* HERO SECTION - Much Stronger */}
                 <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-center">
                     <div className="absolute inset-0 z-0 pointer-events-none">
-                        <iframe
-                            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105 pointer-events-none"
-                            src="https://www.youtube.com/embed/XbbsoKny4OA?autoplay=1&mute=1&controls=0&loop=1&playlist=XbbsoKny4OA&playsinline=1&modestbranding=1&iv_load_policy=3&disablekb=1"
-                            frameBorder="0" allow="autoplay; encrypted-media" tabIndex={-1}
-                        />
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover"
+                        >
+                            <source src="/videos/realestate-hero.mp4" type="video/mp4" />
+                        </video>
                         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
                         <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_0.5px,transparent_1px)] bg-[length:4px_4px] opacity-10" />
                     </div>
@@ -184,7 +179,7 @@ export default function RealEstatePage() {
                                 <p className="text-white/60 mt-2">Featured properties captured at the highest level</p>
                             </div>
                             <div className="flex flex-wrap gap-3 mt-6 md:mt-0">
-                                {['All', 'Interior FPV', 'Heavy-Lift Exterior', 'Architectural Drama'].map(cat => (
+                                {['All', 'Exterior Aerial', 'Interior Walkthrough', 'Property Bounds', 'Neighborhood', 'Location Showcase'].map(cat => (
                                     <button
                                         key={cat}
                                         onClick={() => setActiveFilter(cat)}
@@ -199,7 +194,7 @@ export default function RealEstatePage() {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {filteredVideos.map((video, i) => (
                                 <motion.div
-                                    key={video.id}
+                                    key={`${video.id}-${i}`}
                                     initial="hidden"
                                     whileInView="visible"
                                     variants={fadeUp}
@@ -219,25 +214,6 @@ export default function RealEstatePage() {
                                     <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
                                         <p className="text-[10px] text-[#D4AF37] tracking-widest mb-1.5 uppercase">{video.category}</p>
                                         <h4 className="text-2xl font-serif">{video.title}</h4>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                { }
-                <section className="py-28 bg-zinc-950">
-                    <div className="container px-6 mx-auto max-w-4xl">
-                        <h2 className="text-center text-4xl font-serif mb-16">What Our Clients Say</h2>
-                        <div className="grid md:grid-cols-2 gap-10">
-                            {testimonials.map((t, i) => (
-                                <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" className="p-10 border border-white/10 bg-black/40">
-                                    <div className="text-4xl text-[#D4AF37]/20 mb-4 font-serif">“</div>
-                                    <p className="italic text-lg leading-relaxed mb-8">"{t.quote}"</p>
-                                    <div>
-                                        <div className="font-medium">{t.name}</div>
-                                        <div className="text-xs text-white/60 mt-1 leading-relaxed">{t.role}<br />{t.location}</div>
                                     </div>
                                 </motion.div>
                             ))}

@@ -5,27 +5,15 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Play } from 'lucide-react'
 
 const inspectionVideos = [
-    { id: 'itYSxSAtq2k', title: 'Urban Infrastructure', category: 'Structural Survey', duration: '2:38' },
-    { id: 'HnutE8DjBI4', title: 'Topographical Mapping', category: 'Photogrammetry', duration: '5:10' },
-    { id: '0k0F53nixQI', title: 'Site Progression', category: 'Construction', duration: '3:15' },
-    { id: 'mdUDkQO7_z4', title: 'Environmental Survey', category: 'Data Mapping', duration: '4:02' },
-    { id: 'OESeRIrOoYA', title: 'Vast Acreage Analysis', category: 'Photogrammetry', duration: '5:40' },
+    { id: 'NzgjREnzl-Q', title: 'The Wave - Above and Out Willis TX', category: 'Structural Survey', duration: '2:38' },
+    { id: '84NEEaYf_p4', title: 'The Wave Fly Up and Above Willis TX', category: 'Vertical Ascent', duration: '1:45' },
+    { id: 'zbCBtOs8bVU', title: 'The Wave Circle Around Willis TX', category: 'Orbit Survey', duration: '2:15' },
+    { id: 'on8CRRO4Png', title: 'The Wave Lake Conroe TX Zoom Out', category: 'Data Mapping', duration: '1:55' },
+    { id: 'OESeRIrOoYA', title: 'Harbor Town - Sidewalk to Lighthouse Fly By', category: 'Site Approach', duration: '2:10' },
+    { id: 'HnutE8DjBI4', title: 'Harbor Town - Fast Fly Up to Lighthouse', category: 'Structural Survey', duration: '1:30' }
 ]
 
-const testimonials = [
-    {
-        quote: "Sovereign Skyz completely revolutionized our facade inspection process. What used to take two weeks with scaffolding and rope access now takes two days, with zero safety risk to our team.",
-        name: "David Aris",
-        role: "Senior Project Engineer, Apex Construction Group",
-        location: "Chicago, IL"
-    },
-    {
-        quote: "The 3D topographical models they generated for our pre-construction site were incredibly precise. Centimeter-level accuracy that integrated directly into our CAD software without a hitch.",
-        name: "Sarah Jenkins",
-        role: "Lead Surveyor, Meridian Land Development",
-        location: "Denver, CO"
-    },
-]
+
 
 export default function InspectionsPage() {
     const [activeVideo, setActiveVideo] = useState(null)
@@ -87,15 +75,18 @@ export default function InspectionsPage() {
 
             <div className="relative z-10">
 
-                { }
-                {/* Hero Section */}
+                {/* HERO SECTION */}
                 <section className="relative min-h-screen flex items-center justify-center overflow-hidden text-center">
                     <div className="absolute inset-0 z-0 pointer-events-none">
-                        <iframe
-                            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105 pointer-events-none"
-                            src="https://www.youtube.com/embed/itYSxSAtq2k?autoplay=1&mute=1&controls=0&loop=1&playlist=itYSxSAtq2k&playsinline=1&modestbranding=1&iv_load_policy=3&disablekb=1"
-                            frameBorder="0" allow="autoplay; encrypted-media" tabIndex={-1}
-                        />
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover"
+                        >
+                            <source src="/videos/inspections-hero.mp4" type="video/mp4" />
+                        </video>
                         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
                     </div>
 
@@ -196,7 +187,7 @@ export default function InspectionsPage() {
                                 <p className="text-white/60 mt-2">Visualizing infrastructure and environmental data</p>
                             </div>
                             <div className="flex flex-wrap gap-3 mt-6 md:mt-0">
-                                {['All', 'Structural Survey', 'Photogrammetry', 'Construction', 'Data Mapping'].map(cat => (
+                                {['All', 'Structural Survey', 'Vertical Ascent', 'Orbit Survey', 'Data Mapping', 'Site Approach'].map(cat => (
                                     <button
                                         key={cat}
                                         onClick={() => setActiveFilter(cat)}
@@ -211,7 +202,7 @@ export default function InspectionsPage() {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {filteredVideos.map((video, i) => (
                                 <motion.div
-                                    key={video.id}
+                                    key={`${video.id}-${i}`}
                                     initial="hidden"
                                     whileInView="visible"
                                     variants={fadeUp}
@@ -240,24 +231,7 @@ export default function InspectionsPage() {
                 </section>
 
                 { }
-                {/* Testimonials */}
-                <section className="py-28 bg-zinc-950">
-                    <div className="container px-6 mx-auto max-w-4xl">
-                        <h2 className="text-center text-4xl font-serif mb-16">Trusted by Engineering & Construction Leaders</h2>
-                        <div className="grid md:grid-cols-2 gap-10">
-                            {testimonials.map((t, i) => (
-                                <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" className="p-10 border border-white/10 bg-black/40">
-                                    <div className="text-4xl text-[#D4AF37]/20 mb-4 font-serif">“</div>
-                                    <p className="italic text-lg leading-relaxed mb-8 text-white/90">"{t.quote}"</p>
-                                    <div>
-                                        <div className="font-medium text-white">{t.name}</div>
-                                        <div className="text-xs text-white/60 mt-1 leading-relaxed">{t.role}<br />{t.location}</div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
+
 
                 {/* Call to Action */}
                 <section className="py-32 text-center bg-gradient-to-b from-black to-neutral-950 border-t border-white/10">

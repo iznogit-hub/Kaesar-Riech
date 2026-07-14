@@ -4,71 +4,70 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Play, Camera, Zap, Award } from 'lucide-react'
 
-// Updated work data mapped to the new portfolio sectors and new YouTube links
 const allWork = [
     {
-        id: 'NzgjREnzl-Q',
-        title: 'The Sovereign Reel',
+        id: 'CbhcB0wlAfo',
+        title: 'Harbor Town Willis TX - Lighthouse Down and Up',
         category: 'Portfolio',
         discipline: 'Master Edit',
         duration: '2:45',
-        location: 'Global',
-        process: 'A high-energy synthesis of our most demanding operations across all sectors. This reel demonstrates my ability to maintain a consistent, premium visual language whether inspecting industrial infrastructure or tracking high-speed action.'
+        location: 'Willis, TX',
+        process: 'A high-energy synthesis of our most demanding operations across all sectors. This reel demonstrates my ability to maintain a consistent, premium visual language.'
     },
     {
-        id: 'zbCBtOs8bVU',
-        title: 'Coastal Estate Showcase',
+        id: 'SkoF0xsy0Ao',
+        title: 'Harbor Town Willis TX Real Estate',
         category: 'Real Estate',
-        discipline: 'Stabilized Tracking',
-        duration: '3:55',
-        location: 'Miami, FL',
+        discipline: 'Exterior Aerial',
+        duration: '2:15',
+        location: 'Willis, TX',
         process: 'Designed specifically for ultra-luxury property marketing. I focus on extremely smooth, sweeping architectural shots that highlight the scale of the estate, its relationship to the coastline, and premium exterior amenities.'
     },
     {
-        id: 'GEgtXBU5Ez4',
-        title: 'Cliffside Villa Walkthrough',
+        id: 'pK5_MnscTe8',
+        title: 'Model Home KH',
         category: 'Real Estate',
-        discipline: 'Cinewhoop / Interior',
-        duration: '1:55',
-        location: 'Santorini',
+        discipline: 'Interior Walkthrough',
+        duration: '1:45',
+        location: 'Willis, TX',
         process: 'Flying a custom sub-250g ducted drone. This process relies on precision visual line-of-sight coordination to navigate tight interior corridors, seamlessly transitioning from outdoor living spaces to indoor grandeur in a single continuous take.'
     },
     {
-        id: 'HnutE8DjBI4',
-        title: 'Topographical Site Mapping',
+        id: 'OESeRIrOoYA',
+        title: 'Harbor Town - Sidewalk to Lighthouse Fly By',
         category: 'Inspections',
-        discipline: 'Waypoint Autonomous',
-        duration: '5:10',
-        location: 'Iceland',
-        process: 'Utilizing GPS-guided waypoint missions to ensure perfectly repeatable flight paths. This allows for high-accuracy 3D photogrammetry, volumetric measurements, and topographical data collection for pre-construction environmental analysis.'
+        discipline: 'Site Approach',
+        duration: '2:10',
+        location: 'Willis, TX',
+        process: 'Utilizing precise manual and automated flight paths to analyze infrastructure context. This allows for high-accuracy spatial awareness and environmental documentation prior to major works.'
     },
     {
-        id: 'itYSxSAtq2k',
-        title: 'Infrastructure Analysis',
+        id: 'NzgjREnzl-Q',
+        title: 'The Wave - Above and Out Willis TX',
         category: 'Inspections',
-        discipline: 'Proximity Flight',
+        discipline: 'Structural Survey',
         duration: '2:38',
-        location: 'New York',
-        process: 'Close-proximity vertical structural survey. I utilize advanced FPV systems for immersive spatial awareness, allowing for precision proximity (inches from the structure) to capture high-resolution imagery for structural integrity and micro-fracture analysis.'
+        location: 'Willis, TX',
+        process: 'Close-proximity vertical structural survey. I utilize advanced FPV systems and stabilized rigs for immersive spatial awareness, allowing for precision proximity to capture high-resolution imagery for structural analysis.'
     },
     {
-        id: 'Wji6YfZPJcc',
-        title: 'Alpine Mountain Pursuit',
+        id: 'MxDihTx34_g',
+        title: 'Birthday Party Harbor Town',
         category: 'Events',
-        discipline: 'Dynamic Tracking',
-        duration: '3:28',
-        location: 'Swiss Alps',
-        process: 'Executed safely in challenging, high-altitude environments. Requires intense focus for precise spatial navigation to perfectly frame dynamic subject movement against massive, unpredictable landscape backdrops.'
+        discipline: 'Event Coverage',
+        duration: '3:20',
+        location: 'Willis, TX',
+        process: 'Executed safely in challenging, active environments. Requires intense focus for precise spatial navigation to perfectly frame dynamic subject movement against unpredictable backdrops.'
     },
     {
-        id: '3wKX2KCmso4',
-        title: 'Motorsport Pursuit',
+        id: 'pqbPSlCTkDA',
+        title: 'Fire Dance Willis TX Harbor Town',
         category: 'Events',
-        discipline: 'Custom FPV Pursuit',
+        discipline: 'Low-Light FPV',
         duration: '2:45',
-        location: 'Nürburgring',
-        process: 'Shot using a custom-tuned 7-inch FPV rig carrying a metadata-stabilized cinema camera. The process involves high-frequency radio link management to track high-velocity vehicles, capturing the raw adrenaline of the live event.'
-    },
+        location: 'Willis, TX',
+        process: 'Shot using a custom-tuned FPV rig carrying a metadata-stabilized cinema camera. The process involves precise exposure control and dynamic tracking to capture the raw energy and lighting of live nighttime performances.'
+    }
 ]
 
 const categories = ['All', 'Portfolio', 'Real Estate', 'Inspections', 'Events']
@@ -184,9 +183,9 @@ export default function WorkPage() {
                 {/* WORK GRID */}
                 <div className="container px-6 mx-auto md:px-12 lg:px-24">
                     <div className="space-y-28">
-                        {filteredWork.map((item) => (
+                        {filteredWork.map((item, i) => (
                             <motion.div
-                                key={item.id}
+                                key={`${item.id}-${i}`}
                                 initial="hidden"
                                 whileInView="visible"
                                 viewport={{ once: true }}

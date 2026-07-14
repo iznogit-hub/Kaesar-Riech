@@ -5,34 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Play } from 'lucide-react'
 
 const eventVideos = [
-    { id: '3wKX2KCmso4', title: 'Motorsport Pursuit', category: 'Motorsport', location: 'Nürburgring', duration: '2:45' },
-    { id: 'V5I4JJg_3-0', title: 'Mainstage Festival', category: 'Live Music', location: 'Dubai', duration: '3:28' },
-    { id: '8qJ70CiSDCA', title: 'Global Product Launch', category: 'Brand Activations', location: 'London', duration: '4:12' },
-    { id: 'Wji6YfZPJcc', title: 'Alpine Mountain Pursuit', category: 'Motorsport', location: 'Swiss Alps', duration: '3:55' },
-    { id: 'MQFgY062QVc', title: 'City Night Activation', category: 'Brand Activations', location: 'Tokyo', duration: '2:55' },
+    { id: 'MxDihTx34_g', title: 'Birthday Party Harbor Town', category: 'Private Events', location: 'Harbor Town', duration: '3:20' },
+    { id: 'SkoF0xsy0Ao', title: 'Fire Dance Willis TX Harbor Town', category: 'Live Entertainment', location: 'Willis, TX', duration: '2:45' },
+    { id: 'pqbPSlCTkDA', title: 'Rotate Harbor Town Venue Willis TX', category: 'Venue Showcase', location: 'Willis, TX', duration: '1:30' },
+    { id: 'prmz5KsnfEo', title: 'Harbor Town Venue - Fly By Willis TX', category: 'Venue Showcase', location: 'Willis, TX', duration: '2:10' }
 ]
 
-const stats = [
-    { number: '150', suffix: '+', label: 'Events Covered' },
-    { number: '25', suffix: '+', label: 'Global Venues' },
-    { number: '100', suffix: '%', label: 'Safety Record' },
-    { number: '4K', suffix: '', label: 'Live Broadcast Ready' },
-]
 
-const testimonials = [
-    {
-        quote: "Sovereign Skyz brought an entirely new dimension to our festival broadcast. Their heavy-lift dual-op team navigated the mainstage safely while capturing breathtaking scale.",
-        name: "David Chen",
-        role: "Production Director, Global Sound Fest",
-        location: "Miami, FL"
-    },
-    {
-        quote: "Tracking our hypercars at 150mph requires unmatched skill. The custom FPV pursuit footage they delivered became the centerpiece of our entire global launch campaign.",
-        name: "Marcus von Berg",
-        role: "Head of Content, Apex Automotive",
-        location: "Stuttgart, Germany"
-    },
-]
 
 export default function EventsPage() {
     const [activeVideo, setActiveVideo] = useState(null)
@@ -94,14 +73,18 @@ export default function EventsPage() {
 
             <div className="relative z-10">
 
-                { }
+                {/* HERO SECTION */}
                 <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-center">
                     <div className="absolute inset-0 z-0 pointer-events-none">
-                        <iframe
-                            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-105 pointer-events-none"
-                            src="https://www.youtube.com/embed/NzgjREnzl-Q?autoplay=1&mute=1&controls=0&loop=1&playlist=NzgjREnzl-Q&playsinline=1&modestbranding=1&iv_load_policy=3&disablekb=1"
-                            frameBorder="0" allow="autoplay; encrypted-media" tabIndex={-1}
-                        />
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover"
+                        >
+                            <source src="/videos/events-hero.mp4" type="video/mp4" />
+                        </video>
                         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
                     </div>
 
@@ -186,7 +169,7 @@ export default function EventsPage() {
                                 <p className="text-white/60 mt-2">Pinnacle moments captured at the highest level</p>
                             </div>
                             <div className="flex flex-wrap gap-3 mt-6 md:mt-0">
-                                {['All', 'Motorsport', 'Live Music', 'Brand Activations'].map(cat => (
+                                {['All', 'Private Events', 'Live Entertainment', 'Venue Showcase'].map(cat => (
                                     <button
                                         key={cat}
                                         onClick={() => setActiveFilter(cat)}
@@ -201,7 +184,7 @@ export default function EventsPage() {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {filteredVideos.map((video, i) => (
                                 <motion.div
-                                    key={video.id}
+                                    key={`${video.id}-${i}`}
                                     initial="hidden"
                                     whileInView="visible"
                                     variants={fadeUp}
@@ -229,24 +212,7 @@ export default function EventsPage() {
                     </div>
                 </section>
 
-                { }
-                <section className="py-28 bg-zinc-950">
-                    <div className="container px-6 mx-auto max-w-4xl">
-                        <h2 className="text-center text-4xl font-serif mb-16">Trusted by the World’s Finest Producers</h2>
-                        <div className="grid md:grid-cols-2 gap-10">
-                            {testimonials.map((t, i) => (
-                                <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" className="p-10 border border-white/10 bg-black/40">
-                                    <div className="text-4xl text-[#D4AF37]/20 mb-4 font-serif">“</div>
-                                    <p className="italic text-lg leading-relaxed mb-8 text-white/90">"{t.quote}"</p>
-                                    <div>
-                                        <div className="font-medium text-white">{t.name}</div>
-                                        <div className="text-xs text-white/60 mt-1 leading-relaxed">{t.role}<br />{t.location}</div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
+
 
                 {/* FINAL CTA */}
                 <section className="py-32 text-center bg-gradient-to-b from-black to-zinc-950 border-t border-white/10">
