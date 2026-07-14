@@ -98,7 +98,7 @@ export default function ContactPage() {
                         </a>
                         <a href="mailto:contact@sovereignskyz.com" className="group flex flex-col items-center hover:text-[#D4AF37] transition">
                             <Mail className="w-6 h-6 mb-3" />
-                            <p className="text-sm font-medium">contact@sovereignskyz.com</p>
+                            <p className="text-sm font-medium">info@sovereignskyz.com</p>
                             <p className="text-xs text-white/50">Project Inquiries</p>
                         </a>
                         <div className="flex flex-col items-center">
