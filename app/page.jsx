@@ -6,18 +6,19 @@ import { Play } from 'lucide-react'
 
 // Array updated with the exact new titles, categories, and video links from your list
 const homeVideos = [
-  { id: 'pK5_MnscTe8', title: 'Tammy Nell Ct', category: 'Real Estate' },
   { id: 'hrAdFZ6SDDY', title: 'Model Home KH', category: 'Real Estate' },
+  { id: 'pK5_MnscTe8', title: 'Tammy Nell Ct', category: 'Real Estate' },
   { id: 'MxDihTx34_g', title: 'Ranch Views', category: 'Events' },
   { id: 'pqbPSlCTkDA', title: 'Fly through house', category: 'Real Estate' },
-  { id: 'RU60sNn_FAs', title: 'Fire Video', category: 'Real Estate' },
+  { id: 'RU60sNn_FAs', title: 'Harbor Town Willis', category: 'Real Estate' },
   { id: 'PoYq2aS-eJA', title: 'Entrance approach to The Wave', category: 'Real Estate' },
   { id: '4jByPpc9LAs', title: 'Rotating venue aerial', category: 'Events' },
   { id: '5j97ffTxEVs', title: 'The Wave Circle Around', category: 'Inspections' },
   { id: 'NzgjREnzl-Q', title: 'The wave fly up and above', category: 'Inspections' },
   { id: 'on8CRRO4Png', title: 'Harbor town venue', category: 'Inspections' },
   { id: 'HnutE8DjBI4', title: 'Boat follow', category: 'Inspections' },
-  { id: 'xJP9eaKCnPo', title: 'Fire Dance Willis TX', category: 'Events' },
+  { id: 'SkoF0xsy0Ao', title: 'Fire Dance Willis TX', category: 'Events' },
+  { id: 'euK2jBRWSeI', title: 'Lighthouse and docks', category: 'Events' },
   { id: 'Nu4EVW_8Fx4', title: 'Birthday Party Harbor Town', category: 'Events' }
 ]
 
