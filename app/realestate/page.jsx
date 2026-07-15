@@ -5,12 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Play } from 'lucide-react'
 
 const realEstateVideos = [
-    { id: 'pK5_MnscTe8', title: 'Tammy Nell Ct', category: 'Heavy-Lift Exterior', duration: '2:30' },
     { id: 'hrAdFZ6SDDY', title: 'Model Home KH', category: 'Interior FPV', duration: '1:45' },
+    { id: 'pK5_MnscTe8', title: 'Tammy Nell Ct', category: 'Heavy-Lift Exterior', duration: '2:30' },
     { id: 'pqbPSlCTkDA', title: 'Fly through house', category: 'Interior FPV', duration: '3:12' },
-    { id: 'RU60sNn_FAs', title: 'Fire Video', category: 'Architectural Drama', duration: '2:55' },
+    { id: 'RU60sNn_FAs', title: 'Harbor Town Willis', category: 'Architectural Drama', duration: '2:55' },
     { id: 'PoYq2aS-eJA', title: 'Entrance approach to The Wave', category: 'Heavy-Lift Exterior', duration: '1:50' },
-    { id: 'HnutE8DjBI4', title: 'Lake Conroe TX - Fly by Boat', category: 'Heavy-Lift Exterior', duration: '2:10' }
 ]
 
 export default function RealEstatePage() {

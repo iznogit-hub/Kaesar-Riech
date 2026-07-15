@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Play } from 'lucide-react'
 
 const inspectionVideos = [
-    { id: 'NzgjREnzl-Q', title: 'The wave fly up and above', category: 'Structural Survey', duration: '2:38' },
     { id: '5j97ffTxEVs', title: 'The Wave Circle Around', category: 'Photogrammetry', duration: '5:10' },
+    { id: 'NzgjREnzl-Q', title: 'The wave fly up and above', category: 'Structural Survey', duration: '2:38' },
     { id: 'on8CRRO4Png', title: 'Harbor town venue', category: 'Data Mapping', duration: '4:02' },
     { id: 'HnutE8DjBI4', title: 'Boat follow', category: 'Photogrammetry', duration: '5:40' },
 ]

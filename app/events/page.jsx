@@ -5,10 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Play } from 'lucide-react'
 
 const eventVideos = [
-    { id: 'Nu4EVW_8Fx4', title: 'Birthday Party Harbor Town', category: 'Live Music', duration: '3:28' },
-    { id: 'xJP9eaKCnPo', title: 'Fire Dance Willis TX Harbor Town', category: 'Live Music', duration: '4:12' },
+    { id: 'MxDihTx34_g', title: 'Ranch Views', category: 'Brand Activations', duration: '2:45' },
     { id: '4jByPpc9LAs', title: 'Rotating venue aerial', category: 'Brand Activations', duration: '2:55' },
-    { id: 'MxDihTx34_g', title: 'Ranch Views', category: 'Brand Activations', duration: '2:45' }
+    { id: 'SkoF0xsy0Ao', title: 'Fire Dance Willis TX', category: 'Live Music', duration: '4:12' },
+    { id: 'euK2jBRWSeI', title: 'Lighthouse and docks', category: 'Brand Activations', duration: '3:10' },
+    { id: 'Nu4EVW_8Fx4', title: 'Birthday Party Harbor Town', category: 'Live Music', duration: '3:28' }
 ]
 
 export default function EventsPage() {
