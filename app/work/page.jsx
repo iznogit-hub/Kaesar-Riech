@@ -139,8 +139,7 @@ export default function WorkPage() {
     return (
         <main className="relative w-full bg-black text-white selection:bg-[#D4AF37] selection:text-black overflow-hidden">
 
-            <div className="fixed inset-0 z-0 pointer-events-none opacity-20 bg-gradient-to-br from-zinc-900 to-black"></div>
-
+            {/* --- PERMANENTLY DARK TOP NAVIGATION --- */}
             <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
                     <a href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
@@ -158,6 +157,7 @@ export default function WorkPage() {
                 </div>
             </header>
 
+            {/* --- VIDEO MODAL --- */}
             <AnimatePresence>
                 {activeVideo && (
                     <motion.div
@@ -187,140 +187,169 @@ export default function WorkPage() {
                 )}
             </AnimatePresence>
 
-            <div className="relative z-10 pt-32 pb-24">
+            <div className="relative z-10">
 
-                <div className="container px-6 mx-auto md:px-12 lg:px-24 mb-20">
-                    <motion.div
-                        initial="hidden"
-                        animate="visible"
-                        variants={fadeUp}
-                        className="text-center max-w-4xl mx-auto"
-                    >
-                        <div className="inline-flex items-center gap-3 text-xs tracking-[0.3em] text-[#D4AF37] mb-6 border border-[#D4AF37]/30 px-6 py-2 rounded-full">
-                            <Zap className="w-4 h-4" /> PRECISION AERIAL IMAGING
-                        </div>
-                        <h1 className="text-6xl md:text-8xl font-serif tracking-tight text-white mb-6">
-                            Selected Work
-                        </h1>
-                        <p className="text-xl text-white/70 max-w-2xl mx-auto">
-                            From dynamic event coverage to high-resolution structural mapping — exploring the intersection of aviation and technical cinematography.
-                        </p>
-                    </motion.div>
-                </div>
-
-                <div className="container px-6 mx-auto md:px-12 mb-16">
-                    <div className="flex flex-wrap justify-center gap-3 md:gap-4 border-b border-white/10 pb-8">
-                        {categories.map((cat) => (
-                            <button
-                                key={cat}
-                                onClick={() => setFilter(cat)}
-                                className={`px-8 py-3 text-xs tracking-[0.125em] uppercase transition-all rounded-full border ${filter === cat
-                                    ? 'bg-[#D4AF37] text-black border-[#D4AF37]'
-                                    : 'border-white/20 hover:border-white/40 text-white/70 hover:text-white'}`}
-                            >
-                                {cat}
-                            </button>
-                        ))}
+                {/* --- NEW CINEMATIC HERO SECTION --- */}
+                <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-center">
+                    <div className="absolute inset-0 z-0 pointer-events-none">
+                        <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover"
+                        >
+                            <source src="/videos/Portfolio%20Video.mp4" type="video/mp4" />
+                        </video>
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black" />
+                        <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_0.5px,transparent_1px)] bg-[length:4px_4px] opacity-10" />
                     </div>
-                </div>
 
-                <div className="container px-6 mx-auto md:px-12 lg:px-24">
-                    <div className="space-y-28">
-                        {filteredWork.map((item, i) => (
-                            <motion.div
-                                key={`${item.id}-${i}`}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                variants={fadeUp}
-                                className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center group"
-                            >
-                                <div className="lg:col-span-7 relative">
-                                    <div
-                                        onClick={() => setActiveVideo(item)}
-                                        className="relative aspect-video overflow-hidden cursor-pointer border border-white/10 group-hover:border-[#D4AF37] transition-all duration-700"
-                                    >
-                                        <img
-                                            src={getThumbnail(item.id)}
-                                            alt={item.title}
-                                            className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                    <div className="relative z-10 flex flex-col items-center px-6 max-w-5xl mx-auto pt-20">
+                        <motion.div initial="hidden" animate="visible" variants={fadeUp}>
+                            <div className="mb-6 inline-flex items-center gap-2 text-xs tracking-[0.3em] text-[#D4AF37] border border-[#D4AF37]/30 px-6 py-2 rounded-full mx-auto">
+                                <Zap className="w-4 h-4" /> THE MASTER ARCHIVE
+                            </div>
+                            <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif tracking-tighter leading-none mb-8 text-white">
+                                Selected Work
+                            </h1>
+                            <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-12 font-light">
+                                From dynamic event coverage to high-resolution structural mapping — exploring the intersection of aviation and technical cinematography.
+                            </p>
+                        </motion.div>
 
-                                        <div className="absolute inset-0 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-all">
-                                            <div className="w-20 h-20 rounded-full border-2 border-white/80 flex items-center justify-center backdrop-blur-md group-hover:scale-110 transition-transform">
-                                                <Play className="w-9 h-9 text-white ml-1" fill="white" />
+                        <motion.div animate={{ y: [0, 12, 0] }} transition={{ repeat: Infinity, duration: 3 }} className="mt-24 text-xs tracking-widest text-white/50 flex flex-col items-center">
+                            SCROLL TO EXPLORE <span className="text-xl mt-1">↓</span>
+                        </motion.div>
+                    </div>
+                </section>
+
+                {/* --- PORTFOLIO GRID SECTION --- */}
+                <div className="bg-black pt-24 pb-24">
+                    <div className="container px-6 mx-auto md:px-12 mb-20">
+                        <div className="flex flex-wrap justify-center gap-3 md:gap-4 border-b border-white/10 pb-8">
+                            {categories.map((cat) => (
+                                <button
+                                    key={cat}
+                                    onClick={() => setFilter(cat)}
+                                    className={`px-8 py-3 text-xs tracking-[0.125em] uppercase transition-all rounded-full border ${filter === cat
+                                        ? 'bg-[#D4AF37] text-black border-[#D4AF37]'
+                                        : 'border-white/20 hover:border-white/40 text-white/70 hover:text-white'}`}
+                                >
+                                    {cat}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="container px-6 mx-auto md:px-12 lg:px-24">
+                        <div className="space-y-32">
+                            {filteredWork.map((item, i) => (
+                                <motion.div
+                                    key={`${item.id}-${i}`}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    variants={fadeUp}
+                                    className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center group"
+                                >
+                                    <div className="lg:col-span-7 relative">
+                                        <div
+                                            onClick={() => setActiveVideo(item)}
+                                            className="relative aspect-video overflow-hidden cursor-pointer border border-white/10 group-hover:border-[#D4AF37] transition-all duration-700 shadow-2xl"
+                                        >
+                                            <img
+                                                src={getThumbnail(item.id)}
+                                                alt={item.title}
+                                                className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
+
+                                            <div className="absolute inset-0 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-all">
+                                                <div className="w-20 h-20 rounded-full border-2 border-white/80 flex items-center justify-center backdrop-blur-md group-hover:scale-110 transition-transform">
+                                                    <Play className="w-9 h-9 text-white ml-1" fill="white" />
+                                                </div>
+                                            </div>
+
+                                            <div className="absolute top-6 right-6 bg-black/70 text-[10px] px-3 py-1 tracking-widest border border-white/30 backdrop-blur-sm">
+                                                {item.duration}
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div className="absolute top-6 right-6 bg-black/70 text-[10px] px-3 py-1 tracking-widest border border-white/30">
-                                            {item.duration}
+                                    <div className="lg:col-span-5 flex flex-col justify-center">
+                                        <div className="mb-6">
+                                            <span className="text-[#D4AF37] text-xs tracking-[0.2em] uppercase font-mono">
+                                                {item.category}
+                                            </span>
+                                            <h2 className="text-4xl md:text-5xl font-serif mt-3 leading-tight">{item.title}</h2>
                                         </div>
-                                    </div>
-                                </div>
 
-                                <div className="lg:col-span-5 flex flex-col justify-center">
-                                    <div className="mb-6">
-                                        <span className="text-[#D4AF37] text-xs tracking-[0.2em] uppercase font-mono">
-                                            {item.category}
-                                        </span>
-                                        <h2 className="text-4xl md:text-5xl font-serif mt-3 leading-none">{item.title}</h2>
-                                    </div>
+                                        <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white/60 mb-6">
+                                            <Camera className="w-4 h-4 text-[#D4AF37]" />
+                                            <span>{item.discipline}</span>
+                                        </div>
 
-                                    <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white/60 mb-6">
-                                        <Camera className="w-4 h-4" />
-                                        <span>{item.discipline}</span>
-                                    </div>
+                                        <div>
+                                            <h4 className="uppercase text-xs tracking-widest text-[#D4AF37] mb-3">The Process</h4>
+                                            <p className="text-white/70 leading-relaxed text-[15px]">
+                                                {item.process}
+                                            </p>
+                                        </div>
 
-                                    <div>
-                                        <h4 className="uppercase text-xs tracking-widest text-[#D4AF37] mb-3">The Process</h4>
-                                        <p className="text-white/70 leading-relaxed text-[15px]">
-                                            {item.process}
-                                        </p>
+                                        <button
+                                            onClick={() => setActiveVideo(item)}
+                                            className="mt-10 self-start group/btn flex items-center gap-3 text-sm tracking-widest uppercase border-b border-transparent hover:border-[#D4AF37] pb-1 transition-all hover:text-[#D4AF37]"
+                                        >
+                                            WATCH FULL OPERATION
+                                            <span className="group-hover/btn:translate-x-1 transition">→</span>
+                                        </button>
                                     </div>
-
-                                    <button
-                                        onClick={() => setActiveVideo(item)}
-                                        className="mt-10 self-start group/btn flex items-center gap-3 text-sm tracking-widest uppercase border-b border-transparent hover:border-[#D4AF37] pb-1 transition-all hover:text-[#D4AF37]"
-                                    >
-                                        WATCH FULL OPERATION
-                                        <span className="group-hover/btn:translate-x-1 transition">→</span>
-                                    </button>
-                                </div>
-                            </motion.div>
-                        ))}
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
+
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        variants={fadeUp}
+                        className="mt-40 text-center container px-6 mx-auto"
+                    >
+                        <div className="max-w-2xl mx-auto py-20 border-t border-white/10">
+                            <Award className="w-12 h-12 text-[#D4AF37] mx-auto mb-6" />
+                            <h2 className="text-5xl font-serif mb-6">Ready to elevate your vision?</h2>
+                            <p className="text-white/70 mb-10 text-lg font-light">Whether capturing a property, mapping a site, or filming an event — I deliver precision.</p>
+
+                            <a
+                                href="/contact"
+                                className="inline-block px-14 py-5 bg-[#D4AF37] text-black font-medium tracking-widest text-sm hover:bg-transparent hover:text-[#D4AF37] border border-[#D4AF37] transition-all"
+                            >
+                                REQUEST A QUOTE
+                            </a>
+                        </div>
+                    </motion.div>
                 </div>
-
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    variants={fadeUp}
-                    className="mt-32 text-center container px-6 mx-auto"
-                >
-                    <div className="max-w-2xl mx-auto">
-                        <Award className="w-12 h-12 text-[#D4AF37] mx-auto mb-6" />
-                        <h2 className="text-5xl font-serif mb-6">Ready to elevate your vision?</h2>
-                        <p className="text-white/70 mb-10">Whether capturing a property, mapping a site, or filming an event — I deliver precision.</p>
-
-                        <a
-                            href="/contact"
-                            className="inline-block px-14 py-5 bg-[#D4AF37] text-black font-medium tracking-widest text-sm hover:bg-transparent hover:text-[#D4AF37] border border-[#D4AF37] transition-all"
-                        >
-                            REQUEST A QUOTE
-                        </a>
-                    </div>
-                </motion.div>
             </div>
 
-            <footer className="bg-black pt-20 pb-12 border-t border-white/10">
-                <div className="container px-6 mx-auto md:px-12 text-center">
-                    <div className="text-3xl font-serif text-[#D4AF37] mb-2 flex items-center justify-center gap-2">
-                        <span>✦</span> Sovereign Skyz
+            {/* --- FOOTER --- */}
+            <footer className="bg-black border-t border-white/10 pt-20 pb-12">
+                <div className="container px-6 mx-auto md:px-12 lg:px-24">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+                        <div>
+                            <div className="text-2xl font-serif text-[#D4AF37]">Sovereign Skyz</div>
+                            <p className="text-xs text-white/40 mt-1 uppercase tracking-widest">Professional Aerial Portfolio</p>
+                        </div>
+
+                        <div className="flex gap-8 text-sm text-white/60 tracking-widest uppercase text-xs">
+                            <a href="/contact" className="hover:text-[#D4AF37] transition-colors">Get in Touch</a>
+                            <a href="https://instagram.com/sovereignskies" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">Instagram</a>
+                            <a href="https://youtube.com/@SovereignSkyz" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">YouTube</a>
+                        </div>
                     </div>
-                    <p className="text-[10px] tracking-widest uppercase text-white/50 mb-12">ADVANCED AERIAL OPERATIONS</p>
-                    <div className="pt-12 border-t border-white/10 text-[10px] text-white/40 tracking-widest uppercase">
-                        <p>© {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED</p>
+
+                    <div className="text-center text-[10px] text-white/30 mt-16 tracking-widest uppercase">
+                        © {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED
                     </div>
                 </div>
             </footer>
