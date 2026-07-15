@@ -5,17 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Play } from 'lucide-react'
 
 const realEstateVideos = [
-    { id: 'SkoF0xsy0Ao', title: 'Harbor Town Willis TX Real Estate', category: 'Exterior Aerial', location: 'Willis, TX', duration: '2:15' },
-    { id: 'pK5_MnscTe8', title: 'Model Home KH', category: 'Interior Walkthrough', location: 'Willis, TX', duration: '1:45' },
-    { id: 'hrAdFZ6SDDY', title: 'Tammy Nell Ct', category: 'Residential Aerial', location: 'Texas', duration: '2:30' },
-    { id: 'Nu4EVW_8Fx4', title: 'Ranch Example', category: 'Property Bounds', location: 'Texas', duration: '3:10' },
-    { id: 'RU60sNn_FAs', title: 'House Fly Through Willis TX', category: 'Neighborhood', location: 'Willis, TX', duration: '2:55' },
-    { id: 'aRFkEvb9yr4', title: 'The Wave Entrance to over Willis TX', category: 'Location Showcase', location: 'Willis, TX', duration: '1:50' },
-    { id: 'mdUDkQO7_z4', title: 'Harbor Town Lighthouse - Down and Out', category: 'Exterior Aerial', location: 'Willis, TX', duration: '1:20' },
-    { id: 'XbbsoKny4OA', title: 'Lake Conroe TX - Fly by Boat', category: 'Dynamic Tracking', location: 'Lake Conroe', duration: '2:10' }
+    { id: 'pK5_MnscTe8', title: 'Tammy Nell Ct', category: 'Heavy-Lift Exterior', duration: '2:30' },
+    { id: 'hrAdFZ6SDDY', title: 'Model Home KH', category: 'Interior FPV', duration: '1:45' },
+    { id: 'pqbPSlCTkDA', title: 'Fly through house', category: 'Interior FPV', duration: '3:12' },
+    { id: 'RU60sNn_FAs', title: 'Fire Video', category: 'Architectural Drama', duration: '2:55' },
+    { id: 'PoYq2aS-eJA', title: 'Entrance approach to The Wave', category: 'Heavy-Lift Exterior', duration: '1:50' },
+    { id: 'HnutE8DjBI4', title: 'Lake Conroe TX - Fly by Boat', category: 'Heavy-Lift Exterior', duration: '2:10' }
 ]
-
-
 
 export default function RealEstatePage() {
     const [activeVideo, setActiveVideo] = useState(null)
@@ -56,7 +52,6 @@ export default function RealEstatePage() {
                 </div>
             </header>
 
-            { }
             <AnimatePresence>
                 {activeVideo && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -65,7 +60,6 @@ export default function RealEstatePage() {
                             ✕ CLOSE
                         </button>
                         <div className="w-full max-w-6xl aspect-video bg-black border border-white/10 shadow-2xl relative">
-                            {/* Adding pointer-events-none to prevent pausing/skipping */}
                             <iframe
                                 width="100%"
                                 height="100%"
@@ -80,7 +74,6 @@ export default function RealEstatePage() {
 
             <div className="relative z-10">
 
-                {/* HERO SECTION - Much Stronger */}
                 <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-center">
                     <div className="absolute inset-0 z-0 pointer-events-none">
                         <video
@@ -108,7 +101,7 @@ export default function RealEstatePage() {
                         </p>
 
                         <button
-                            onClick={() => setActiveVideo('XbbsoKny4OA')}
+                            onClick={() => setActiveVideo('pK5_MnscTe8')}
                             className="group px-10 py-5 border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all flex items-center gap-4 text-sm tracking-widest uppercase mx-auto"
                         >
                             <Play className="w-5 h-5 group-hover:scale-110 transition" /> EXPERIENCE THE SEAMLESS TOUR
@@ -120,7 +113,6 @@ export default function RealEstatePage() {
                     </div>
                 </section>
 
-                { }
                 <section className="py-28 bg-black">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -151,7 +143,6 @@ export default function RealEstatePage() {
                     </div>
                 </section>
 
-                { }
                 <section className="py-28 bg-zinc-950 border-t border-white/10">
                     <div className="container px-6 mx-auto md:px-12">
                         <h2 className="text-center text-4xl font-serif mb-16">Tailored for Luxury Real Estate</h2>
@@ -170,7 +161,6 @@ export default function RealEstatePage() {
                     </div>
                 </section>
 
-                { }
                 <section className="py-28 bg-black">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
@@ -179,7 +169,7 @@ export default function RealEstatePage() {
                                 <p className="text-white/60 mt-2">Featured properties captured at the highest level</p>
                             </div>
                             <div className="flex flex-wrap gap-3 mt-6 md:mt-0">
-                                {['All', 'Exterior Aerial', 'Interior Walkthrough', 'Property Bounds', 'Neighborhood', 'Location Showcase'].map(cat => (
+                                {['All', 'Interior FPV', 'Heavy-Lift Exterior', 'Architectural Drama'].map(cat => (
                                     <button
                                         key={cat}
                                         onClick={() => setActiveFilter(cat)}
@@ -213,7 +203,7 @@ export default function RealEstatePage() {
 
                                     <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
                                         <p className="text-[10px] text-[#D4AF37] tracking-widest mb-1.5 uppercase">{video.category}</p>
-                                        <h4 className="text-2xl font-serif">{video.title}</h4>
+                                        <h4 className="text-2xl font-serif text-white">{video.title}</h4>
                                     </div>
                                 </motion.div>
                             ))}
@@ -221,7 +211,6 @@ export default function RealEstatePage() {
                     </div>
                 </section>
 
-                { }
                 <section className="py-32 text-center bg-gradient-to-b from-black to-zinc-950 border-t border-white/10">
                     <div className="container px-6 mx-auto max-w-2xl">
                         <h2 className="text-5xl md:text-6xl font-serif text-[#D4AF37] mb-6">Ready to elevate your next listing?</h2>
@@ -233,22 +222,13 @@ export default function RealEstatePage() {
                 </section>
 
                 <footer className="bg-black pt-20 pb-12 border-t border-white/10">
-                    <div className="container px-6 mx-auto md:px-12 lg:px-24">
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                            <div>
-                                <div className="text-2xl font-serif text-[#D4AF37]">Sovereign Skyz</div>
-                                <p className="text-xs text-white/40 mt-1 uppercase tracking-widest">Where The Sky Bows</p>
-                            </div>
-
-                            <div className="flex gap-8 text-sm text-white/60 tracking-widest uppercase text-xs">
-                                <a href="/contact" className="hover:text-[#D4AF37] transition-colors">Get in Touch</a>
-                                <a href="https://instagram.com/sovereignskies" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">Instagram</a>
-                                <a href="https://youtube.com/@SovereignSkyz" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">YouTube</a>
-                            </div>
+                    <div className="container px-6 mx-auto md:px-12 text-center">
+                        <div className="text-3xl font-serif text-[#D4AF37] mb-2 flex items-center justify-center gap-2">
+                            <span>✦</span> Sovereign Skyz
                         </div>
-
-                        <div className="text-center text-[10px] text-white/30 mt-16 tracking-widest">
-                            © {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED
+                        <p className="text-[10px] tracking-widest uppercase text-white/50 mb-12">ADVANCED AERIAL OPERATIONS</p>
+                        <div className="pt-12 border-t border-white/10 text-[10px] text-white/40 tracking-widest uppercase">
+                            <p>© {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED</p>
                         </div>
                     </div>
                 </footer>

@@ -5,13 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Play } from 'lucide-react'
 
 const eventVideos = [
-    { id: 'MxDihTx34_g', title: 'Birthday Party Harbor Town', category: 'Private Events', location: 'Harbor Town', duration: '3:20' },
-    { id: 'SkoF0xsy0Ao', title: 'Fire Dance Willis TX Harbor Town', category: 'Live Entertainment', location: 'Willis, TX', duration: '2:45' },
-    { id: 'pqbPSlCTkDA', title: 'Rotate Harbor Town Venue Willis TX', category: 'Venue Showcase', location: 'Willis, TX', duration: '1:30' },
-    { id: 'prmz5KsnfEo', title: 'Harbor Town Venue - Fly By Willis TX', category: 'Venue Showcase', location: 'Willis, TX', duration: '2:10' }
+    { id: 'Nu4EVW_8Fx4', title: 'Birthday Party Harbor Town', category: 'Live Music', duration: '3:28' },
+    { id: 'xJP9eaKCnPo', title: 'Fire Dance Willis TX Harbor Town', category: 'Live Music', duration: '4:12' },
+    { id: '4jByPpc9LAs', title: 'Rotating venue aerial', category: 'Brand Activations', duration: '2:55' },
+    { id: 'MxDihTx34_g', title: 'Ranch Views', category: 'Brand Activations', duration: '2:45' }
 ]
-
-
 
 export default function EventsPage() {
     const [activeVideo, setActiveVideo] = useState(null)
@@ -31,10 +29,8 @@ export default function EventsPage() {
     return (
         <main className="relative w-full bg-black text-white selection:bg-[#D4AF37] selection:text-black overflow-hidden">
 
-            {/* Subtle Gradient Background */}
             <div className="fixed inset-0 z-0 pointer-events-none opacity-20 bg-gradient-to-br from-zinc-900 to-black"></div>
 
-            {/* PERMANENTLY DARK TOP NAVIGATION */}
             <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
                     <a href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
@@ -51,14 +47,12 @@ export default function EventsPage() {
                 </div>
             </header>
 
-            { }
             <AnimatePresence>
                 {activeVideo && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                         className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 md:p-8">
                         <button onClick={() => setActiveVideo(null)} className="absolute top-8 right-8 text-white/60 hover:text-white uppercase tracking-widest text-sm z-50 flex items-center gap-2">✕ CLOSE</button>
                         <div className="w-full max-w-6xl aspect-video bg-black border border-white/10 shadow-2xl relative">
-                            {/* Added pointer-events-none to fully prevent clicking to pause/skip */}
                             <iframe
                                 width="100%"
                                 height="100%"
@@ -73,7 +67,6 @@ export default function EventsPage() {
 
             <div className="relative z-10">
 
-                {/* HERO SECTION */}
                 <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-center">
                     <div className="absolute inset-0 z-0 pointer-events-none">
                         <video
@@ -100,7 +93,7 @@ export default function EventsPage() {
                         </p>
 
                         <button
-                            onClick={() => setActiveVideo('NzgjREnzl-Q')}
+                            onClick={() => setActiveVideo('xJP9eaKCnPo')}
                             className="group px-10 py-5 border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all flex items-center gap-4 text-sm tracking-widest uppercase mx-auto"
                         >
                             <Play className="w-5 h-5 group-hover:scale-110 transition" /> WATCH EVENTS REEL
@@ -112,10 +105,6 @@ export default function EventsPage() {
                     </div>
                 </section>
 
-                {/* STATS BAR */}
-
-
-                { }
                 <section className="py-28 bg-black">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -130,7 +119,7 @@ export default function EventsPage() {
                             </motion.div>
 
                             <div className="relative aspect-[4/5] border border-white/10 overflow-hidden group">
-                                <img src={getThumbnail('3wKX2KCmso4')} alt="Event Experience" className="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700" />
+                                <img src={getThumbnail('xJP9eaKCnPo')} alt="Event Experience" className="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                                 <div className="absolute bottom-10 left-10 right-10">
                                     <p className="text-[#D4AF37] text-xs tracking-widest mb-2">SIGNATURE TECHNIQUE</p>
@@ -141,7 +130,6 @@ export default function EventsPage() {
                     </div>
                 </section>
 
-                { }
                 <section className="py-28 bg-zinc-950 border-t border-white/10">
                     <div className="container px-6 mx-auto md:px-12">
                         <h2 className="text-center text-4xl font-serif mb-16">Capabilities for Event Producers</h2>
@@ -160,7 +148,6 @@ export default function EventsPage() {
                     </div>
                 </section>
 
-                { }
                 <section className="py-28 bg-black">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
@@ -169,7 +156,7 @@ export default function EventsPage() {
                                 <p className="text-white/60 mt-2">Pinnacle moments captured at the highest level</p>
                             </div>
                             <div className="flex flex-wrap gap-3 mt-6 md:mt-0">
-                                {['All', 'Private Events', 'Live Entertainment', 'Venue Showcase'].map(cat => (
+                                {['All', 'Motorsport', 'Live Music', 'Brand Activations'].map(cat => (
                                     <button
                                         key={cat}
                                         onClick={() => setActiveFilter(cat)}
@@ -204,7 +191,6 @@ export default function EventsPage() {
                                     <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
                                         <p className="text-[10px] text-[#D4AF37] tracking-widest mb-1.5 uppercase">{video.category}</p>
                                         <h4 className="text-2xl font-serif text-white">{video.title}</h4>
-                                        <p className="text-xs text-white/50 mt-1">{video.duration}</p>
                                     </div>
                                 </motion.div>
                             ))}
@@ -212,9 +198,6 @@ export default function EventsPage() {
                     </div>
                 </section>
 
-
-
-                {/* FINAL CTA */}
                 <section className="py-32 text-center bg-gradient-to-b from-black to-zinc-950 border-t border-white/10">
                     <div className="container px-6 mx-auto max-w-2xl">
                         <h2 className="text-5xl md:text-6xl font-serif text-[#D4AF37] mb-6">Immortalize your next major event.</h2>
@@ -225,24 +208,14 @@ export default function EventsPage() {
                     </div>
                 </section>
 
-                {/* Consistent Footer */}
                 <footer className="bg-black pt-20 pb-12 border-t border-white/10">
-                    <div className="container px-6 mx-auto md:px-12 lg:px-24">
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                            <div>
-                                <div className="text-2xl font-serif text-[#D4AF37]">Sovereign Skyz</div>
-                                <p className="text-xs text-white/40 mt-1 uppercase tracking-widest">Where The Sky Bows</p>
-                            </div>
-
-                            <div className="flex gap-8 text-sm text-white/60 tracking-widest uppercase text-xs">
-                                <a href="/contact" className="hover:text-[#D4AF37] transition-colors">Get in Touch</a>
-                                <a href="https://instagram.com/sovereignskies" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">Instagram</a>
-                                <a href="https://youtube.com/@SovereignSkyz" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">YouTube</a>
-                            </div>
+                    <div className="container px-6 mx-auto md:px-12 text-center">
+                        <div className="text-3xl font-serif text-[#D4AF37] mb-2 flex items-center justify-center gap-2">
+                            <span>✦</span> Sovereign Skyz
                         </div>
-
-                        <div className="text-center text-[10px] text-white/30 mt-16 tracking-widest">
-                            © {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED
+                        <p className="text-[10px] tracking-widest uppercase text-white/50 mb-12">ADVANCED AERIAL OPERATIONS</p>
+                        <div className="pt-12 border-t border-white/10 text-[10px] text-white/40 tracking-widest uppercase">
+                            <p>© {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED</p>
                         </div>
                     </div>
                 </footer>

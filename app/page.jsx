@@ -1,30 +1,24 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Play } from 'lucide-react'
 
-// All 20 custom videos assigned to the new core sectors with updated titles and new YouTube links
+// Array updated with the exact new titles, categories, and video links from your list
 const homeVideos = [
-  { id: 'pK5_MnscTe8', title: 'The Residential Property Aerial', category: 'Real Estate' },
-  { id: 'hrAdFZ6SDDY', title: 'The Model Home Aerial Video', category: 'Real Estate' },
-  { id: 'Nu4EVW_8Fx4', title: 'The Birthday Party Coverage', category: 'Real Estate' },
-  { id: 'RU60sNn_FAs', title: 'The Neighborhood House', category: 'Real Estate' },
-  { id: 'MxDihTx34_g', title: 'The Ranch Property Aerial Overview', category: 'Events' },
-  { id: 'SkoF0xsy0Ao', title: 'Fire Dance Event Footage', category: 'Events' },
-  { id: 'pqbPSlCTkDA', title: 'Rotating Venue Aerial', category: 'Events' },
-  { id: 'prmz5KsnfEo', title: 'Venue Flyby Coverage', category: 'Events' }, // Placeholder ID
-  { id: 'aRFkEvb9yr4', title: 'Entrance Approach to The Wave', category: 'Real Estate' }, // Placeholder ID
-  { id: 'NzgjREnzl-Q', title: 'Overhead Wide-Angle Survey of The Wave', category: 'Inspections' }, // Placeholder ID
-  { id: '84NEEaYf_p4', title: 'Vertical Ascent Inspection Shot', category: 'Inspections' }, // Placeholder ID
-  { id: 'zbCBtOs8bVU', title: 'Orbiting Survey of the Venue', category: 'Inspections' }, // Placeholder ID
-  { id: 'on8CRRO4Png', title: 'Wide-Area Zoom-Out Mapping Shot', category: 'Inspections' }, // Placeholder ID
-  { id: 'OESeRIrOoYA', title: 'Low Approach Path Shot', category: 'Inspections' }, // Placeholder ID
-  { id: 'CbhcB0wlAfo', title: 'Dramatic Lighthouse Reveal', category: 'Portfolio' }, // Placeholder ID
-  { id: 'HnutE8DjBI4', title: 'Boat Follow', category: 'Inspections' }, // Placeholder ID
-  { id: 'mdUDkQO7_z4', title: 'Harbor Town Lighthouse - Down and Out', category: 'Real Estate' }, // Placeholder ID
-  { id: 'XbbsoKny4OA', title: 'Harbor Town - Fast Fly Up', category: 'Real Estate' }, // Placeholder ID
-  { id: 'qCE-Msr9Ctk', title: 'Fly by Docks', category: 'Portfolio' } // Placeholder ID
+  { id: 'pK5_MnscTe8', title: 'Tammy Nell Ct', category: 'Real Estate' },
+  { id: 'hrAdFZ6SDDY', title: 'Model Home KH', category: 'Real Estate' },
+  { id: 'MxDihTx34_g', title: 'Ranch Views', category: 'Events' },
+  { id: 'pqbPSlCTkDA', title: 'Fly through house', category: 'Real Estate' },
+  { id: 'RU60sNn_FAs', title: 'Fire Video', category: 'Real Estate' },
+  { id: 'PoYq2aS-eJA', title: 'Entrance approach to The Wave', category: 'Real Estate' },
+  { id: '4jByPpc9LAs', title: 'Rotating venue aerial', category: 'Events' },
+  { id: '5j97ffTxEVs', title: 'The Wave Circle Around', category: 'Inspections' },
+  { id: 'NzgjREnzl-Q', title: 'The wave fly up and above', category: 'Inspections' },
+  { id: 'on8CRRO4Png', title: 'Harbor town venue', category: 'Inspections' },
+  { id: 'HnutE8DjBI4', title: 'Boat follow', category: 'Inspections' },
+  { id: 'xJP9eaKCnPo', title: 'Fire Dance Willis TX', category: 'Events' },
+  { id: 'Nu4EVW_8Fx4', title: 'Birthday Party Harbor Town', category: 'Events' }
 ]
 
 export default function HomePage() {
@@ -45,10 +39,8 @@ export default function HomePage() {
   return (
     <main className="relative w-full bg-black text-white overflow-hidden selection:bg-[#D4AF37] selection:text-black">
 
-      {/* --- SUBTLE GRADIENT BACKGROUND --- */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-20 bg-gradient-to-br from-zinc-900 to-black"></div>
 
-      {/* --- PERMANENTLY DARK TOP NAVIGATION --- */}
       <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
         <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
           <a href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
@@ -69,7 +61,6 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* VIDEO MODAL */}
       <AnimatePresence>
         {activeVideo && (
           <motion.div
@@ -91,6 +82,7 @@ export default function HomePage() {
                 src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&playsinline=1`}
                 title="YouTube video player"
                 frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="absolute inset-0 pointer-events-none"
               />
@@ -101,7 +93,6 @@ export default function HomePage() {
 
       <div className="relative z-10">
 
-        {/* 1. HERO SECTION */}
         <section className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-center">
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <video
@@ -133,7 +124,7 @@ export default function HomePage() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={() => setActiveVideo('CbhcB0wlAfo')}
+                onClick={() => setActiveVideo('pK5_MnscTe8')}
                 className="group px-10 py-4 border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all duration-300 flex items-center gap-3 text-sm tracking-[0.125em] uppercase font-medium"
               >
                 <Play className="w-4 h-4 group-hover:scale-110 transition" /> WATCH SIGNATURE REEL
@@ -153,7 +144,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 2. SERVICES SECTION */}
         <section className="relative w-full py-28 bg-black">
           <div className="container px-6 mx-auto md:px-12">
             <motion.div initial="hidden" whileInView="visible" variants={fadeUp} className="text-center mb-16">
@@ -198,7 +188,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 3. SHOWCASE WITH FILTERS */}
         <section className="relative w-full py-24 border-t border-white/10 bg-black">
           <div className="container px-6 mx-auto md:px-12">
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
@@ -208,7 +197,7 @@ export default function HomePage() {
               </div>
 
               <div className="flex flex-wrap gap-2 text-sm">
-                {['All', 'Portfolio', 'Real Estate', 'Inspections', 'Events'].map(cat => (
+                {['All', 'Real Estate', 'Inspections', 'Events'].map(cat => (
                   <button
                     key={cat}
                     onClick={() => setActiveFilter(cat)}
@@ -266,7 +255,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4. OUR PROCESS */}
         <section className="py-28 bg-black border-t border-white/10">
           <div className="container px-6 mx-auto md:px-12">
             <div className="max-w-2xl mb-16">
@@ -291,7 +279,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 5. FINAL CTA */}
         <section className="relative py-32 bg-gradient-to-b from-black to-zinc-950 text-center border-t border-white/10">
           <div className="container px-6 mx-auto max-w-2xl">
             <h2 className="text-5xl md:text-6xl font-serif text-[#D4AF37] leading-tight mb-6">Your vision deserves the sky.</h2>
@@ -308,7 +295,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 6. SIMPLE FOOTER */}
         <footer className="bg-black pt-20 pb-12 border-t border-[#D4AF37]/20">
           <div className="container px-6 mx-auto md:px-12 text-center">
             <div className="text-3xl font-serif text-[#D4AF37] mb-2 flex items-center justify-center gap-2">

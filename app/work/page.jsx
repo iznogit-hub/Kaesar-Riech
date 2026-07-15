@@ -6,67 +6,52 @@ import { Play, Camera, Zap, Award } from 'lucide-react'
 
 const allWork = [
     {
-        id: 'CbhcB0wlAfo',
-        title: 'Harbor Town Willis TX - Lighthouse Down and Up',
-        category: 'Portfolio',
-        discipline: 'Master Edit',
-        duration: '2:45',
-        location: 'Willis, TX',
-        process: 'A high-energy synthesis of our most demanding operations across all sectors. This reel demonstrates my ability to maintain a consistent, premium visual language.'
+        id: 'pK5_MnscTe8',
+        title: 'Tammy Nell Ct',
+        category: 'Real Estate',
+        discipline: 'Heavy-Lift Exterior',
+        duration: '2:30',
+        process: 'Designed specifically for ultra-luxury property marketing. I focus on extremely smooth, sweeping architectural shots that highlight the scale of the estate.'
     },
     {
         id: 'pqbPSlCTkDA',
-        title: 'Harbor Town Willis TX Real Estate',
+        title: 'Fly through house',
         category: 'Real Estate',
-        discipline: 'Exterior Aerial',
-        duration: '2:15',
-        location: 'Willis, TX',
-        process: 'Designed specifically for ultra-luxury property marketing. I focus on extremely smooth, sweeping architectural shots that highlight the scale of the estate, its relationship to the coastline, and premium exterior amenities.'
+        discipline: 'Cinewhoop / Interior',
+        duration: '3:12',
+        process: 'Flying a custom sub-250g ducted drone. This process relies on precision visual line-of-sight coordination to navigate tight interior corridors.'
     },
     {
-        id: 'pK5_MnscTe8',
-        title: 'Model Home KH',
-        category: 'Real Estate',
-        discipline: 'Interior Walkthrough',
-        duration: '1:45',
-        location: 'Willis, TX',
-        process: 'Flying a custom sub-250g ducted drone. This process relies on precision visual line-of-sight coordination to navigate tight interior corridors, seamlessly transitioning from outdoor living spaces to indoor grandeur in a single continuous take.'
+        id: '4jByPpc9LAs',
+        title: 'Rotating venue aerial',
+        category: 'Events',
+        discipline: 'Dynamic Tracking',
+        duration: '2:55',
+        process: 'Executed safely in challenging environments. Requires intense focus for precise spatial navigation to perfectly frame dynamic subject movement.'
     },
     {
-        id: 'OESeRIrOoYA',
-        title: 'Harbor Town - Sidewalk to Lighthouse Fly By',
+        id: '5j97ffTxEVs',
+        title: 'The Wave Circle Around',
         category: 'Inspections',
-        discipline: 'Site Approach',
-        duration: '2:10',
-        location: 'Willis, TX',
-        process: 'Utilizing precise manual and automated flight paths to analyze infrastructure context. This allows for high-accuracy spatial awareness and environmental documentation prior to major works.'
+        discipline: 'Waypoint Autonomous',
+        duration: '5:10',
+        process: 'Utilizing GPS-guided waypoint missions to ensure perfectly repeatable flight paths for high-accuracy 3D photogrammetry and topographical data collection.'
     },
     {
         id: 'NzgjREnzl-Q',
-        title: 'The Wave - Above and Out Willis TX',
+        title: 'The wave fly up and above',
         category: 'Inspections',
-        discipline: 'Structural Survey',
+        discipline: 'Proximity Flight',
         duration: '2:38',
-        location: 'Willis, TX',
-        process: 'Close-proximity vertical structural survey. I utilize advanced FPV systems and stabilized rigs for immersive spatial awareness, allowing for precision proximity to capture high-resolution imagery for structural analysis.'
+        process: 'Close-proximity vertical structural survey. I utilize advanced FPV systems for immersive spatial awareness to capture high-resolution imagery for structural integrity.'
     },
     {
-        id: 'MxDihTx34_g',
-        title: 'Birthday Party Harbor Town',
+        id: 'xJP9eaKCnPo',
+        title: 'Fire Dance Willis TX',
         category: 'Events',
-        discipline: 'Event Coverage',
-        duration: '3:20',
-        location: 'Willis, TX',
-        process: 'Executed safely in challenging, active environments. Requires intense focus for precise spatial navigation to perfectly frame dynamic subject movement against unpredictable backdrops.'
-    },
-    {
-        id: 'SkoF0xsy0Ao',
-        title: 'Fire Dance Willis TX Harbor Town',
-        category: 'Events',
-        discipline: 'Low-Light FPV',
-        duration: '2:45',
-        location: 'Willis, TX',
-        process: 'Shot using a custom-tuned FPV rig carrying a metadata-stabilized cinema camera. The process involves precise exposure control and dynamic tracking to capture the raw energy and lighting of live nighttime performances.'
+        discipline: 'Custom FPV Pursuit',
+        duration: '4:12',
+        process: 'Shot using a custom-tuned FPV rig carrying a metadata-stabilized cinema camera, capturing the raw adrenaline of the live event.'
     }
 ]
 
@@ -90,10 +75,8 @@ export default function WorkPage() {
     return (
         <main className="relative w-full bg-black text-white selection:bg-[#D4AF37] selection:text-black overflow-hidden">
 
-            {/* --- SUBTLE BACKGROUND FALLBACK --- */}
             <div className="fixed inset-0 z-0 pointer-events-none opacity-20 bg-gradient-to-br from-zinc-900 to-black"></div>
 
-            {/* --- PERMANENTLY DARK TOP NAVIGATION --- */}
             <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
                     <a href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
@@ -111,7 +94,6 @@ export default function WorkPage() {
                 </div>
             </header>
 
-            {/* VIDEO MODAL */}
             <AnimatePresence>
                 {activeVideo && (
                     <motion.div
@@ -127,7 +109,6 @@ export default function WorkPage() {
                             ✕ CLOSE
                         </button>
                         <div className="w-full max-w-6xl aspect-video bg-black border border-white/10 shadow-2xl relative overflow-hidden">
-                            {/* Added pointer-events-none to prevent pausing/skipping */}
                             <iframe
                                 width="100%"
                                 height="100%"
@@ -142,8 +123,8 @@ export default function WorkPage() {
                 )}
             </AnimatePresence>
 
-            {/* HEADER CONTENT */}
             <div className="relative z-10 pt-32 pb-24">
+
                 <div className="container px-6 mx-auto md:px-12 lg:px-24 mb-20">
                     <motion.div
                         initial="hidden"
@@ -163,7 +144,6 @@ export default function WorkPage() {
                     </motion.div>
                 </div>
 
-                {/* FILTERS */}
                 <div className="container px-6 mx-auto md:px-12 mb-16">
                     <div className="flex flex-wrap justify-center gap-3 md:gap-4 border-b border-white/10 pb-8">
                         {categories.map((cat) => (
@@ -180,7 +160,6 @@ export default function WorkPage() {
                     </div>
                 </div>
 
-                {/* WORK GRID */}
                 <div className="container px-6 mx-auto md:px-12 lg:px-24">
                     <div className="space-y-28">
                         {filteredWork.map((item, i) => (
@@ -192,7 +171,6 @@ export default function WorkPage() {
                                 variants={fadeUp}
                                 className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center group"
                             >
-                                {/* Video Side */}
                                 <div className="lg:col-span-7 relative">
                                     <div
                                         onClick={() => setActiveVideo(item)}
@@ -217,7 +195,6 @@ export default function WorkPage() {
                                     </div>
                                 </div>
 
-                                {/* Technical Details Side */}
                                 <div className="lg:col-span-5 flex flex-col justify-center">
                                     <div className="mb-6">
                                         <span className="text-[#D4AF37] text-xs tracking-[0.2em] uppercase font-mono">
@@ -251,7 +228,6 @@ export default function WorkPage() {
                     </div>
                 </div>
 
-                {/* BOTTOM CTA */}
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -273,24 +249,14 @@ export default function WorkPage() {
                 </motion.div>
             </div>
 
-            {/* FOOTER */}
-            <footer className="bg-black border-t border-white/10 pt-20 pb-12">
-                <div className="container px-6 mx-auto md:px-12 lg:px-24">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                        <div>
-                            <div className="text-2xl font-serif text-[#D4AF37]">Sovereign Skyz</div>
-                            <p className="text-xs text-white/40 mt-1">Professional Aerial Portfolio</p>
-                        </div>
-
-                        <div className="flex gap-8 text-sm text-white/60 tracking-widest uppercase text-xs">
-                            <a href="/contact" className="hover:text-[#D4AF37] transition-colors">Get in Touch</a>
-                            <a href="https://instagram.com/sovereignskies" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">Instagram</a>
-                            <a href="https://youtube.com/@SovereignSkyz" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">YouTube</a>
-                        </div>
+            <footer className="bg-black pt-20 pb-12 border-t border-white/10">
+                <div className="container px-6 mx-auto md:px-12 text-center">
+                    <div className="text-3xl font-serif text-[#D4AF37] mb-2 flex items-center justify-center gap-2">
+                        <span>✦</span> Sovereign Skyz
                     </div>
-
-                    <div className="text-center text-[10px] text-white/30 mt-16 tracking-widest">
-                        © {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED
+                    <p className="text-[10px] tracking-widest uppercase text-white/50 mb-12">ADVANCED AERIAL OPERATIONS</p>
+                    <div className="pt-12 border-t border-white/10 text-[10px] text-white/40 tracking-widest uppercase">
+                        <p>© {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED</p>
                     </div>
                 </div>
             </footer>

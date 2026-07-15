@@ -24,11 +24,13 @@ export default function ContactPage() {
         e.preventDefault()
         setIsSubmitting(true)
 
-        // Simulate API call
+        // Simulate API call before generating the mailto link
         setTimeout(() => {
             setIsSubmitting(false)
             setSubmitted(true)
-        }, 1800)
+            // Generates an email draft directly to the requested email
+            window.location.href = `mailto:info@sovereignskyz.com?subject=Project Inquiry from ${formData.name}&body=Name: ${formData.name}%0D%0ACompany: ${formData.company}%0D%0AType: ${formData.projectType}%0D%0ATimeline: ${formData.timeline}%0D%0A%0D%0ADetails:%0D%0A${formData.message}`;
+        }, 1200)
     }
 
     const fadeUp = {
@@ -39,10 +41,8 @@ export default function ContactPage() {
     return (
         <main className="relative w-full bg-black text-white selection:bg-[#D4AF37] selection:text-black overflow-hidden">
 
-            {/* Subtle Gradient Background */}
             <div className="fixed inset-0 z-0 pointer-events-none opacity-20 bg-gradient-to-br from-zinc-900 to-black"></div>
 
-            {/* PERMANENTLY DARK TOP NAVIGATION */}
             <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
                     <a href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
@@ -61,7 +61,6 @@ export default function ContactPage() {
 
             <div className="relative z-10 pt-32">
 
-                {/* HERO SECTION */}
                 <section className="min-h-[85vh] flex items-center justify-center text-center relative">
                     <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_0.6px,transparent_1px)] bg-[length:5px_5px] opacity-10" />
 
@@ -88,7 +87,6 @@ export default function ContactPage() {
                     </motion.div>
                 </section>
 
-                {/* CONTACT INFO WIDGETS */}
                 <section className="py-8 border-b border-white/10 bg-black/70 backdrop-blur">
                     <div className="container px-6 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         <a href="tel:3075224412" className="group flex flex-col items-center hover:text-[#D4AF37] transition">
@@ -96,7 +94,7 @@ export default function ContactPage() {
                             <p className="text-sm font-medium">(307) 522-4412</p>
                             <p className="text-xs text-white/50">Immediate Response</p>
                         </a>
-                        <a href="mailto:contact@sovereignskyz.com" className="group flex flex-col items-center hover:text-[#D4AF37] transition">
+                        <a href="mailto:info@sovereignskyz.com" className="group flex flex-col items-center hover:text-[#D4AF37] transition">
                             <Mail className="w-6 h-6 mb-3" />
                             <p className="text-sm font-medium">info@sovereignskyz.com</p>
                             <p className="text-xs text-white/50">Project Inquiries</p>
@@ -109,7 +107,6 @@ export default function ContactPage() {
                     </div>
                 </section>
 
-                {/* CONTACT FORM */}
                 <section className="py-28 bg-neutral-950">
                     <div className="container px-6 mx-auto md:px-12 lg:px-24">
                         <div className="max-w-3xl mx-auto">
@@ -241,7 +238,6 @@ export default function ContactPage() {
                     </div>
                 </section>
 
-                {/* BOTTOM CTA */}
                 <section className="py-32 bg-black border-t border-white/10 text-center">
                     <div className="container px-6 mx-auto max-w-2xl">
                         <p className="text-white/60 mb-6 text-sm tracking-widest">WORLDWIDE • FULLY INSURED • FAA / EASA CERTIFIED</p>
@@ -253,14 +249,14 @@ export default function ContactPage() {
                 </section>
 
                 <footer className="bg-black pt-20 pb-12 border-t border-[#D4AF37]/20">
-                    <div className="container px-6 mx-auto md:px-12 lg:px-24">
-                        <div className="flex flex-col items-center text-center mb-20">
-                            <h2 className="text-3xl font-serif text-[#D4AF37]">Sovereign Skyz</h2>
-                            <p className="text-xs tracking-widest text-white/50 mt-2">WHERE THE SKY BOWS</p>
+                    <div className="container px-6 mx-auto md:px-12 text-center">
+                        <div className="text-3xl font-serif text-[#D4AF37] mb-2 flex items-center justify-center gap-2">
+                            <span>✦</span> Sovereign Skyz
                         </div>
+                        <p className="text-[10px] tracking-widest uppercase text-white/50 mb-12">ADVANCED AERIAL OPERATIONS</p>
 
-                        <div className="text-center text-[10px] text-white/40 tracking-widest uppercase">
-                            © {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED
+                        <div className="pt-12 border-t border-white/10 text-[10px] text-white/40 tracking-widest uppercase">
+                            <p>© {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED</p>
                         </div>
                     </div>
                 </footer>
