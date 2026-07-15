@@ -6,12 +6,28 @@ import { Play, Camera, Zap, Award } from 'lucide-react'
 
 const allWork = [
     {
+        id: 'hrAdFZ6SDDY',
+        title: 'Model Home KH',
+        category: 'Real Estate',
+        discipline: 'Interior FPV',
+        duration: '1:45',
+        process: 'Precision indoor navigation using sub-250g ducted platforms to seamlessly transition between interior spaces.'
+    },
+    {
         id: 'pK5_MnscTe8',
         title: 'Tammy Nell Ct',
         category: 'Real Estate',
         discipline: 'Heavy-Lift Exterior',
         duration: '2:30',
-        process: 'Designed specifically for ultra-luxury property marketing. I focus on extremely smooth, sweeping architectural shots that highlight the scale of the estate.'
+        process: 'Designed specifically for ultra-luxury property marketing. Sweeping architectural shots highlight the scale of the estate.'
+    },
+    {
+        id: 'MxDihTx34_g',
+        title: 'Ranch Views',
+        category: 'Events',
+        discipline: 'Dynamic Tracking',
+        duration: '2:45',
+        process: 'Wide-angle landscape pursuit capturing the scale and energy of rural activations and sprawling properties.'
     },
     {
         id: 'pqbPSlCTkDA',
@@ -19,7 +35,23 @@ const allWork = [
         category: 'Real Estate',
         discipline: 'Cinewhoop / Interior',
         duration: '3:12',
-        process: 'Flying a custom sub-250g ducted drone. This process relies on precision visual line-of-sight coordination to navigate tight interior corridors.'
+        process: 'Continuous single-take fly-throughs that give potential buyers a true spatial understanding of the property layout.'
+    },
+    {
+        id: 'RU60sNn_FAs',
+        title: 'Harbor Town Willis',
+        category: 'Real Estate',
+        discipline: 'Architectural Drama',
+        duration: '2:55',
+        process: 'High-contrast sunset and golden hour captures that emphasize the dramatic lines and lighting of luxury architecture.'
+    },
+    {
+        id: 'PoYq2aS-eJA',
+        title: 'Entrance approach to The Wave',
+        category: 'Real Estate',
+        discipline: 'Heavy-Lift Exterior',
+        duration: '1:50',
+        process: 'A steady, commanding approach shot establishing the property boundaries and creating an immediate sense of arrival.'
     },
     {
         id: '4jByPpc9LAs',
@@ -27,7 +59,7 @@ const allWork = [
         category: 'Events',
         discipline: 'Dynamic Tracking',
         duration: '2:55',
-        process: 'Executed safely in challenging environments. Requires intense focus for precise spatial navigation to perfectly frame dynamic subject movement.'
+        process: 'Precise orbital maneuvers keeping the focal point perfectly centered while showcasing the surrounding environment.'
     },
     {
         id: '5j97ffTxEVs',
@@ -35,7 +67,7 @@ const allWork = [
         category: 'Inspections',
         discipline: 'Waypoint Autonomous',
         duration: '5:10',
-        process: 'Utilizing GPS-guided waypoint missions to ensure perfectly repeatable flight paths for high-accuracy 3D photogrammetry and topographical data collection.'
+        process: 'GPS-guided waypoint missions ensuring perfectly repeatable flight paths for high-accuracy 3D photogrammetry.'
     },
     {
         id: 'NzgjREnzl-Q',
@@ -43,15 +75,47 @@ const allWork = [
         category: 'Inspections',
         discipline: 'Proximity Flight',
         duration: '2:38',
-        process: 'Close-proximity vertical structural survey. I utilize advanced FPV systems for immersive spatial awareness to capture high-resolution imagery for structural integrity.'
+        process: 'Close-proximity vertical structural survey utilizing advanced FPV systems for micro-fracture analysis.'
     },
     {
-        id: 'xJP9eaKCnPo',
+        id: 'on8CRRO4Png',
+        title: 'Harbor town venue',
+        category: 'Inspections',
+        discipline: 'Data Mapping',
+        duration: '4:02',
+        process: 'Wide-area zoom-out mapping for macro-level site overview, planning, and structural context.'
+    },
+    {
+        id: 'HnutE8DjBI4',
+        title: 'Boat follow',
+        category: 'Inspections',
+        discipline: 'Dynamic Pursuit',
+        duration: '5:40',
+        process: 'High-speed over-water tracking maintaining a consistent vector and altitude for marine asset documentation.'
+    },
+    {
+        id: 'SkoF0xsy0Ao',
         title: 'Fire Dance Willis TX',
         category: 'Events',
         discipline: 'Custom FPV Pursuit',
         duration: '4:12',
-        process: 'Shot using a custom-tuned FPV rig carrying a metadata-stabilized cinema camera, capturing the raw adrenaline of the live event.'
+        process: 'Low-light, high-action capture using specialized sensors to maintain clarity during high-contrast live performances.'
+    },
+    {
+        id: 'euK2jBRWSeI',
+        title: 'Lighthouse and docks',
+        category: 'Events',
+        discipline: 'Proximity Navigation',
+        duration: '3:10',
+        process: 'Navigating complex vertical structures safely to deliver stunning establishing shots for brand activations.'
+    },
+    {
+        id: 'Nu4EVW_8Fx4',
+        title: 'Birthday Party Harbor Town',
+        category: 'Events',
+        discipline: 'Live Event Coverage',
+        duration: '3:28',
+        process: 'Unobtrusive, low-noise operations capturing candid, high-energy moments of crowds and celebrations.'
     }
 ]
 
