@@ -6,6 +6,14 @@ import { Play, Camera, Zap, Award } from 'lucide-react'
 
 const allWork = [
     {
+        id: 'UjBLriE-UgA',
+        title: 'The Sovereign Reel',
+        category: 'Portfolio',
+        discipline: 'Master Edit',
+        duration: '2:45',
+        process: 'A high-energy synthesis of our most demanding operations across all sectors. This reel demonstrates my ability to maintain a consistent, premium visual language.'
+    },
+    {
         id: 'hrAdFZ6SDDY',
         title: 'Model Home KH',
         category: 'Real Estate',
@@ -139,7 +147,9 @@ export default function WorkPage() {
     return (
         <main className="relative w-full bg-black text-white selection:bg-[#D4AF37] selection:text-black overflow-hidden">
 
-            {/* --- PERMANENTLY DARK TOP NAVIGATION --- */}
+            <div className="fixed inset-0 z-0 pointer-events-none opacity-20 bg-gradient-to-br from-zinc-900 to-black"></div>
+
+            { }
             <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg py-4 border-b border-white/10 transition-all duration-500">
                 <div className="container flex items-center justify-between px-6 mx-auto md:px-12">
                     <a href="/" className="text-2xl tracking-[0.125em] text-[#D4AF37] font-serif flex items-center gap-2">
@@ -157,7 +167,7 @@ export default function WorkPage() {
                 </div>
             </header>
 
-            {/* --- VIDEO MODAL --- */}
+            { }
             <AnimatePresence>
                 {activeVideo && (
                     <motion.div
@@ -189,7 +199,7 @@ export default function WorkPage() {
 
             <div className="relative z-10">
 
-                {/* --- NEW CINEMATIC HERO SECTION --- */}
+                { }
                 <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-center">
                     <div className="absolute inset-0 z-0 pointer-events-none">
                         <video
@@ -224,7 +234,7 @@ export default function WorkPage() {
                     </div>
                 </section>
 
-                {/* --- PORTFOLIO GRID SECTION --- */}
+                { }
                 <div className="bg-black pt-24 pb-24">
                     <div className="container px-6 mx-auto md:px-12 mb-20">
                         <div className="flex flex-wrap justify-center gap-3 md:gap-4 border-b border-white/10 pb-8">
@@ -310,6 +320,7 @@ export default function WorkPage() {
                         </div>
                     </div>
 
+                    { }
                     <motion.div
                         initial="hidden"
                         whileInView="visible"
@@ -332,7 +343,6 @@ export default function WorkPage() {
                 </div>
             </div>
 
-            {/* --- FOOTER --- */}
             <footer className="bg-black border-t border-white/10 pt-20 pb-12">
                 <div className="container px-6 mx-auto md:px-12 lg:px-24">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-8">
