@@ -94,7 +94,7 @@ export default function EventsPage() {
                         </p>
 
                         <button
-                            onClick={() => setActiveVideo('xJP9eaKCnPo')}
+                            onClick={() => setActiveVideo('SkoF0xsy0Ao')}
                             className="group px-10 py-5 border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all flex items-center gap-4 text-sm tracking-widest uppercase mx-auto"
                         >
                             <Play className="w-5 h-5 group-hover:scale-110 transition" /> WATCH EVENTS REEL
@@ -119,10 +119,19 @@ export default function EventsPage() {
                                 </div>
                             </motion.div>
 
-                            <div className="relative aspect-[4/5] border border-white/10 overflow-hidden group">
-                                <img src={getThumbnail('xJP9eaKCnPo')} alt="Event Experience" className="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                                <div className="absolute bottom-10 left-10 right-10">
+                            <div className="relative aspect-[4/5] border border-white/10 overflow-hidden group bg-zinc-900">
+                                {/* Replaced the Image with the Looping Portfolio Video */}
+                                <video
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    className="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700 pointer-events-none"
+                                >
+                                    <source src="/videos/Portfolio%20Video.mp4" type="video/mp4" />
+                                </video>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
+                                <div className="absolute bottom-10 left-10 right-10 pointer-events-none">
                                     <p className="text-[#D4AF37] text-xs tracking-widest mb-2">SIGNATURE TECHNIQUE</p>
                                     <p className="text-3xl font-serif leading-tight text-white">High-Velocity Dynamic Tracking</p>
                                 </div>
