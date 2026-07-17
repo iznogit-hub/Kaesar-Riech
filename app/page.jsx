@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Play } from 'lucide-react'
 
-// Array updated with the exact new titles, categories, and video links from your list
+// The Final 14 Videos List
 const homeVideos = [
   { id: 'hrAdFZ6SDDY', title: 'Model Home KH', category: 'Real Estate' },
   { id: 'pK5_MnscTe8', title: 'Tammy Nell Ct', category: 'Real Estate' },
@@ -62,6 +62,7 @@ export default function HomePage() {
         </div>
       </header>
 
+      {/* VIDEO MODAL (Clickable to unmute) */}
       <AnimatePresence>
         {activeVideo && (
           <motion.div
@@ -85,7 +86,7 @@ export default function HomePage() {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                className="absolute inset-0 pointer-events-none"
+                className="absolute inset-0"
               />
             </div>
           </motion.div>
@@ -301,7 +302,13 @@ export default function HomePage() {
             <div className="text-3xl font-serif text-[#D4AF37] mb-2 flex items-center justify-center gap-2">
               <span>✦</span> Sovereign Skyz
             </div>
-            <p className="text-[10px] tracking-widest uppercase text-white/50 mb-12">ADVANCED AERIAL OPERATIONS</p>
+            <p className="text-[10px] tracking-widest uppercase text-white/50 mb-8">ADVANCED AERIAL OPERATIONS</p>
+
+            <div className="flex justify-center gap-8 text-xs tracking-widest uppercase text-white/60 mb-12">
+              <a href="/contact" className="hover:text-[#D4AF37] transition-colors">Contact</a>
+              <a href="https://www.instagram.com/sovereignskyz/" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">Instagram</a>
+              <a href="https://youtube.com/@SovereignSkyz" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">YouTube</a>
+            </div>
 
             <div className="pt-12 border-t border-white/10 text-[10px] text-white/40 tracking-widest uppercase">
               <p>© {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED</p>

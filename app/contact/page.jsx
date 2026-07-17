@@ -238,23 +238,16 @@ export default function ContactPage() {
                     </div>
                 </section>
 
-                <section className="py-32 bg-black border-t border-white/10 text-center">
-                    <div className="container px-6 mx-auto max-w-2xl">
-                        <p className="text-white/60 mb-6 text-sm tracking-widest">WORLDWIDE • FULLY INSURED • FAA / EASA CERTIFIED</p>
-                        <h2 className="text-4xl font-serif mb-8">The sky is ready when you are.</h2>
-                        <a href="tel:3075224412" className="inline-flex items-center gap-4 text-xl hover:text-[#D4AF37] transition">
-                            <Phone className="w-6 h-6" /> (307) 522-4412
-                        </a>
-                    </div>
-                </section>
-
                 <footer className="bg-black pt-20 pb-12 border-t border-[#D4AF37]/20">
                     <div className="container px-6 mx-auto md:px-12 text-center">
-                        <div className="text-3xl font-serif text-[#D4AF37] mb-2 flex items-center justify-center gap-2">
+                        <div className="text-3xl font-serif text-[#D4AF37] mb-8 flex items-center justify-center gap-2">
                             <span>✦</span> Sovereign Skyz
                         </div>
-                        <p className="text-[10px] tracking-widest uppercase text-white/50 mb-12">ADVANCED AERIAL OPERATIONS</p>
-
+                        <div className="flex justify-center gap-8 text-xs tracking-widest uppercase text-white/60 mb-12">
+                            <a href="/contact" className="hover:text-[#D4AF37] transition-colors">Contact</a>
+                            <a href="https://www.instagram.com/sovereignskyz/" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">Instagram</a>
+                            <a href="https://youtube.com/@SovereignSkyz" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">YouTube</a>
+                        </div>
                         <div className="pt-12 border-t border-white/10 text-[10px] text-white/40 tracking-widest uppercase">
                             <p>© {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED</p>
                         </div>

@@ -54,12 +54,16 @@ export default function EventsPage() {
                         className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 md:p-8">
                         <button onClick={() => setActiveVideo(null)} className="absolute top-8 right-8 text-white/60 hover:text-white uppercase tracking-widest text-sm z-50 flex items-center gap-2">✕ CLOSE</button>
                         <div className="w-full max-w-6xl aspect-video bg-black border border-white/10 shadow-2xl relative">
+                            {/* Removed pointer-events-none so videos can be clicked and played with sound! */}
                             <iframe
                                 width="100%"
                                 height="100%"
                                 src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&playsinline=1`}
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowFullScreen
-                                className="absolute inset-0 pointer-events-none"
+                                className="absolute inset-0"
                             />
                         </div>
                     </motion.div>
@@ -120,7 +124,6 @@ export default function EventsPage() {
                             </motion.div>
 
                             <div className="relative aspect-[4/5] border border-white/10 overflow-hidden group bg-zinc-900">
-                                {/* Replaced the Image with the Looping Portfolio Video */}
                                 <video
                                     autoPlay
                                     loop
@@ -218,14 +221,24 @@ export default function EventsPage() {
                     </div>
                 </section>
 
+                {/* --- FULLY UPDATED FOOTER WITH LINKS --- */}
                 <footer className="bg-black pt-20 pb-12 border-t border-white/10">
-                    <div className="container px-6 mx-auto md:px-12 text-center">
-                        <div className="text-3xl font-serif text-[#D4AF37] mb-2 flex items-center justify-center gap-2">
-                            <span>✦</span> Sovereign Skyz
+                    <div className="container px-6 mx-auto md:px-12 lg:px-24">
+                        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+                            <div className="text-center md:text-left">
+                                <div className="text-2xl font-serif text-[#D4AF37]">Sovereign Skyz</div>
+                                <p className="text-xs text-white/40 mt-1 uppercase tracking-widest">Where The Sky Bows</p>
+                            </div>
+
+                            <div className="flex gap-8 text-sm text-white/60 tracking-widest uppercase text-xs">
+                                <a href="/contact" className="hover:text-[#D4AF37] transition-colors">Get in Touch</a>
+                                <a href="https://www.instagram.com/sovereignskyz/" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">Instagram</a>
+                                <a href="https://youtube.com/@SovereignSkyz" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">YouTube</a>
+                            </div>
                         </div>
-                        <p className="text-[10px] tracking-widest uppercase text-white/50 mb-12">ADVANCED AERIAL OPERATIONS</p>
-                        <div className="pt-12 border-t border-white/10 text-[10px] text-white/40 tracking-widest uppercase">
-                            <p>© {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED</p>
+
+                        <div className="text-center text-[10px] text-white/30 mt-16 tracking-widest uppercase">
+                            © {new Date().getFullYear()} SOVEREIGNSKYZ • ALL RIGHTS RESERVED
                         </div>
                     </div>
                 </footer>

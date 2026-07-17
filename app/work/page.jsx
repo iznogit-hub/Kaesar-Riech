@@ -189,8 +189,9 @@ export default function WorkPage() {
                                 src={`https://www.youtube.com/embed/${activeVideo.id}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&playsinline=1`}
                                 title="YouTube video player"
                                 frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowFullScreen
-                                className="absolute inset-0 pointer-events-none"
+                                className="absolute inset-0"
                             />
                         </div>
                     </motion.div>
@@ -346,14 +347,14 @@ export default function WorkPage() {
             <footer className="bg-black border-t border-white/10 pt-20 pb-12">
                 <div className="container px-6 mx-auto md:px-12 lg:px-24">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                        <div>
+                        <div className="text-center md:text-left">
                             <div className="text-2xl font-serif text-[#D4AF37]">Sovereign Skyz</div>
                             <p className="text-xs text-white/40 mt-1 uppercase tracking-widest">Professional Aerial Portfolio</p>
                         </div>
 
                         <div className="flex gap-8 text-sm text-white/60 tracking-widest uppercase text-xs">
                             <a href="/contact" className="hover:text-[#D4AF37] transition-colors">Get in Touch</a>
-                            <a href="https://instagram.com/sovereignskies" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">Instagram</a>
+                            <a href="https://www.instagram.com/sovereignskyz/" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">Instagram</a>
                             <a href="https://youtube.com/@SovereignSkyz" target="_blank" rel="noreferrer" className="hover:text-[#D4AF37] transition-colors">YouTube</a>
                         </div>
                     </div>
